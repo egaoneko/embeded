@@ -1,0 +1,198 @@
+/*
+ * X-HYPER270-TKU IEB Board Rev
+ * DOT Matrix  Device Driver
+ * 2006-08-21   <kjlee@hybus.net> Version 1.0
+ * 2006-10-18 Modified by kjlee	  Version 1.1
+ */
+
+#include <linux/interrupt.h>
+#include <linux/poll.h>
+
+#include <asm/arch/pxa-regs.h>
+#include <asm/io.h>
+
+#define DOT_MAJOR	232
+#define DOT_NAME	"dot"
+#define DOT_RESET	4
+#define DOT_CNF		5
+#define IEB_DOT_COL		(0x11800000)
+
+#define OSTIMER_IRQ             IRQ_OST2
+
+#define Sec_Clk                 3686400         //1sec
+#define Usec_Clk                (Sec_Clk/600)
+
+#define CLK                     Usec_Clk
+
+#define OSTIMER_ON      OIER |= OIER_E2; OSSR = OSSR_M2
+#define OSTIMER_OFF     OIER &= ~OIER_E2; OSSR = OSSR_M2
+
+#define DOT_DISPLAY	0
+
+#define DOT_CS                  (*((volatile unsigned short *)(mem_dot_col)))
+
+static void *mem_dot_col;
+unsigned char dot_col[5] = {0};
+int sel = 0;
+
+static int dot_reset(void){
+	int i;
+	
+	DOT_CS = 0x1FFF;
+	
+	for(i=0; i < 5; i++)
+		dot_col[i] = 0x7F;
+	return 0;
+}
+
+void asc_to_dot(unsigned int asc){
+	switch(asc){
+        	case 0x0 :  dot_col[0] = 0x7F; dot_col[1] = 0x41; dot_col[2] = 0x41; dot_col[3] = 0x41; dot_col[4] = 0x7F; break;
+                case 0x1 :  dot_col[0] = 0x7F; dot_col[1] = 0x7F; dot_col[2] = 0x00; dot_col[3] = 0x7F; dot_col[4] = 0x7F; break;
+                case 0x2 :  dot_col[0] = 0x06; dot_col[1] = 0x36; dot_col[2] = 0x36; dot_col[3] = 0x36; dot_col[4] = 0x30; break;
+                case 0x3 :  dot_col[0] = 0x36; dot_col[1] = 0x36; dot_col[2] = 0x36; dot_col[3] = 0x36; dot_col[4] = 0x00; break;
+                case 0x4 :  dot_col[0] = 0x70; dot_col[1] = 0x77; dot_col[2] = 0x00; dot_col[3] = 0x77; dot_col[4] = 0x77; break;
+                case 0x5 :  dot_col[0] = 0x30; dot_col[1] = 0x36; dot_col[2] = 0x36; dot_col[3] = 0x36; dot_col[4] = 0x06; break;
+                case 0x6 :  dot_col[0] = 0x00; dot_col[1] = 0x36; dot_col[2] = 0x36; dot_col[3] = 0x36; dot_col[4] = 0x06; break;
+                case 0x7 :  dot_col[0] = 0x70; dot_col[1] = 0x7E; dot_col[2] = 0x7E; dot_col[3] = 0x7E; dot_col[4] = 0x00; break;
+                case 0x8 :  dot_col[0] = 0x00; dot_col[1] = 0x36; dot_col[2] = 0x36; dot_col[3] = 0x36; dot_col[4] = 0x00; break;
+                case 0x9 :  dot_col[0] = 0x30; dot_col[1] = 0x36; dot_col[2] = 0x36; dot_col[3] = 0x36; dot_col[4] = 0x00; break;
+                //case 0xa :  dot_col[0] = 0x70; dot_col[1] = 0x77; dot_col[2] = 0x00; dot_col[3] = 0x77; dot_col[4] = 0x77; break;
+                //case 0xb :  dot_col[0] = 0x30; dot_col[1] = 0x36; dot_col[2] = 0x36; dot_col[3] = 0x36; dot_col[4] = 0x06; break;
+                //case 0xc :  dot_col[0] = 0x00; dot_col[1] = 0x36; dot_col[2] = 0x36; dot_col[3] = 0x36; dot_col[4] = 0x06; break;
+                //case 0xd :  dot_col[0] = 0x70; dot_col[1] = 0x7E; dot_col[2] = 0x7E; dot_col[3] = 0x7E; dot_col[4] = 0x00; break;
+                //case 0xe :  dot_col[0] = 0x00; dot_col[1] = 0x36; dot_col[2] = 0x36; dot_col[3] = 0x36; dot_col[4] = 0x00; break;
+                //case 0xf :  dot_col[0] = 0x30; dot_col[1] = 0x36; dot_col[2] = 0x36; dot_col[3] = 0x36; dot_col[4] = 0x00; break;
+
+		default	 :  dot_col[0] = 0x7F; dot_col[1] = 0x7F; dot_col[2] = 0x7F; dot_col[3] = 0x7F; dot_col[4] = 0x7F; break;
+        }
+        return;
+}
+
+
+
+static irqreturn_t DOT_InterruptHandler(int irq, void *dev_id, struct pt_regs *regs)
+{
+        OSTIMER_OFF;
+
+        switch(sel)
+        {                         
+		case  0:    DOT_CS = (0x0100 | dot_col[0]); break;
+                case  1:    DOT_CS = (0x0200 | dot_col[1]); break;
+                case  2:    DOT_CS = (0x0400 | dot_col[2]); break;
+                case  3:    DOT_CS = (0x0800 | dot_col[3]); break;
+                case  4:    DOT_CS = (0x1000 | dot_col[4]); sel = -1; break;
+                default :   break;
+        }
+
+	sel++;
+
+        OSTIMER_ON;
+        OSMR2 = OSCR + CLK;
+
+        return IRQ_HANDLED;
+}
+
+static int dot_ioctl(struct inode *inode, struct file *file, unsigned int cmd, unsigned long arg){
+	unsigned short value = 0;
+        switch(cmd)
+        {
+                case DOT_DISPLAY:
+                        get_user(value, (unsigned short *)arg);
+                        asc_to_dot(value & 0xF);
+                        break;
+                default:
+                        printk("Driver : No such command!\n");
+                        return -ENOTTY;
+	}
+	return 0;
+}
+
+static int dot_open(struct inode *minode, struct file *mfile){
+	OSTIMER_ON;
+	OSMR2 = OSCR + CLK;
+	dot_reset();
+	return 0;
+	
+}
+
+static int dot_release(struct inode *minode, struct file *mfile){
+	OSTIMER_OFF;
+	dot_reset();
+	return 0;
+}
+
+static ssize_t dot_read (struct file *filp, char *buf, size_t count, loff_t *f_pos){
+        return 0;
+}
+
+static ssize_t dot_write (struct file *file, const char *buf, size_t count, loff_t *f_pos){
+	unsigned char dot_data[5];
+	memset(dot_data, 0, sizeof(dot_data));
+	copy_from_user(dot_data, buf, count);
+	
+	dot_col[0] = dot_data[0];
+	dot_col[1] = dot_data[1];
+	dot_col[2] = dot_data[2];
+	dot_col[3] = dot_data[3];
+	dot_col[4] = dot_data[4];
+	
+	return 0;
+}
+
+
+static struct file_operations dot_fops = {
+	read		:	dot_read,
+	write		: 	dot_write,
+	open		:	dot_open,
+	release		:	dot_release,
+	ioctl		: 	dot_ioctl,
+};
+
+static int __init dot_init(void){
+
+	int res;
+	unsigned long mem_addr_col;
+	unsigned long mem_len;
+
+	res = register_chrdev(DOT_MAJOR, DOT_NAME, &dot_fops);
+	if(res < 0)
+	{
+		printk(KERN_ERR "DOTs : Failed to regist device.\n"); 
+		return res;
+	}
+
+	OSTIMER_OFF;
+
+        if ((request_irq(OSTIMER_IRQ, &DOT_InterruptHandler, SA_INTERRUPT, "DOT_OST_IO", NULL)))
+        {
+                printk("Failed to regist IRQ\n");
+                return -1;
+        }
+
+	mem_addr_col = IEB_DOT_COL;
+        mem_len  =  0x1000;
+
+        mem_dot_col = ioremap_nocache (mem_addr_col, mem_len);
+        if(!mem_dot_col){
+                printk("Error mapping dot_col memory");
+                return -EBUSY;
+        }
+
+	printk("X-Hyper 270TKU %s MAJOR %d, IRQ %d\n", DOT_NAME, DOT_MAJOR, OSTIMER_IRQ);
+	return 0;		 
+
+}
+
+static void __exit dot_exit(void){
+	dot_reset();
+	free_irq(OSTIMER_IRQ, NULL);
+	unregister_chrdev(DOT_MAJOR, DOT_NAME);
+	iounmap(mem_dot_col);
+	printk("MAJOR %d, %s is unregisted\n", DOT_MAJOR, DOT_NAME);
+	return;
+}
+
+module_init(dot_init);
+module_exit(dot_exit);
+

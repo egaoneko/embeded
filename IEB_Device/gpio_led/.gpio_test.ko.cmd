@@ -1,0 +1,1 @@
+cmd_/home/kjlee/work/fpga_device/gpio_led/gpio_test.ko := /opt/iwmmxt-1.0.0/bin/arm-linux-ld -EL  -r -o /home/kjlee/work/fpga_device/gpio_led/gpio_test.ko /home/kjlee/work/fpga_device/gpio_led/gpio_test.o /home/kjlee/work/fpga_device/gpio_led/gpio_test.mod.o

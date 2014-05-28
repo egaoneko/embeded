@@ -1,0 +1,1 @@
+cmd_/XHYPER270-TKU/fpga_device/key/key.ko := /opt/iwmmxt-1.0.0/bin/arm-linux-ld -EL  -r -o /XHYPER270-TKU/fpga_device/key/key.ko /XHYPER270-TKU/fpga_device/key/key.o /XHYPER270-TKU/fpga_device/key/key.mod.o

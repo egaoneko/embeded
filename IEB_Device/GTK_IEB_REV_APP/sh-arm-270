@@ -1,0 +1,11 @@
+#/bin/sh
+
+rm config.cache
+
+export CC=/opt/iwmmxt-1.0.0/bin/arm-linux-gcc
+export GNOME_CONFIG=/opt/iwmmxt-1.0.0/hybus/usr/bin/gnome-config
+
+./configure --host=arm --build=i686 --target=arm \
+	--with-gtk-exec-prefix=/opt/iwmmxt-1.0.0/hybus/usr \
+	--with-gnome-libs=/opt/iwmmxt-1.0.0/arm-linux/lib
+

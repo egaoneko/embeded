@@ -1,0 +1,1 @@
+cmd_/home/kjlee/work/ieb_device/cc2420/CC2420.ko := /opt/iwmmxt-1.0.0/bin/arm-linux-ld -EL  -r -o /home/kjlee/work/ieb_device/cc2420/CC2420.ko /home/kjlee/work/ieb_device/cc2420/CC2420.o /home/kjlee/work/ieb_device/cc2420/CC2420.mod.o

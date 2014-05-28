@@ -1,0 +1,1 @@
+cmd_/XHyper270-TKU/IEB_Device/clcd/clcd.ko := /opt/iwmmxt-1.0.0/bin/arm-linux-ld -EL  -r -o /XHyper270-TKU/IEB_Device/clcd/clcd.ko /XHyper270-TKU/IEB_Device/clcd/clcd.o /XHyper270-TKU/IEB_Device/clcd/clcd.mod.o

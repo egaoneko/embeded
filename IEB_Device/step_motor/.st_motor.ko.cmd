@@ -1,0 +1,1 @@
+cmd_/home/kjlee/work/ieb_device/step_motor/st_motor.ko := /opt/iwmmxt-1.0.0/bin/arm-linux-ld -EL  -r -o /home/kjlee/work/ieb_device/step_motor/st_motor.ko /home/kjlee/work/ieb_device/step_motor/st_motor.o /home/kjlee/work/ieb_device/step_motor/st_motor.mod.o

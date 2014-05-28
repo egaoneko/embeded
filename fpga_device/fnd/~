@@ -1,0 +1,159 @@
+/*
+ * XHYPER255_TKU3
+ * fnd.c  OST2
+ * 2004-07-01   <newboder@hybus.net>
+ * 
+ */
+
+#include <linux/module.h>
+#include <linux/fs.h>
+#include <linux/init.h>
+#include <linux/poll.h>
+#include <linux/types.h>
+#include <linux/fs.h>
+#include <linux/rtc.h>
+#include <linux/delay.h>
+#include <linux/interrupt.h>
+
+#include <asm/hardware.h>
+#include <asm/delay.h>
+#include <asm/irq.h>
+#include <asm/arch/pxa-regs.h>
+
+#define FND_MAJOR       231
+#define FND_NAME        "fnd"
+#define MAX_FND         8
+
+#define FPGA_FND_CS0	(0xF1000000)
+#define FPGA_FND_CS1	(0xF1010000)
+#define FPGA_FND_CS2	(0xF1020000)
+#define FPGA_FND_CS3	(0xF1030000)
+#define FPGA_FND_CS4	(0xF1040000)
+#define FPGA_FND_CS5	(0xF1050000)
+#define FPGA_FND_CS6	(0xF1060000)
+#define FPGA_FND_CS7	(0xF1070000)
+
+
+/*
+	FPGA FND address
+
+   0x14000000 //FPGA_FND0# 
+   0x14400000 //FPGA_FND1# 
+   0x14800000 //FPGA_FND2# 
+   0x14C00000 //FPGA_FND3# 
+   0x15000000 //FPGA_FND4# 
+   0x15400000 //FPGA_FND5# 
+   0x15800000 //FPGA_FND6# 
+   0x15C00000 //FPGA_FND7# 
+
+   FND_D[0:7] : X_D[0:7]
+*/
+
+
+#define FND_CS0     (*((volatile unsigned char *)(FPGA_FND_CS0)))
+#define FND_CS1     (*((volatile unsigned char *)(FPGA_FND_CS1)))
+#define FND_CS2     (*((volatile unsigned char *)(FPGA_FND_CS2)))
+#define FND_CS3     (*((volatile unsigned char *)(FPGA_FND_CS3)))
+#define FND_CS4     (*((volatile unsigned char *)(FPGA_FND_CS4)))
+#define FND_CS5     (*((volatile unsigned char *)(FPGA_FND_CS5)))
+#define FND_CS6     (*((volatile unsigned char *)(FPGA_FND_CS6)))
+#define FND_CS7     (*((volatile unsigned char *)(FPGA_FND_CS7)))
+
+static unsigned char disp[8] = {0};
+static int n = 0 ;
+
+static int fnd_clear(void)
+{
+    FND_CS0 = 0x00;
+    FND_CS1 = 0x00;
+    FND_CS2 = 0x00;
+    FND_CS3 = 0x00;
+    FND_CS4 = 0x00;
+    FND_CS5 = 0x00;
+    FND_CS6 = 0x00;
+    FND_CS7 = 0x00;
+	return 0;
+}
+
+static int fnd_ioctl(struct inode *inode, struct file *file, unsigned int cmd, unsigned long arg)
+{
+    switch(cmd)
+    {
+        case 1:
+                break;
+        default: break;
+    }
+	return 0;
+}
+
+static int fnd_open(struct inode *minode, struct file *mfile)
+{
+   fnd_clear();
+
+//   FND_CS0 = 0xff;
+  // FND_CS1 = 0xff;
+   
+	return 0;
+}
+
+static int fnd_release(struct inode *minode, struct file *mfile)
+{
+	return 0;
+}
+
+static ssize_t fnd_write (struct file *filp, const char *buf, size_t count, loff_t *f_pos)
+{
+    int i;
+
+    i=1;
+    //get_user(disp, (unsigned char*)buf);
+    copy_from_user(disp, buf, count);
+    //printk( "write data %x \n", disp[5]);
+    
+    for(i =1; i <= MAX_FND; i++){	
+    switch(i)
+    {
+        case  1:    FND_CS0 = disp[0];  break;
+        case  2:    FND_CS1 = disp[1];  break;
+        case  3:    FND_CS2 = disp[2];  break;
+        case  4:    FND_CS3 = disp[3];  break;
+        case  5:    FND_CS4 = disp[4];  break;
+        case  6:    FND_CS5 = disp[5];  break;
+        case  7:    FND_CS6 = disp[6];  break;
+        case  8:    FND_CS7= disp[7];  break;
+        default :   break;
+    }
+    }
+    return 0;
+}
+
+static struct file_operations device_fops = {
+	.open =		fnd_open,
+	.write =	fnd_write,
+	.release =	fnd_release,
+	.ioctl = 	fnd_ioctl,
+};
+
+static int fnd_init(void)
+{
+	int result;
+
+	result = register_chrdev(FND_MAJOR, FND_NAME, &device_fops);
+    if (result < 0) {
+        printk(KERN_WARNING " can't get major \n");
+        return result;
+    }
+	return 0;
+}
+
+static void fnd_exit(void)
+{
+	fnd_clear();
+	unregister_chrdev(FND_MAJOR, FND_NAME);
+	printk("%s unregisterd.\n", FND_NAME);
+}
+
+module_init(fnd_init);
+module_exit(fnd_exit);
+
+/* EOF */

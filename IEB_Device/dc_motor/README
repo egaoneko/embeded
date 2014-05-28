@@ -1,0 +1,25 @@
+Target  : X-Hyper270TKU
+Program : DC Motor Test program
+Hybus Co.,Ltd
+2006. 8. 28 Made by kjlee@hybus.net
+
+1.Source
+ - Makefile
+ - dc_motor.c
+ - dc_motor_test.c
+
+2.Setting
+ - Makefile에서 Compiler가 위치한 경로로 수정(Default PATH : /opt/iwmmxt-1.0.0)
+ - Makefile에서 Kernel이 위치한 경로로 수정(Default PATH : /project/xhyper270-TKU-Rev/kernel/linux-2.6.11-h270-tku_v1.1)
+ - make
+ - Target Board를 Host PC로 NFS Mount
+ - rmmod dc_motor
+ - insmod dc_motor.ko
+
+3.DC Motor 기능
+ - IEB Board상에 두개의 DC Motor Interface를 이용(Right, Left)
+ - Motor의 정방향, 역방향, 정지 제어 가능
+
+4.DC Motor 사용법
+ - ./dc_motor
+

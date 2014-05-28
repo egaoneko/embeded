@@ -1,0 +1,19 @@
+#!/bin/sh
+DEV_FILE=btn
+DEV_NAME=BTN
+
+/sbin/rmmod $DEV_FILE &> /dev/null
+/sbin/insmod $DEV_FILE.ko
+
+set $(grep -r $DEV_NAME /proc/devices | cut -d ' ' -f1)
+devmajor=$1
+
+set $(grep -r $DEV_NAME /proc/devices | cut -d ' ' -f2)
+devname=$1
+
+/bin/rm /dev/$devname &> /dev/null
+
+/bin/mknod /dev/$devname c $devmajor 0
+
+./test
+

@@ -1,0 +1,1 @@
+cmd_/home/newboder/X-Hyper270B-2.3/device/btn/btn_test.ko := /opt/iwmmxt-1.0.0/bin/arm-linux-ld -EL  -r -o /home/newboder/X-Hyper270B-2.3/device/btn/btn_test.ko /home/newboder/X-Hyper270B-2.3/device/btn/btn_test.o /home/newboder/X-Hyper270B-2.3/device/btn/btn_test.mod.o

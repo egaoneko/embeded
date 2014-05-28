@@ -1,0 +1,1 @@
+cmd_/home/kjlee/work/fpga_device/dip_sw/dip.ko := /opt/iwmmxt-1.0.0/bin/arm-linux-ld -EL  -r -o /home/kjlee/work/fpga_device/dip_sw/dip.ko /home/kjlee/work/fpga_device/dip_sw/dip.o /home/kjlee/work/fpga_device/dip_sw/dip.mod.o

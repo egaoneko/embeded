@@ -1,0 +1,1 @@
+cmd_/project/xhyper270-TKU-CMOS-IEB-Rev/ieb_device/dc_motor/dc_motor.ko := /opt/iwmmxt-1.0.0/bin/arm-linux-ld -EL  -r -o /project/xhyper270-TKU-CMOS-IEB-Rev/ieb_device/dc_motor/dc_motor.ko /project/xhyper270-TKU-CMOS-IEB-Rev/ieb_device/dc_motor/dc_motor.o /project/xhyper270-TKU-CMOS-IEB-Rev/ieb_device/dc_motor/dc_motor.mod.o

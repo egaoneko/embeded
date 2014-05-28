@@ -1,0 +1,1 @@
+cmd_/XHYPER270-TKU/fpga_device/step_motor/st_motor.ko := /opt/iwmmxt-1.0.0/bin/arm-linux-ld -EL  -r -o /XHYPER270-TKU/fpga_device/step_motor/st_motor.ko /XHYPER270-TKU/fpga_device/step_motor/st_motor.o /XHYPER270-TKU/fpga_device/step_motor/st_motor.mod.o

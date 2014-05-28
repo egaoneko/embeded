@@ -1,0 +1,1 @@
+cmd_/XHYPER270-TKU/fpga_device/dc_motor/dc_motor.ko := /opt/iwmmxt-1.0.0/bin/arm-linux-ld -EL  -r -o /XHYPER270-TKU/fpga_device/dc_motor/dc_motor.ko /XHYPER270-TKU/fpga_device/dc_motor/dc_motor.o /XHYPER270-TKU/fpga_device/dc_motor/dc_motor.mod.o

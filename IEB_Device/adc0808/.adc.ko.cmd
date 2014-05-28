@@ -1,0 +1,1 @@
+cmd_/home/kjlee/work/fpga_device/adc/adc.ko := /opt/iwmmxt-1.0.0/bin/arm-linux-ld -EL  -r -o /home/kjlee/work/fpga_device/adc/adc.ko /home/kjlee/work/fpga_device/adc/adc.o /home/kjlee/work/fpga_device/adc/adc.mod.o

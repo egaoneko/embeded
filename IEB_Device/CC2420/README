@@ -1,0 +1,27 @@
+Target  : X-Hyper270TKU
+Program : CC2420 Control program
+Hybus Co.,Ltd
+2006. 8. 28 Made by kjlee@hybus.net
+
+1.Source
+ - Makefile
+ - CC2420.c
+ - receiver.c
+ - sender.c
+
+2.Setting
+ - Makefile에서 Compiler가 위치한 경로로 수정(Default PATH : /opt/iwmmxt-1.0.0)
+ - Makefile에서 Kernel이 위치한 경로로 수정(Default PATH : /project/xhyper270-TKU-Rev/kernel/linux-2.6.11-h270-tku_v1.1)
+ - make
+ - Target Board를 Host PC로 NFS Mount
+ - rmmod CC2420 
+ - insmod CC2420.ko
+
+3.CC2420 Driver 기능
+ - IEB Board상의 CC2420 Chip을 제어
+ - H-MOTE와 연동하여 Packet을 송수신
+
+4.CC2420 Test Program 사용법
+ - ./receiver
+ - ./sender
+

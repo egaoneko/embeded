@@ -1,0 +1,7 @@
+#!/bin/sh
+
+DEV_name=btn
+DEV_FILE=BTN
+
+/sbin/rmmod $DEV_name
+/bin/rm /dev/$DEV_FILE

@@ -1,0 +1,28 @@
+Target  : X-Hyper270TKU
+Program : Character LCD Test program
+Hybus Co.,Ltd
+2006. 8. 28 Made by kjlee@hybus.net
+
+1.Source
+ - Makefile
+ - clcd.c
+ - clcd_test.c
+
+2.Setting
+ - Makefile에서 Compiler가 위치한 경로로 수정(Default PATH : /opt/iwmmxt-1.0.0)
+ - Makefile에서 Kernel이 위치한 경로로 수정(Default PATH : /project/xhyper270-TKU-Rev/kernel/linux-2.6.11-h270-tku_v1.1)
+ - make
+ - Target Board를 Host PC로 NFS Mount
+ - rmmod clcd
+ - insmod clcd.ko
+ - ./clcd_test
+
+3.Character LCD 기능
+ - IEB Board상에 Character LCD를 이용
+ - 두 줄까지 문자열 출력이 가능
+
+4.Character LCD 사용법
+ - ./clcd_test
+ - 최대 32개의 문자입력이 가능
+ - CTRL + C -> 프로그램 종료
+

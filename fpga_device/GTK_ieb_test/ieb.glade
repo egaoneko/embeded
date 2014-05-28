@@ -1,0 +1,2794 @@
+<?xml version="1.0"?>
+<GTK-Interface>
+
+<project>
+  <name>ieb</name>
+  <program_name>ieb</program_name>
+  <directory></directory>
+  <source_directory>src</source_directory>
+  <pixmaps_directory>pixmaps</pixmaps_directory>
+  <language>C</language>
+  <gnome_support>True</gnome_support>
+  <gettext_support>False</gettext_support>
+</project>
+
+<widget>
+  <class>GtkWindow</class>
+  <name>ieb_window</name>
+  <width>640</width>
+  <height>440</height>
+  <signal>
+    <name>destroy_event</name>
+    <handler>on_ieb_window_destroy_event</handler>
+    <last_modification_time>Sun, 04 Nov 2001 13:24:52 GMT</last_modification_time>
+  </signal>
+  <signal>
+    <name>delete_event</name>
+    <handler>on_ieb_window_delete_event</handler>
+    <last_modification_time>Sun, 04 Nov 2001 13:27:38 GMT</last_modification_time>
+  </signal>
+  <title>X-Hyper270-TKU IEB Applicaiton</title>
+  <type>GTK_WINDOW_TOPLEVEL</type>
+  <position>GTK_WIN_POS_NONE</position>
+  <modal>False</modal>
+  <allow_shrink>False</allow_shrink>
+  <allow_grow>False</allow_grow>
+  <auto_shrink>False</auto_shrink>
+
+  <widget>
+    <class>GtkFixed</class>
+    <name>fixed1</name>
+
+    <widget>
+      <class>GtkFrame</class>
+      <name>frame1</name>
+      <x>108</x>
+      <y>16</y>
+      <width>428</width>
+      <height>120</height>
+      <label>FND</label>
+      <label_xalign>0.5</label_xalign>
+      <shadow_type>GTK_SHADOW_ETCHED_OUT</shadow_type>
+
+      <widget>
+	<class>GtkFixed</class>
+	<name>fixed2</name>
+
+	<widget>
+	  <class>GtkToggleButton</class>
+	  <name>togglebutton3</name>
+	  <x>36</x>
+	  <y>16</y>
+	  <width>10</width>
+	  <height>20</height>
+	  <can_focus>True</can_focus>
+	  <signal>
+	    <name>toggled</name>
+	    <handler>on_togglebutton3_toggled</handler>
+	    <last_modification_time>Sat, 03 Nov 2001 19:12:04 GMT</last_modification_time>
+	  </signal>
+	  <label></label>
+	  <relief>GTK_RELIEF_NORMAL</relief>
+	  <active>False</active>
+	</widget>
+
+	<widget>
+	  <class>GtkToggleButton</class>
+	  <name>togglebutton4</name>
+	  <x>16</x>
+	  <y>36</y>
+	  <width>20</width>
+	  <height>10</height>
+	  <can_focus>True</can_focus>
+	  <signal>
+	    <name>toggled</name>
+	    <handler>on_togglebutton4_toggled</handler>
+	    <last_modification_time>Sat, 03 Nov 2001 19:12:11 GMT</last_modification_time>
+	  </signal>
+	  <label></label>
+	  <relief>GTK_RELIEF_NORMAL</relief>
+	  <active>False</active>
+	</widget>
+
+	<widget>
+	  <class>GtkToggleButton</class>
+	  <name>togglebutton1</name>
+	  <x>16</x>
+	  <y>8</y>
+	  <width>20</width>
+	  <height>10</height>
+	  <can_focus>True</can_focus>
+	  <signal>
+	    <name>toggled</name>
+	    <handler>on_togglebutton1_toggled</handler>
+	    <last_modification_time>Sat, 03 Nov 2001 07:10:07 GMT</last_modification_time>
+	  </signal>
+	  <label></label>
+	  <relief>GTK_RELIEF_NORMAL</relief>
+	  <active>False</active>
+	</widget>
+
+	<widget>
+	  <class>GtkToggleButton</class>
+	  <name>togglebutton2</name>
+	  <x>8</x>
+	  <y>16</y>
+	  <width>10</width>
+	  <height>20</height>
+	  <can_focus>True</can_focus>
+	  <signal>
+	    <name>toggled</name>
+	    <handler>on_togglebutton2_toggled</handler>
+	    <last_modification_time>Sat, 03 Nov 2001 19:11:56 GMT</last_modification_time>
+	  </signal>
+	  <label></label>
+	  <relief>GTK_RELIEF_NORMAL</relief>
+	  <active>False</active>
+	</widget>
+
+	<widget>
+	  <class>GtkToggleButton</class>
+	  <name>togglebutton6</name>
+	  <x>36</x>
+	  <y>44</y>
+	  <width>10</width>
+	  <height>20</height>
+	  <can_focus>True</can_focus>
+	  <signal>
+	    <name>toggled</name>
+	    <handler>on_togglebutton6_toggled</handler>
+	    <last_modification_time>Sat, 03 Nov 2001 19:12:24 GMT</last_modification_time>
+	  </signal>
+	  <label></label>
+	  <relief>GTK_RELIEF_NORMAL</relief>
+	  <active>False</active>
+	</widget>
+
+	<widget>
+	  <class>GtkToggleButton</class>
+	  <name>togglebutton5</name>
+	  <x>8</x>
+	  <y>44</y>
+	  <width>10</width>
+	  <height>20</height>
+	  <can_focus>True</can_focus>
+	  <signal>
+	    <name>toggled</name>
+	    <handler>on_togglebutton5_toggled</handler>
+	    <last_modification_time>Sat, 03 Nov 2001 19:12:16 GMT</last_modification_time>
+	  </signal>
+	  <label></label>
+	  <relief>GTK_RELIEF_NORMAL</relief>
+	  <active>False</active>
+	</widget>
+
+	<widget>
+	  <class>GtkToggleButton</class>
+	  <name>togglebutton7</name>
+	  <x>16</x>
+	  <y>64</y>
+	  <width>20</width>
+	  <height>10</height>
+	  <can_focus>True</can_focus>
+	  <signal>
+	    <name>toggled</name>
+	    <handler>on_togglebutton7_toggled</handler>
+	    <last_modification_time>Sat, 03 Nov 2001 19:12:38 GMT</last_modification_time>
+	  </signal>
+	  <label></label>
+	  <relief>GTK_RELIEF_NORMAL</relief>
+	  <active>False</active>
+	</widget>
+
+	<widget>
+	  <class>GtkToggleButton</class>
+	  <name>togglebutton8</name>
+	  <x>44</x>
+	  <y>64</y>
+	  <width>10</width>
+	  <height>10</height>
+	  <can_focus>True</can_focus>
+	  <signal>
+	    <name>toggled</name>
+	    <handler>on_togglebutton8_toggled</handler>
+	    <last_modification_time>Sat, 03 Nov 2001 19:12:47 GMT</last_modification_time>
+	  </signal>
+	  <label></label>
+	  <relief>GTK_RELIEF_NORMAL</relief>
+	  <active>False</active>
+	</widget>
+
+	<widget>
+	  <class>GtkFixed</class>
+	  <name>fixed6</name>
+	  <x>100</x>
+	  <y>0</y>
+	  <width>56</width>
+	  <height>80</height>
+
+	  <widget>
+	    <class>GtkToggleButton</class>
+	    <name>togglebutton19</name>
+	    <x>36</x>
+	    <y>16</y>
+	    <width>10</width>
+	    <height>20</height>
+	    <can_focus>True</can_focus>
+	    <signal>
+	      <name>toggled</name>
+	      <handler>on_togglebutton19_toggled</handler>
+	      <last_modification_time>Sat, 03 Nov 2001 22:30:07 GMT</last_modification_time>
+	    </signal>
+	    <label></label>
+	    <relief>GTK_RELIEF_NORMAL</relief>
+	    <active>False</active>
+	  </widget>
+
+	  <widget>
+	    <class>GtkToggleButton</class>
+	    <name>togglebutton20</name>
+	    <x>16</x>
+	    <y>36</y>
+	    <width>20</width>
+	    <height>10</height>
+	    <can_focus>True</can_focus>
+	    <signal>
+	      <name>toggled</name>
+	      <handler>on_togglebutton20_toggled</handler>
+	      <last_modification_time>Sat, 03 Nov 2001 22:30:14 GMT</last_modification_time>
+	    </signal>
+	    <label></label>
+	    <relief>GTK_RELIEF_NORMAL</relief>
+	    <active>False</active>
+	  </widget>
+
+	  <widget>
+	    <class>GtkToggleButton</class>
+	    <name>togglebutton17</name>
+	    <x>16</x>
+	    <y>8</y>
+	    <width>20</width>
+	    <height>10</height>
+	    <can_focus>True</can_focus>
+	    <signal>
+	      <name>toggled</name>
+	      <handler>on_togglebutton17_toggled</handler>
+	      <last_modification_time>Sat, 03 Nov 2001 22:29:07 GMT</last_modification_time>
+	    </signal>
+	    <label></label>
+	    <relief>GTK_RELIEF_NORMAL</relief>
+	    <active>False</active>
+	  </widget>
+
+	  <widget>
+	    <class>GtkToggleButton</class>
+	    <name>togglebutton18</name>
+	    <x>8</x>
+	    <y>16</y>
+	    <width>10</width>
+	    <height>20</height>
+	    <can_focus>True</can_focus>
+	    <signal>
+	      <name>toggled</name>
+	      <handler>on_togglebutton18_toggled</handler>
+	      <last_modification_time>Sat, 03 Nov 2001 22:29:57 GMT</last_modification_time>
+	    </signal>
+	    <label></label>
+	    <relief>GTK_RELIEF_NORMAL</relief>
+	    <active>False</active>
+	  </widget>
+
+	  <widget>
+	    <class>GtkToggleButton</class>
+	    <name>togglebutton22</name>
+	    <x>36</x>
+	    <y>44</y>
+	    <width>10</width>
+	    <height>20</height>
+	    <can_focus>True</can_focus>
+	    <signal>
+	      <name>toggled</name>
+	      <handler>on_togglebutton22_toggled</handler>
+	      <last_modification_time>Sat, 03 Nov 2001 22:30:29 GMT</last_modification_time>
+	    </signal>
+	    <label></label>
+	    <relief>GTK_RELIEF_NORMAL</relief>
+	    <active>False</active>
+	  </widget>
+
+	  <widget>
+	    <class>GtkToggleButton</class>
+	    <name>togglebutton21</name>
+	    <x>8</x>
+	    <y>44</y>
+	    <width>10</width>
+	    <height>20</height>
+	    <can_focus>True</can_focus>
+	    <signal>
+	      <name>toggled</name>
+	      <handler>on_togglebutton21_toggled</handler>
+	      <last_modification_time>Sat, 03 Nov 2001 22:30:22 GMT</last_modification_time>
+	    </signal>
+	    <label></label>
+	    <relief>GTK_RELIEF_NORMAL</relief>
+	    <active>False</active>
+	  </widget>
+
+	  <widget>
+	    <class>GtkToggleButton</class>
+	    <name>togglebutton23</name>
+	    <x>16</x>
+	    <y>64</y>
+	    <width>20</width>
+	    <height>10</height>
+	    <can_focus>True</can_focus>
+	    <signal>
+	      <name>toggled</name>
+	      <handler>on_togglebutton23_toggled</handler>
+	      <last_modification_time>Sat, 03 Nov 2001 22:30:36 GMT</last_modification_time>
+	    </signal>
+	    <label></label>
+	    <relief>GTK_RELIEF_NORMAL</relief>
+	    <active>False</active>
+	  </widget>
+
+	  <widget>
+	    <class>GtkToggleButton</class>
+	    <name>togglebutton24</name>
+	    <x>44</x>
+	    <y>64</y>
+	    <width>10</width>
+	    <height>10</height>
+	    <can_focus>True</can_focus>
+	    <signal>
+	      <name>toggled</name>
+	      <handler>on_togglebutton24_toggled</handler>
+	      <last_modification_time>Sat, 03 Nov 2001 22:30:43 GMT</last_modification_time>
+	    </signal>
+	    <label></label>
+	    <relief>GTK_RELIEF_NORMAL</relief>
+	    <active>False</active>
+	  </widget>
+	</widget>
+
+	<widget>
+	  <class>GtkFixed</class>
+	  <name>fixed7</name>
+	  <x>52</x>
+	  <y>0</y>
+	  <width>52</width>
+	  <height>80</height>
+
+	  <widget>
+	    <class>GtkToggleButton</class>
+	    <name>togglebutton11</name>
+	    <x>36</x>
+	    <y>16</y>
+	    <width>10</width>
+	    <height>20</height>
+	    <can_focus>True</can_focus>
+	    <signal>
+	      <name>toggled</name>
+	      <handler>on_togglebutton11_toggled</handler>
+	      <last_modification_time>Sat, 03 Nov 2001 19:49:20 GMT</last_modification_time>
+	    </signal>
+	    <label></label>
+	    <relief>GTK_RELIEF_NORMAL</relief>
+	    <active>False</active>
+	  </widget>
+
+	  <widget>
+	    <class>GtkToggleButton</class>
+	    <name>togglebutton12</name>
+	    <x>16</x>
+	    <y>36</y>
+	    <width>20</width>
+	    <height>10</height>
+	    <can_focus>True</can_focus>
+	    <signal>
+	      <name>toggled</name>
+	      <handler>on_togglebutton12_toggled</handler>
+	      <last_modification_time>Sat, 03 Nov 2001 19:49:28 GMT</last_modification_time>
+	    </signal>
+	    <label></label>
+	    <relief>GTK_RELIEF_NORMAL</relief>
+	    <active>False</active>
+	  </widget>
+
+	  <widget>
+	    <class>GtkToggleButton</class>
+	    <name>togglebutton9</name>
+	    <x>16</x>
+	    <y>8</y>
+	    <width>20</width>
+	    <height>10</height>
+	    <can_focus>True</can_focus>
+	    <signal>
+	      <name>toggled</name>
+	      <handler>on_togglebutton9_toggled</handler>
+	      <last_modification_time>Sat, 03 Nov 2001 19:49:05 GMT</last_modification_time>
+	    </signal>
+	    <label></label>
+	    <relief>GTK_RELIEF_NORMAL</relief>
+	    <active>False</active>
+	  </widget>
+
+	  <widget>
+	    <class>GtkToggleButton</class>
+	    <name>togglebutton10</name>
+	    <x>8</x>
+	    <y>16</y>
+	    <width>10</width>
+	    <height>20</height>
+	    <can_focus>True</can_focus>
+	    <signal>
+	      <name>toggled</name>
+	      <handler>on_togglebutton10_toggled</handler>
+	      <last_modification_time>Sat, 03 Nov 2001 19:48:55 GMT</last_modification_time>
+	    </signal>
+	    <label></label>
+	    <relief>GTK_RELIEF_NORMAL</relief>
+	    <active>False</active>
+	  </widget>
+
+	  <widget>
+	    <class>GtkToggleButton</class>
+	    <name>togglebutton14</name>
+	    <x>36</x>
+	    <y>44</y>
+	    <width>10</width>
+	    <height>20</height>
+	    <can_focus>True</can_focus>
+	    <signal>
+	      <name>toggled</name>
+	      <handler>on_togglebutton14_toggled</handler>
+	      <last_modification_time>Sat, 03 Nov 2001 19:49:39 GMT</last_modification_time>
+	    </signal>
+	    <label></label>
+	    <relief>GTK_RELIEF_NORMAL</relief>
+	    <active>False</active>
+	  </widget>
+
+	  <widget>
+	    <class>GtkToggleButton</class>
+	    <name>togglebutton13</name>
+	    <x>8</x>
+	    <y>44</y>
+	    <width>10</width>
+	    <height>20</height>
+	    <can_focus>True</can_focus>
+	    <signal>
+	      <name>toggled</name>
+	      <handler>on_togglebutton13_toggled</handler>
+	      <last_modification_time>Sat, 03 Nov 2001 19:49:34 GMT</last_modification_time>
+	    </signal>
+	    <label></label>
+	    <relief>GTK_RELIEF_NORMAL</relief>
+	    <active>False</active>
+	  </widget>
+
+	  <widget>
+	    <class>GtkToggleButton</class>
+	    <name>togglebutton15</name>
+	    <x>16</x>
+	    <y>64</y>
+	    <width>20</width>
+	    <height>10</height>
+	    <can_focus>True</can_focus>
+	    <signal>
+	      <name>toggled</name>
+	      <handler>on_togglebutton15_toggled</handler>
+	      <last_modification_time>Sat, 03 Nov 2001 19:49:48 GMT</last_modification_time>
+	    </signal>
+	    <label></label>
+	    <relief>GTK_RELIEF_NORMAL</relief>
+	    <active>False</active>
+	  </widget>
+
+	  <widget>
+	    <class>GtkToggleButton</class>
+	    <name>togglebutton16</name>
+	    <x>40</x>
+	    <y>64</y>
+	    <width>10</width>
+	    <height>10</height>
+	    <can_focus>True</can_focus>
+	    <signal>
+	      <name>toggled</name>
+	      <handler>on_togglebutton16_toggled</handler>
+	      <last_modification_time>Sat, 03 Nov 2001 19:49:55 GMT</last_modification_time>
+	    </signal>
+	    <label></label>
+	    <relief>GTK_RELIEF_NORMAL</relief>
+	    <active>False</active>
+	  </widget>
+	</widget>
+
+	<widget>
+	  <class>GtkFixed</class>
+	  <name>fixed9</name>
+	  <x>152</x>
+	  <y>0</y>
+	  <width>56</width>
+	  <height>80</height>
+
+	  <widget>
+	    <class>GtkToggleButton</class>
+	    <name>togglebutton27</name>
+	    <x>36</x>
+	    <y>16</y>
+	    <width>10</width>
+	    <height>20</height>
+	    <can_focus>True</can_focus>
+	    <signal>
+	      <name>toggled</name>
+	      <handler>on_togglebutton27_toggled</handler>
+	      <last_modification_time>Sat, 03 Nov 2001 23:26:48 GMT</last_modification_time>
+	    </signal>
+	    <label></label>
+	    <relief>GTK_RELIEF_NORMAL</relief>
+	    <active>False</active>
+	  </widget>
+
+	  <widget>
+	    <class>GtkToggleButton</class>
+	    <name>togglebutton28</name>
+	    <x>16</x>
+	    <y>36</y>
+	    <width>20</width>
+	    <height>10</height>
+	    <can_focus>True</can_focus>
+	    <signal>
+	      <name>toggled</name>
+	      <handler>on_togglebutton28_toggled</handler>
+	      <last_modification_time>Sat, 03 Nov 2001 23:26:53 GMT</last_modification_time>
+	    </signal>
+	    <label></label>
+	    <relief>GTK_RELIEF_NORMAL</relief>
+	    <active>False</active>
+	  </widget>
+
+	  <widget>
+	    <class>GtkToggleButton</class>
+	    <name>togglebutton25</name>
+	    <x>16</x>
+	    <y>8</y>
+	    <width>20</width>
+	    <height>10</height>
+	    <can_focus>True</can_focus>
+	    <signal>
+	      <name>toggled</name>
+	      <handler>on_togglebutton25_toggled</handler>
+	      <last_modification_time>Sat, 03 Nov 2001 23:26:35 GMT</last_modification_time>
+	    </signal>
+	    <label></label>
+	    <relief>GTK_RELIEF_NORMAL</relief>
+	    <active>False</active>
+	  </widget>
+
+	  <widget>
+	    <class>GtkToggleButton</class>
+	    <name>togglebutton26</name>
+	    <x>8</x>
+	    <y>16</y>
+	    <width>10</width>
+	    <height>20</height>
+	    <can_focus>True</can_focus>
+	    <signal>
+	      <name>toggled</name>
+	      <handler>on_togglebutton26_toggled</handler>
+	      <last_modification_time>Sat, 03 Nov 2001 23:26:40 GMT</last_modification_time>
+	    </signal>
+	    <label></label>
+	    <relief>GTK_RELIEF_NORMAL</relief>
+	    <active>False</active>
+	  </widget>
+
+	  <widget>
+	    <class>GtkToggleButton</class>
+	    <name>togglebutton30</name>
+	    <x>36</x>
+	    <y>44</y>
+	    <width>10</width>
+	    <height>20</height>
+	    <can_focus>True</can_focus>
+	    <signal>
+	      <name>toggled</name>
+	      <handler>on_togglebutton30_toggled</handler>
+	      <last_modification_time>Sat, 03 Nov 2001 23:27:07 GMT</last_modification_time>
+	    </signal>
+	    <label></label>
+	    <relief>GTK_RELIEF_NORMAL</relief>
+	    <active>False</active>
+	  </widget>
+
+	  <widget>
+	    <class>GtkToggleButton</class>
+	    <name>togglebutton29</name>
+	    <x>8</x>
+	    <y>44</y>
+	    <width>10</width>
+	    <height>20</height>
+	    <can_focus>True</can_focus>
+	    <signal>
+	      <name>toggled</name>
+	      <handler>on_togglebutton29_toggled</handler>
+	      <last_modification_time>Sat, 03 Nov 2001 23:26:58 GMT</last_modification_time>
+	    </signal>
+	    <label></label>
+	    <relief>GTK_RELIEF_NORMAL</relief>
+	    <active>False</active>
+	  </widget>
+
+	  <widget>
+	    <class>GtkToggleButton</class>
+	    <name>togglebutton31</name>
+	    <x>16</x>
+	    <y>64</y>
+	    <width>20</width>
+	    <height>10</height>
+	    <can_focus>True</can_focus>
+	    <signal>
+	      <name>toggled</name>
+	      <handler>on_togglebutton31_toggled</handler>
+	      <last_modification_time>Sat, 03 Nov 2001 23:27:20 GMT</last_modification_time>
+	    </signal>
+	    <label></label>
+	    <relief>GTK_RELIEF_NORMAL</relief>
+	    <active>False</active>
+	  </widget>
+
+	  <widget>
+	    <class>GtkToggleButton</class>
+	    <name>togglebutton32</name>
+	    <x>44</x>
+	    <y>64</y>
+	    <width>10</width>
+	    <height>10</height>
+	    <can_focus>True</can_focus>
+	    <signal>
+	      <name>toggled</name>
+	      <handler>on_togglebutton32_toggled</handler>
+	      <last_modification_time>Sat, 03 Nov 2001 23:27:27 GMT</last_modification_time>
+	    </signal>
+	    <label></label>
+	    <relief>GTK_RELIEF_NORMAL</relief>
+	    <active>False</active>
+	  </widget>
+	</widget>
+
+	<widget>
+	  <class>GtkFixed</class>
+	  <name>fixed10</name>
+	  <x>204</x>
+	  <y>0</y>
+	  <width>0</width>
+	  <height>0</height>
+
+	  <widget>
+	    <class>GtkToggleButton</class>
+	    <name>togglebutton35</name>
+	    <x>36</x>
+	    <y>16</y>
+	    <width>10</width>
+	    <height>20</height>
+	    <can_focus>True</can_focus>
+	    <signal>
+	      <name>toggled</name>
+	      <handler>on_togglebutton35_toggled</handler>
+	      <last_modification_time>Sat, 03 Nov 2001 23:36:00 GMT</last_modification_time>
+	    </signal>
+	    <label></label>
+	    <relief>GTK_RELIEF_NORMAL</relief>
+	    <active>False</active>
+	  </widget>
+
+	  <widget>
+	    <class>GtkToggleButton</class>
+	    <name>togglebutton36</name>
+	    <x>16</x>
+	    <y>36</y>
+	    <width>20</width>
+	    <height>10</height>
+	    <can_focus>True</can_focus>
+	    <signal>
+	      <name>toggled</name>
+	      <handler>on_togglebutton36_toggled</handler>
+	      <last_modification_time>Sat, 03 Nov 2001 23:36:06 GMT</last_modification_time>
+	    </signal>
+	    <label></label>
+	    <relief>GTK_RELIEF_NORMAL</relief>
+	    <active>False</active>
+	  </widget>
+
+	  <widget>
+	    <class>GtkToggleButton</class>
+	    <name>togglebutton33</name>
+	    <x>16</x>
+	    <y>8</y>
+	    <width>20</width>
+	    <height>10</height>
+	    <can_focus>True</can_focus>
+	    <signal>
+	      <name>toggled</name>
+	      <handler>on_togglebutton33_toggled</handler>
+	      <last_modification_time>Sat, 03 Nov 2001 23:35:49 GMT</last_modification_time>
+	    </signal>
+	    <label></label>
+	    <relief>GTK_RELIEF_NORMAL</relief>
+	    <active>False</active>
+	  </widget>
+
+	  <widget>
+	    <class>GtkToggleButton</class>
+	    <name>togglebutton34</name>
+	    <x>8</x>
+	    <y>16</y>
+	    <width>10</width>
+	    <height>20</height>
+	    <can_focus>True</can_focus>
+	    <signal>
+	      <name>toggled</name>
+	      <handler>on_togglebutton34_toggled</handler>
+	      <last_modification_time>Sat, 03 Nov 2001 23:35:54 GMT</last_modification_time>
+	    </signal>
+	    <label></label>
+	    <relief>GTK_RELIEF_NORMAL</relief>
+	    <active>False</active>
+	  </widget>
+
+	  <widget>
+	    <class>GtkToggleButton</class>
+	    <name>togglebutton38</name>
+	    <x>36</x>
+	    <y>44</y>
+	    <width>10</width>
+	    <height>20</height>
+	    <can_focus>True</can_focus>
+	    <signal>
+	      <name>toggled</name>
+	      <handler>on_togglebutton38_toggled</handler>
+	      <last_modification_time>Sat, 03 Nov 2001 23:36:15 GMT</last_modification_time>
+	    </signal>
+	    <label></label>
+	    <relief>GTK_RELIEF_NORMAL</relief>
+	    <active>False</active>
+	  </widget>
+
+	  <widget>
+	    <class>GtkToggleButton</class>
+	    <name>togglebutton37</name>
+	    <x>8</x>
+	    <y>44</y>
+	    <width>10</width>
+	    <height>20</height>
+	    <can_focus>True</can_focus>
+	    <signal>
+	      <name>toggled</name>
+	      <handler>on_togglebutton37_toggled</handler>
+	      <last_modification_time>Sat, 03 Nov 2001 23:36:11 GMT</last_modification_time>
+	    </signal>
+	    <label></label>
+	    <relief>GTK_RELIEF_NORMAL</relief>
+	    <active>False</active>
+	  </widget>
+
+	  <widget>
+	    <class>GtkToggleButton</class>
+	    <name>togglebutton39</name>
+	    <x>16</x>
+	    <y>64</y>
+	    <width>20</width>
+	    <height>10</height>
+	    <can_focus>True</can_focus>
+	    <signal>
+	      <name>toggled</name>
+	      <handler>on_togglebutton39_toggled</handler>
+	      <last_modification_time>Sat, 03 Nov 2001 23:55:43 GMT</last_modification_time>
+	    </signal>
+	    <label></label>
+	    <relief>GTK_RELIEF_NORMAL</relief>
+	    <active>False</active>
+	  </widget>
+
+	  <widget>
+	    <class>GtkToggleButton</class>
+	    <name>togglebutton40</name>
+	    <x>44</x>
+	    <y>64</y>
+	    <width>10</width>
+	    <height>10</height>
+	    <can_focus>True</can_focus>
+	    <signal>
+	      <name>toggled</name>
+	      <handler>on_togglebutton40_toggled</handler>
+	      <last_modification_time>Sat, 03 Nov 2001 23:36:24 GMT</last_modification_time>
+	    </signal>
+	    <label></label>
+	    <relief>GTK_RELIEF_NORMAL</relief>
+	    <active>False</active>
+	  </widget>
+	</widget>
+
+	<widget>
+	  <class>GtkFixed</class>
+	  <name>fixed11</name>
+	  <x>256</x>
+	  <y>0</y>
+	  <width>0</width>
+	  <height>0</height>
+
+	  <widget>
+	    <class>GtkToggleButton</class>
+	    <name>togglebutton43</name>
+	    <x>36</x>
+	    <y>16</y>
+	    <width>10</width>
+	    <height>20</height>
+	    <can_focus>True</can_focus>
+	    <signal>
+	      <name>toggled</name>
+	      <handler>on_togglebutton43_toggled</handler>
+	      <last_modification_time>Sat, 03 Nov 2001 23:40:17 GMT</last_modification_time>
+	    </signal>
+	    <label></label>
+	    <relief>GTK_RELIEF_NORMAL</relief>
+	    <active>False</active>
+	  </widget>
+
+	  <widget>
+	    <class>GtkToggleButton</class>
+	    <name>togglebutton44</name>
+	    <x>16</x>
+	    <y>36</y>
+	    <width>20</width>
+	    <height>10</height>
+	    <can_focus>True</can_focus>
+	    <signal>
+	      <name>toggled</name>
+	      <handler>on_togglebutton44_toggled</handler>
+	      <last_modification_time>Sat, 03 Nov 2001 23:40:23 GMT</last_modification_time>
+	    </signal>
+	    <label></label>
+	    <relief>GTK_RELIEF_NORMAL</relief>
+	    <active>False</active>
+	  </widget>
+
+	  <widget>
+	    <class>GtkToggleButton</class>
+	    <name>togglebutton41</name>
+	    <x>16</x>
+	    <y>8</y>
+	    <width>20</width>
+	    <height>10</height>
+	    <can_focus>True</can_focus>
+	    <signal>
+	      <name>toggled</name>
+	      <handler>on_togglebutton41_toggled</handler>
+	      <last_modification_time>Sat, 03 Nov 2001 23:40:01 GMT</last_modification_time>
+	    </signal>
+	    <label></label>
+	    <relief>GTK_RELIEF_NORMAL</relief>
+	    <active>False</active>
+	  </widget>
+
+	  <widget>
+	    <class>GtkToggleButton</class>
+	    <name>togglebutton42</name>
+	    <x>8</x>
+	    <y>16</y>
+	    <width>10</width>
+	    <height>20</height>
+	    <can_focus>True</can_focus>
+	    <signal>
+	      <name>toggled</name>
+	      <handler>on_togglebutton42_toggled</handler>
+	      <last_modification_time>Sat, 03 Nov 2001 23:40:13 GMT</last_modification_time>
+	    </signal>
+	    <label></label>
+	    <relief>GTK_RELIEF_NORMAL</relief>
+	    <active>False</active>
+	  </widget>
+
+	  <widget>
+	    <class>GtkToggleButton</class>
+	    <name>togglebutton46</name>
+	    <x>36</x>
+	    <y>44</y>
+	    <width>10</width>
+	    <height>20</height>
+	    <can_focus>True</can_focus>
+	    <signal>
+	      <name>toggled</name>
+	      <handler>on_togglebutton46_toggled</handler>
+	      <last_modification_time>Sat, 03 Nov 2001 23:40:40 GMT</last_modification_time>
+	    </signal>
+	    <label></label>
+	    <relief>GTK_RELIEF_NORMAL</relief>
+	    <active>False</active>
+	  </widget>
+
+	  <widget>
+	    <class>GtkToggleButton</class>
+	    <name>togglebutton45</name>
+	    <x>8</x>
+	    <y>44</y>
+	    <width>10</width>
+	    <height>20</height>
+	    <can_focus>True</can_focus>
+	    <signal>
+	      <name>toggled</name>
+	      <handler>on_togglebutton45_toggled</handler>
+	      <last_modification_time>Sat, 03 Nov 2001 23:40:33 GMT</last_modification_time>
+	    </signal>
+	    <label></label>
+	    <relief>GTK_RELIEF_NORMAL</relief>
+	    <active>False</active>
+	  </widget>
+
+	  <widget>
+	    <class>GtkToggleButton</class>
+	    <name>togglebutton47</name>
+	    <x>16</x>
+	    <y>64</y>
+	    <width>20</width>
+	    <height>10</height>
+	    <can_focus>True</can_focus>
+	    <signal>
+	      <name>toggled</name>
+	      <handler>on_togglebutton47_toggled</handler>
+	      <last_modification_time>Sat, 03 Nov 2001 23:40:46 GMT</last_modification_time>
+	    </signal>
+	    <label></label>
+	    <relief>GTK_RELIEF_NORMAL</relief>
+	    <active>False</active>
+	  </widget>
+
+	  <widget>
+	    <class>GtkToggleButton</class>
+	    <name>togglebutton48</name>
+	    <x>44</x>
+	    <y>64</y>
+	    <width>10</width>
+	    <height>10</height>
+	    <can_focus>True</can_focus>
+	    <signal>
+	      <name>toggled</name>
+	      <handler>on_togglebutton48_toggled</handler>
+	      <last_modification_time>Sat, 03 Nov 2001 23:40:51 GMT</last_modification_time>
+	    </signal>
+	    <label></label>
+	    <relief>GTK_RELIEF_NORMAL</relief>
+	    <active>False</active>
+	  </widget>
+	</widget>
+
+	<widget>
+	  <class>GtkFixed</class>
+	  <name>fixed12</name>
+	  <x>308</x>
+	  <y>0</y>
+	  <width>0</width>
+	  <height>0</height>
+
+	  <widget>
+	    <class>GtkToggleButton</class>
+	    <name>togglebutton51</name>
+	    <x>36</x>
+	    <y>16</y>
+	    <width>10</width>
+	    <height>20</height>
+	    <can_focus>True</can_focus>
+	    <signal>
+	      <name>toggled</name>
+	      <handler>on_togglebutton51_toggled</handler>
+	      <last_modification_time>Sat, 03 Nov 2001 23:43:21 GMT</last_modification_time>
+	    </signal>
+	    <label></label>
+	    <relief>GTK_RELIEF_NORMAL</relief>
+	    <active>False</active>
+	  </widget>
+
+	  <widget>
+	    <class>GtkToggleButton</class>
+	    <name>togglebutton52</name>
+	    <x>16</x>
+	    <y>36</y>
+	    <width>20</width>
+	    <height>10</height>
+	    <can_focus>True</can_focus>
+	    <signal>
+	      <name>toggled</name>
+	      <handler>on_togglebutton52_toggled</handler>
+	      <last_modification_time>Sat, 03 Nov 2001 23:43:25 GMT</last_modification_time>
+	    </signal>
+	    <label></label>
+	    <relief>GTK_RELIEF_NORMAL</relief>
+	    <active>False</active>
+	  </widget>
+
+	  <widget>
+	    <class>GtkToggleButton</class>
+	    <name>togglebutton49</name>
+	    <x>16</x>
+	    <y>8</y>
+	    <width>20</width>
+	    <height>10</height>
+	    <can_focus>True</can_focus>
+	    <signal>
+	      <name>toggled</name>
+	      <handler>on_togglebutton49_toggled</handler>
+	      <last_modification_time>Sat, 03 Nov 2001 23:43:12 GMT</last_modification_time>
+	    </signal>
+	    <label></label>
+	    <relief>GTK_RELIEF_NORMAL</relief>
+	    <active>False</active>
+	  </widget>
+
+	  <widget>
+	    <class>GtkToggleButton</class>
+	    <name>togglebutton50</name>
+	    <x>8</x>
+	    <y>16</y>
+	    <width>10</width>
+	    <height>20</height>
+	    <can_focus>True</can_focus>
+	    <signal>
+	      <name>toggled</name>
+	      <handler>on_togglebutton50_toggled</handler>
+	      <last_modification_time>Sat, 03 Nov 2001 23:43:17 GMT</last_modification_time>
+	    </signal>
+	    <label></label>
+	    <relief>GTK_RELIEF_NORMAL</relief>
+	    <active>False</active>
+	  </widget>
+
+	  <widget>
+	    <class>GtkToggleButton</class>
+	    <name>togglebutton54</name>
+	    <x>36</x>
+	    <y>44</y>
+	    <width>10</width>
+	    <height>20</height>
+	    <can_focus>True</can_focus>
+	    <signal>
+	      <name>toggled</name>
+	      <handler>on_togglebutton54_toggled</handler>
+	      <last_modification_time>Sat, 03 Nov 2001 23:43:35 GMT</last_modification_time>
+	    </signal>
+	    <label></label>
+	    <relief>GTK_RELIEF_NORMAL</relief>
+	    <active>False</active>
+	  </widget>
+
+	  <widget>
+	    <class>GtkToggleButton</class>
+	    <name>togglebutton53</name>
+	    <x>8</x>
+	    <y>44</y>
+	    <width>10</width>
+	    <height>20</height>
+	    <can_focus>True</can_focus>
+	    <signal>
+	      <name>toggled</name>
+	      <handler>on_togglebutton53_toggled</handler>
+	      <last_modification_time>Sat, 03 Nov 2001 23:43:30 GMT</last_modification_time>
+	    </signal>
+	    <label></label>
+	    <relief>GTK_RELIEF_NORMAL</relief>
+	    <active>False</active>
+	  </widget>
+
+	  <widget>
+	    <class>GtkToggleButton</class>
+	    <name>togglebutton55</name>
+	    <x>16</x>
+	    <y>64</y>
+	    <width>20</width>
+	    <height>10</height>
+	    <can_focus>True</can_focus>
+	    <signal>
+	      <name>toggled</name>
+	      <handler>on_togglebutton55_toggled</handler>
+	      <last_modification_time>Sat, 03 Nov 2001 23:43:40 GMT</last_modification_time>
+	    </signal>
+	    <label></label>
+	    <relief>GTK_RELIEF_NORMAL</relief>
+	    <active>False</active>
+	  </widget>
+
+	  <widget>
+	    <class>GtkToggleButton</class>
+	    <name>togglebutton56</name>
+	    <x>44</x>
+	    <y>64</y>
+	    <width>10</width>
+	    <height>10</height>
+	    <can_focus>True</can_focus>
+	    <signal>
+	      <name>toggled</name>
+	      <handler>on_togglebutton56_toggled</handler>
+	      <last_modification_time>Sat, 03 Nov 2001 23:43:45 GMT</last_modification_time>
+	    </signal>
+	    <label></label>
+	    <relief>GTK_RELIEF_NORMAL</relief>
+	    <active>False</active>
+	  </widget>
+	</widget>
+
+	<widget>
+	  <class>GtkFixed</class>
+	  <name>fixed13</name>
+	  <x>360</x>
+	  <y>0</y>
+	  <width>0</width>
+	  <height>0</height>
+
+	  <widget>
+	    <class>GtkToggleButton</class>
+	    <name>togglebutton59</name>
+	    <x>36</x>
+	    <y>16</y>
+	    <width>10</width>
+	    <height>20</height>
+	    <can_focus>True</can_focus>
+	    <signal>
+	      <name>toggled</name>
+	      <handler>on_togglebutton59_toggled</handler>
+	      <last_modification_time>Sat, 03 Nov 2001 23:46:21 GMT</last_modification_time>
+	    </signal>
+	    <label></label>
+	    <relief>GTK_RELIEF_NORMAL</relief>
+	    <active>False</active>
+	  </widget>
+
+	  <widget>
+	    <class>GtkToggleButton</class>
+	    <name>togglebutton60</name>
+	    <x>16</x>
+	    <y>36</y>
+	    <width>20</width>
+	    <height>10</height>
+	    <can_focus>True</can_focus>
+	    <signal>
+	      <name>toggled</name>
+	      <handler>on_togglebutton60_toggled</handler>
+	      <last_modification_time>Sat, 03 Nov 2001 23:46:26 GMT</last_modification_time>
+	    </signal>
+	    <label></label>
+	    <relief>GTK_RELIEF_NORMAL</relief>
+	    <active>False</active>
+	  </widget>
+
+	  <widget>
+	    <class>GtkToggleButton</class>
+	    <name>togglebutton57</name>
+	    <x>16</x>
+	    <y>8</y>
+	    <width>20</width>
+	    <height>10</height>
+	    <can_focus>True</can_focus>
+	    <signal>
+	      <name>toggled</name>
+	      <handler>on_togglebutton57_toggled</handler>
+	      <last_modification_time>Sat, 03 Nov 2001 23:46:13 GMT</last_modification_time>
+	    </signal>
+	    <label></label>
+	    <relief>GTK_RELIEF_NORMAL</relief>
+	    <active>False</active>
+	  </widget>
+
+	  <widget>
+	    <class>GtkToggleButton</class>
+	    <name>togglebutton58</name>
+	    <x>8</x>
+	    <y>16</y>
+	    <width>10</width>
+	    <height>20</height>
+	    <can_focus>True</can_focus>
+	    <signal>
+	      <name>toggled</name>
+	      <handler>on_togglebutton58_toggled</handler>
+	      <last_modification_time>Sat, 03 Nov 2001 23:46:17 GMT</last_modification_time>
+	    </signal>
+	    <label></label>
+	    <relief>GTK_RELIEF_NORMAL</relief>
+	    <active>False</active>
+	  </widget>
+
+	  <widget>
+	    <class>GtkToggleButton</class>
+	    <name>togglebutton62</name>
+	    <x>36</x>
+	    <y>44</y>
+	    <width>10</width>
+	    <height>20</height>
+	    <can_focus>True</can_focus>
+	    <signal>
+	      <name>toggled</name>
+	      <handler>on_togglebutton62_toggled</handler>
+	      <last_modification_time>Sat, 03 Nov 2001 23:46:34 GMT</last_modification_time>
+	    </signal>
+	    <label></label>
+	    <relief>GTK_RELIEF_NORMAL</relief>
+	    <active>False</active>
+	  </widget>
+
+	  <widget>
+	    <class>GtkToggleButton</class>
+	    <name>togglebutton61</name>
+	    <x>8</x>
+	    <y>44</y>
+	    <width>10</width>
+	    <height>20</height>
+	    <can_focus>True</can_focus>
+	    <signal>
+	      <name>toggled</name>
+	      <handler>on_togglebutton61_toggled</handler>
+	      <last_modification_time>Sat, 03 Nov 2001 23:46:30 GMT</last_modification_time>
+	    </signal>
+	    <label></label>
+	    <relief>GTK_RELIEF_NORMAL</relief>
+	    <active>False</active>
+	  </widget>
+
+	  <widget>
+	    <class>GtkToggleButton</class>
+	    <name>togglebutton63</name>
+	    <x>16</x>
+	    <y>64</y>
+	    <width>20</width>
+	    <height>10</height>
+	    <can_focus>True</can_focus>
+	    <signal>
+	      <name>toggled</name>
+	      <handler>on_togglebutton63_toggled</handler>
+	      <last_modification_time>Sat, 03 Nov 2001 23:46:44 GMT</last_modification_time>
+	    </signal>
+	    <label></label>
+	    <relief>GTK_RELIEF_NORMAL</relief>
+	    <active>False</active>
+	  </widget>
+
+	  <widget>
+	    <class>GtkToggleButton</class>
+	    <name>togglebutton64</name>
+	    <x>44</x>
+	    <y>64</y>
+	    <width>10</width>
+	    <height>10</height>
+	    <can_focus>True</can_focus>
+	    <signal>
+	      <name>toggled</name>
+	      <handler>on_togglebutton64_toggled</handler>
+	      <last_modification_time>Sat, 03 Nov 2001 23:46:50 GMT</last_modification_time>
+	    </signal>
+	    <label></label>
+	    <relief>GTK_RELIEF_NORMAL</relief>
+	    <active>False</active>
+	  </widget>
+	</widget>
+
+	<widget>
+	  <class>GtkToggleButton</class>
+	  <name>togglebutton141</name>
+	  <x>60</x>
+	  <y>80</y>
+	  <width>40</width>
+	  <height>14</height>
+	  <can_focus>True</can_focus>
+	  <signal>
+	    <name>toggled</name>
+	    <handler>on_togglebutton141_toggled</handler>
+	    <last_modification_time>Sun, 04 Nov 2001 00:26:40 GMT</last_modification_time>
+	  </signal>
+	  <label>on/off</label>
+	  <relief>GTK_RELIEF_NORMAL</relief>
+	  <active>False</active>
+	</widget>
+
+	<widget>
+	  <class>GtkToggleButton</class>
+	  <name>togglebutton144</name>
+	  <x>212</x>
+	  <y>80</y>
+	  <width>40</width>
+	  <height>14</height>
+	  <can_focus>True</can_focus>
+	  <signal>
+	    <name>toggled</name>
+	    <handler>on_togglebutton144_toggled</handler>
+	    <last_modification_time>Sun, 04 Nov 2001 00:26:54 GMT</last_modification_time>
+	  </signal>
+	  <label>on/off</label>
+	  <relief>GTK_RELIEF_NORMAL</relief>
+	  <active>False</active>
+	</widget>
+
+	<widget>
+	  <class>GtkToggleButton</class>
+	  <name>togglebutton142</name>
+	  <x>108</x>
+	  <y>80</y>
+	  <width>40</width>
+	  <height>14</height>
+	  <can_focus>True</can_focus>
+	  <signal>
+	    <name>toggled</name>
+	    <handler>on_togglebutton142_toggled</handler>
+	    <last_modification_time>Sun, 04 Nov 2001 00:26:45 GMT</last_modification_time>
+	  </signal>
+	  <label>on/off</label>
+	  <relief>GTK_RELIEF_NORMAL</relief>
+	  <active>False</active>
+	</widget>
+
+	<widget>
+	  <class>GtkToggleButton</class>
+	  <name>togglebutton145</name>
+	  <x>264</x>
+	  <y>80</y>
+	  <width>40</width>
+	  <height>14</height>
+	  <can_focus>True</can_focus>
+	  <signal>
+	    <name>toggled</name>
+	    <handler>on_togglebutton145_toggled</handler>
+	    <last_modification_time>Sun, 04 Nov 2001 00:26:57 GMT</last_modification_time>
+	  </signal>
+	  <label>on/off</label>
+	  <relief>GTK_RELIEF_NORMAL</relief>
+	  <active>False</active>
+	</widget>
+
+	<widget>
+	  <class>GtkToggleButton</class>
+	  <name>togglebutton146</name>
+	  <x>316</x>
+	  <y>80</y>
+	  <width>40</width>
+	  <height>14</height>
+	  <can_focus>True</can_focus>
+	  <signal>
+	    <name>toggled</name>
+	    <handler>on_togglebutton146_toggled</handler>
+	    <last_modification_time>Sun, 04 Nov 2001 00:27:04 GMT</last_modification_time>
+	  </signal>
+	  <label>on/off</label>
+	  <relief>GTK_RELIEF_NORMAL</relief>
+	  <active>False</active>
+	</widget>
+
+	<widget>
+	  <class>GtkToggleButton</class>
+	  <name>togglebutton147</name>
+	  <x>368</x>
+	  <y>80</y>
+	  <width>40</width>
+	  <height>14</height>
+	  <can_focus>True</can_focus>
+	  <signal>
+	    <name>toggled</name>
+	    <handler>on_togglebutton147_toggled</handler>
+	    <last_modification_time>Sun, 04 Nov 2001 00:27:09 GMT</last_modification_time>
+	  </signal>
+	  <label>on/off</label>
+	  <relief>GTK_RELIEF_NORMAL</relief>
+	  <active>False</active>
+	</widget>
+
+	<widget>
+	  <class>GtkToggleButton</class>
+	  <name>togglebutton140</name>
+	  <x>8</x>
+	  <y>80</y>
+	  <width>40</width>
+	  <height>14</height>
+	  <can_focus>True</can_focus>
+	  <signal>
+	    <name>toggled</name>
+	    <handler>on_togglebutton140_toggled</handler>
+	    <last_modification_time>Sun, 04 Nov 2001 00:26:25 GMT</last_modification_time>
+	  </signal>
+	  <label>on/off</label>
+	  <relief>GTK_RELIEF_NORMAL</relief>
+	  <active>False</active>
+	</widget>
+
+	<widget>
+	  <class>GtkToggleButton</class>
+	  <name>togglebutton143</name>
+	  <x>160</x>
+	  <y>80</y>
+	  <width>40</width>
+	  <height>14</height>
+	  <can_focus>True</can_focus>
+	  <signal>
+	    <name>toggled</name>
+	    <handler>on_togglebutton143_toggled</handler>
+	    <last_modification_time>Sun, 04 Nov 2001 00:26:49 GMT</last_modification_time>
+	  </signal>
+	  <label>on/off</label>
+	  <relief>GTK_RELIEF_NORMAL</relief>
+	  <active>False</active>
+	</widget>
+      </widget>
+    </widget>
+
+    <widget>
+      <class>GtkFrame</class>
+      <name>frame3</name>
+      <x>16</x>
+      <y>152</y>
+      <width>96</width>
+      <height>160</height>
+      <label>DOT</label>
+      <label_xalign>0.5</label_xalign>
+      <shadow_type>GTK_SHADOW_ETCHED_OUT</shadow_type>
+
+      <widget>
+	<class>GtkFixed</class>
+	<name>fixed5</name>
+
+	<widget>
+	  <class>GtkToggleButton</class>
+	  <name>togglebutton71</name>
+	  <x>20</x>
+	  <y>16</y>
+	  <width>15</width>
+	  <height>15</height>
+	  <can_focus>True</can_focus>
+	  <signal>
+	    <name>toggled</name>
+	    <handler>on_togglebutton71_toggled</handler>
+	    <last_modification_time>Sun, 04 Nov 2001 06:32:47 GMT</last_modification_time>
+	  </signal>
+	  <label></label>
+	  <relief>GTK_RELIEF_NORMAL</relief>
+	  <active>False</active>
+	</widget>
+
+	<widget>
+	  <class>GtkToggleButton</class>
+	  <name>togglebutton72</name>
+	  <x>36</x>
+	  <y>16</y>
+	  <width>15</width>
+	  <height>15</height>
+	  <can_focus>True</can_focus>
+	  <signal>
+	    <name>toggled</name>
+	    <handler>on_togglebutton72_toggled</handler>
+	    <last_modification_time>Sun, 04 Nov 2001 06:32:58 GMT</last_modification_time>
+	  </signal>
+	  <label></label>
+	  <relief>GTK_RELIEF_NORMAL</relief>
+	  <active>False</active>
+	</widget>
+
+	<widget>
+	  <class>GtkToggleButton</class>
+	  <name>togglebutton73</name>
+	  <x>52</x>
+	  <y>16</y>
+	  <width>15</width>
+	  <height>15</height>
+	  <can_focus>True</can_focus>
+	  <signal>
+	    <name>toggled</name>
+	    <handler>on_togglebutton73_toggled</handler>
+	    <last_modification_time>Sun, 04 Nov 2001 06:33:04 GMT</last_modification_time>
+	  </signal>
+	  <label></label>
+	  <relief>GTK_RELIEF_NORMAL</relief>
+	  <active>False</active>
+	</widget>
+
+	<widget>
+	  <class>GtkToggleButton</class>
+	  <name>togglebutton70</name>
+	  <x>4</x>
+	  <y>16</y>
+	  <width>15</width>
+	  <height>15</height>
+	  <can_focus>True</can_focus>
+	  <signal>
+	    <name>toggled</name>
+	    <handler>on_togglebutton70_toggled</handler>
+	    <last_modification_time>Sun, 04 Nov 2001 06:32:38 GMT</last_modification_time>
+	  </signal>
+	  <label></label>
+	  <relief>GTK_RELIEF_NORMAL</relief>
+	  <active>False</active>
+	</widget>
+
+	<widget>
+	  <class>GtkToggleButton</class>
+	  <name>togglebutton74</name>
+	  <x>68</x>
+	  <y>15</y>
+	  <width>15</width>
+	  <height>15</height>
+	  <can_focus>True</can_focus>
+	  <signal>
+	    <name>toggled</name>
+	    <handler>on_togglebutton74_toggled</handler>
+	    <last_modification_time>Sun, 04 Nov 2001 06:33:09 GMT</last_modification_time>
+	  </signal>
+	  <label></label>
+	  <relief>GTK_RELIEF_NORMAL</relief>
+	  <active>False</active>
+	</widget>
+
+	<widget>
+	  <class>GtkToggleButton</class>
+	  <name>togglebutton75</name>
+	  <x>4</x>
+	  <y>32</y>
+	  <width>15</width>
+	  <height>15</height>
+	  <can_focus>True</can_focus>
+	  <signal>
+	    <name>toggled</name>
+	    <handler>on_togglebutton75_toggled</handler>
+	    <last_modification_time>Sun, 04 Nov 2001 06:33:14 GMT</last_modification_time>
+	  </signal>
+	  <label></label>
+	  <relief>GTK_RELIEF_NORMAL</relief>
+	  <active>False</active>
+	</widget>
+
+	<widget>
+	  <class>GtkToggleButton</class>
+	  <name>togglebutton76</name>
+	  <x>20</x>
+	  <y>32</y>
+	  <width>15</width>
+	  <height>15</height>
+	  <can_focus>True</can_focus>
+	  <signal>
+	    <name>toggled</name>
+	    <handler>on_togglebutton76_toggled</handler>
+	    <last_modification_time>Sun, 04 Nov 2001 06:33:18 GMT</last_modification_time>
+	  </signal>
+	  <label></label>
+	  <relief>GTK_RELIEF_NORMAL</relief>
+	  <active>False</active>
+	</widget>
+
+	<widget>
+	  <class>GtkToggleButton</class>
+	  <name>togglebutton77</name>
+	  <x>36</x>
+	  <y>32</y>
+	  <width>15</width>
+	  <height>15</height>
+	  <can_focus>True</can_focus>
+	  <signal>
+	    <name>toggled</name>
+	    <handler>on_togglebutton77_toggled</handler>
+	    <last_modification_time>Sun, 04 Nov 2001 06:33:23 GMT</last_modification_time>
+	  </signal>
+	  <label></label>
+	  <relief>GTK_RELIEF_NORMAL</relief>
+	  <active>False</active>
+	</widget>
+
+	<widget>
+	  <class>GtkToggleButton</class>
+	  <name>togglebutton78</name>
+	  <x>52</x>
+	  <y>32</y>
+	  <width>15</width>
+	  <height>15</height>
+	  <can_focus>True</can_focus>
+	  <signal>
+	    <name>toggled</name>
+	    <handler>on_togglebutton78_toggled</handler>
+	    <last_modification_time>Sun, 04 Nov 2001 06:33:28 GMT</last_modification_time>
+	  </signal>
+	  <label></label>
+	  <relief>GTK_RELIEF_NORMAL</relief>
+	  <active>False</active>
+	</widget>
+
+	<widget>
+	  <class>GtkToggleButton</class>
+	  <name>togglebutton79</name>
+	  <x>68</x>
+	  <y>32</y>
+	  <width>15</width>
+	  <height>15</height>
+	  <can_focus>True</can_focus>
+	  <signal>
+	    <name>toggled</name>
+	    <handler>on_togglebutton79_toggled</handler>
+	    <last_modification_time>Sun, 04 Nov 2001 06:33:33 GMT</last_modification_time>
+	  </signal>
+	  <label></label>
+	  <relief>GTK_RELIEF_NORMAL</relief>
+	  <active>False</active>
+	</widget>
+
+	<widget>
+	  <class>GtkToggleButton</class>
+	  <name>togglebutton80</name>
+	  <x>4</x>
+	  <y>48</y>
+	  <width>15</width>
+	  <height>15</height>
+	  <can_focus>True</can_focus>
+	  <signal>
+	    <name>toggled</name>
+	    <handler>on_togglebutton80_toggled</handler>
+	    <last_modification_time>Sun, 04 Nov 2001 06:33:53 GMT</last_modification_time>
+	  </signal>
+	  <label></label>
+	  <relief>GTK_RELIEF_NORMAL</relief>
+	  <active>False</active>
+	</widget>
+
+	<widget>
+	  <class>GtkToggleButton</class>
+	  <name>togglebutton81</name>
+	  <x>20</x>
+	  <y>48</y>
+	  <width>15</width>
+	  <height>15</height>
+	  <can_focus>True</can_focus>
+	  <signal>
+	    <name>toggled</name>
+	    <handler>on_togglebutton81_toggled</handler>
+	    <last_modification_time>Sun, 04 Nov 2001 06:34:24 GMT</last_modification_time>
+	  </signal>
+	  <label></label>
+	  <relief>GTK_RELIEF_NORMAL</relief>
+	  <active>False</active>
+	</widget>
+
+	<widget>
+	  <class>GtkToggleButton</class>
+	  <name>togglebutton82</name>
+	  <x>36</x>
+	  <y>48</y>
+	  <width>15</width>
+	  <height>15</height>
+	  <can_focus>True</can_focus>
+	  <signal>
+	    <name>toggled</name>
+	    <handler>on_togglebutton82_toggled</handler>
+	    <last_modification_time>Sun, 04 Nov 2001 06:34:31 GMT</last_modification_time>
+	  </signal>
+	  <label></label>
+	  <relief>GTK_RELIEF_NORMAL</relief>
+	  <active>False</active>
+	</widget>
+
+	<widget>
+	  <class>GtkToggleButton</class>
+	  <name>togglebutton83</name>
+	  <x>52</x>
+	  <y>48</y>
+	  <width>15</width>
+	  <height>15</height>
+	  <can_focus>True</can_focus>
+	  <signal>
+	    <name>toggled</name>
+	    <handler>on_togglebutton83_toggled</handler>
+	    <last_modification_time>Sun, 04 Nov 2001 06:34:39 GMT</last_modification_time>
+	  </signal>
+	  <label></label>
+	  <relief>GTK_RELIEF_NORMAL</relief>
+	  <active>False</active>
+	</widget>
+
+	<widget>
+	  <class>GtkToggleButton</class>
+	  <name>togglebutton84</name>
+	  <x>68</x>
+	  <y>48</y>
+	  <width>15</width>
+	  <height>15</height>
+	  <can_focus>True</can_focus>
+	  <signal>
+	    <name>toggled</name>
+	    <handler>on_togglebutton84_toggled</handler>
+	    <last_modification_time>Sun, 04 Nov 2001 06:34:46 GMT</last_modification_time>
+	  </signal>
+	  <label></label>
+	  <relief>GTK_RELIEF_NORMAL</relief>
+	  <active>False</active>
+	</widget>
+
+	<widget>
+	  <class>GtkToggleButton</class>
+	  <name>togglebutton85</name>
+	  <x>4</x>
+	  <y>64</y>
+	  <width>15</width>
+	  <height>15</height>
+	  <can_focus>True</can_focus>
+	  <signal>
+	    <name>toggled</name>
+	    <handler>on_togglebutton85_toggled</handler>
+	    <last_modification_time>Sun, 04 Nov 2001 06:34:54 GMT</last_modification_time>
+	  </signal>
+	  <label></label>
+	  <relief>GTK_RELIEF_NORMAL</relief>
+	  <active>False</active>
+	</widget>
+
+	<widget>
+	  <class>GtkToggleButton</class>
+	  <name>togglebutton86</name>
+	  <x>20</x>
+	  <y>64</y>
+	  <width>15</width>
+	  <height>15</height>
+	  <can_focus>True</can_focus>
+	  <signal>
+	    <name>toggled</name>
+	    <handler>on_togglebutton86_toggled</handler>
+	    <last_modification_time>Sun, 04 Nov 2001 06:35:03 GMT</last_modification_time>
+	  </signal>
+	  <label></label>
+	  <relief>GTK_RELIEF_NORMAL</relief>
+	  <active>False</active>
+	</widget>
+
+	<widget>
+	  <class>GtkToggleButton</class>
+	  <name>togglebutton87</name>
+	  <x>36</x>
+	  <y>64</y>
+	  <width>15</width>
+	  <height>15</height>
+	  <can_focus>True</can_focus>
+	  <signal>
+	    <name>toggled</name>
+	    <handler>on_togglebutton87_toggled</handler>
+	    <last_modification_time>Sun, 04 Nov 2001 06:35:10 GMT</last_modification_time>
+	  </signal>
+	  <label></label>
+	  <relief>GTK_RELIEF_NORMAL</relief>
+	  <active>False</active>
+	</widget>
+
+	<widget>
+	  <class>GtkToggleButton</class>
+	  <name>togglebutton88</name>
+	  <x>52</x>
+	  <y>64</y>
+	  <width>15</width>
+	  <height>15</height>
+	  <can_focus>True</can_focus>
+	  <signal>
+	    <name>toggled</name>
+	    <handler>on_togglebutton88_toggled</handler>
+	    <last_modification_time>Sun, 04 Nov 2001 06:35:17 GMT</last_modification_time>
+	  </signal>
+	  <label></label>
+	  <relief>GTK_RELIEF_NORMAL</relief>
+	  <active>False</active>
+	</widget>
+
+	<widget>
+	  <class>GtkToggleButton</class>
+	  <name>togglebutton89</name>
+	  <x>68</x>
+	  <y>64</y>
+	  <width>15</width>
+	  <height>15</height>
+	  <can_focus>True</can_focus>
+	  <signal>
+	    <name>toggled</name>
+	    <handler>on_togglebutton89_toggled</handler>
+	    <last_modification_time>Sun, 04 Nov 2001 06:35:23 GMT</last_modification_time>
+	  </signal>
+	  <label></label>
+	  <relief>GTK_RELIEF_NORMAL</relief>
+	  <active>False</active>
+	</widget>
+
+	<widget>
+	  <class>GtkToggleButton</class>
+	  <name>togglebutton90</name>
+	  <x>4</x>
+	  <y>80</y>
+	  <width>15</width>
+	  <height>15</height>
+	  <can_focus>True</can_focus>
+	  <signal>
+	    <name>toggled</name>
+	    <handler>on_togglebutton90_toggled</handler>
+	    <last_modification_time>Sun, 04 Nov 2001 06:35:28 GMT</last_modification_time>
+	  </signal>
+	  <label></label>
+	  <relief>GTK_RELIEF_NORMAL</relief>
+	  <active>False</active>
+	</widget>
+
+	<widget>
+	  <class>GtkToggleButton</class>
+	  <name>togglebutton91</name>
+	  <x>20</x>
+	  <y>80</y>
+	  <width>15</width>
+	  <height>15</height>
+	  <can_focus>True</can_focus>
+	  <signal>
+	    <name>toggled</name>
+	    <handler>on_togglebutton91_toggled</handler>
+	    <last_modification_time>Sun, 04 Nov 2001 06:35:34 GMT</last_modification_time>
+	  </signal>
+	  <label></label>
+	  <relief>GTK_RELIEF_NORMAL</relief>
+	  <active>False</active>
+	</widget>
+
+	<widget>
+	  <class>GtkToggleButton</class>
+	  <name>togglebutton95</name>
+	  <x>4</x>
+	  <y>96</y>
+	  <width>15</width>
+	  <height>15</height>
+	  <can_focus>True</can_focus>
+	  <signal>
+	    <name>toggled</name>
+	    <handler>on_togglebutton95_toggled</handler>
+	    <last_modification_time>Sun, 04 Nov 2001 06:35:54 GMT</last_modification_time>
+	  </signal>
+	  <label></label>
+	  <relief>GTK_RELIEF_NORMAL</relief>
+	  <active>False</active>
+	</widget>
+
+	<widget>
+	  <class>GtkToggleButton</class>
+	  <name>togglebutton65</name>
+	  <x>4</x>
+	  <y>0</y>
+	  <width>15</width>
+	  <height>15</height>
+	  <can_focus>True</can_focus>
+	  <signal>
+	    <name>toggled</name>
+	    <handler>on_togglebutton65_toggled</handler>
+	    <last_modification_time>Sun, 04 Nov 2001 02:02:21 GMT</last_modification_time>
+	  </signal>
+	  <label></label>
+	  <relief>GTK_RELIEF_NORMAL</relief>
+	  <active>False</active>
+	</widget>
+
+	<widget>
+	  <class>GtkToggleButton</class>
+	  <name>togglebutton92</name>
+	  <x>36</x>
+	  <y>80</y>
+	  <width>15</width>
+	  <height>15</height>
+	  <can_focus>True</can_focus>
+	  <signal>
+	    <name>toggled</name>
+	    <handler>on_togglebutton92_toggled</handler>
+	    <last_modification_time>Sun, 04 Nov 2001 06:35:38 GMT</last_modification_time>
+	  </signal>
+	  <label></label>
+	  <relief>GTK_RELIEF_NORMAL</relief>
+	  <active>False</active>
+	</widget>
+
+	<widget>
+	  <class>GtkToggleButton</class>
+	  <name>togglebutton93</name>
+	  <x>52</x>
+	  <y>80</y>
+	  <width>15</width>
+	  <height>15</height>
+	  <can_focus>True</can_focus>
+	  <signal>
+	    <name>toggled</name>
+	    <handler>on_togglebutton93_toggled</handler>
+	    <last_modification_time>Sun, 04 Nov 2001 06:35:43 GMT</last_modification_time>
+	  </signal>
+	  <label></label>
+	  <relief>GTK_RELIEF_NORMAL</relief>
+	  <active>False</active>
+	</widget>
+
+	<widget>
+	  <class>GtkToggleButton</class>
+	  <name>togglebutton94</name>
+	  <x>68</x>
+	  <y>80</y>
+	  <width>15</width>
+	  <height>15</height>
+	  <can_focus>True</can_focus>
+	  <signal>
+	    <name>toggled</name>
+	    <handler>on_togglebutton94_toggled</handler>
+	    <last_modification_time>Sun, 04 Nov 2001 06:35:49 GMT</last_modification_time>
+	  </signal>
+	  <label></label>
+	  <relief>GTK_RELIEF_NORMAL</relief>
+	  <active>False</active>
+	</widget>
+
+	<widget>
+	  <class>GtkToggleButton</class>
+	  <name>togglebutton96</name>
+	  <x>20</x>
+	  <y>96</y>
+	  <width>15</width>
+	  <height>15</height>
+	  <can_focus>True</can_focus>
+	  <signal>
+	    <name>toggled</name>
+	    <handler>on_togglebutton96_toggled</handler>
+	    <last_modification_time>Sun, 04 Nov 2001 06:35:59 GMT</last_modification_time>
+	  </signal>
+	  <label></label>
+	  <relief>GTK_RELIEF_NORMAL</relief>
+	  <active>False</active>
+	</widget>
+
+	<widget>
+	  <class>GtkToggleButton</class>
+	  <name>togglebutton97</name>
+	  <x>36</x>
+	  <y>96</y>
+	  <width>15</width>
+	  <height>15</height>
+	  <can_focus>True</can_focus>
+	  <signal>
+	    <name>toggled</name>
+	    <handler>on_togglebutton97_toggled</handler>
+	    <last_modification_time>Sun, 04 Nov 2001 06:36:04 GMT</last_modification_time>
+	  </signal>
+	  <label></label>
+	  <relief>GTK_RELIEF_NORMAL</relief>
+	  <active>False</active>
+	</widget>
+
+	<widget>
+	  <class>GtkToggleButton</class>
+	  <name>togglebutton98</name>
+	  <x>52</x>
+	  <y>96</y>
+	  <width>15</width>
+	  <height>15</height>
+	  <can_focus>True</can_focus>
+	  <signal>
+	    <name>toggled</name>
+	    <handler>on_togglebutton98_toggled</handler>
+	    <last_modification_time>Sun, 04 Nov 2001 06:36:09 GMT</last_modification_time>
+	  </signal>
+	  <label></label>
+	  <relief>GTK_RELIEF_NORMAL</relief>
+	  <active>False</active>
+	</widget>
+
+	<widget>
+	  <class>GtkToggleButton</class>
+	  <name>togglebutton99</name>
+	  <x>68</x>
+	  <y>96</y>
+	  <width>15</width>
+	  <height>15</height>
+	  <can_focus>True</can_focus>
+	  <signal>
+	    <name>toggled</name>
+	    <handler>on_togglebutton99_toggled</handler>
+	    <last_modification_time>Sun, 04 Nov 2001 06:36:14 GMT</last_modification_time>
+	  </signal>
+	  <label></label>
+	  <relief>GTK_RELIEF_NORMAL</relief>
+	  <active>False</active>
+	</widget>
+
+	<widget>
+	  <class>GtkToggleButton</class>
+	  <name>togglebutton66</name>
+	  <x>20</x>
+	  <y>0</y>
+	  <width>15</width>
+	  <height>15</height>
+	  <can_focus>True</can_focus>
+	  <signal>
+	    <name>toggled</name>
+	    <handler>on_togglebutton66_toggled</handler>
+	    <last_modification_time>Sun, 04 Nov 2001 03:14:56 GMT</last_modification_time>
+	  </signal>
+	  <label></label>
+	  <relief>GTK_RELIEF_NORMAL</relief>
+	  <active>False</active>
+	</widget>
+
+	<widget>
+	  <class>GtkToggleButton</class>
+	  <name>togglebutton67</name>
+	  <x>36</x>
+	  <y>0</y>
+	  <width>15</width>
+	  <height>15</height>
+	  <can_focus>True</can_focus>
+	  <signal>
+	    <name>toggled</name>
+	    <handler>on_togglebutton67_toggled</handler>
+	    <last_modification_time>Sun, 04 Nov 2001 05:35:32 GMT</last_modification_time>
+	  </signal>
+	  <label></label>
+	  <relief>GTK_RELIEF_NORMAL</relief>
+	  <active>False</active>
+	</widget>
+
+	<widget>
+	  <class>GtkToggleButton</class>
+	  <name>togglebutton68</name>
+	  <x>52</x>
+	  <y>0</y>
+	  <width>15</width>
+	  <height>15</height>
+	  <can_focus>True</can_focus>
+	  <signal>
+	    <name>toggled</name>
+	    <handler>on_togglebutton68_toggled</handler>
+	    <last_modification_time>Sun, 04 Nov 2001 05:35:38 GMT</last_modification_time>
+	  </signal>
+	  <label></label>
+	  <relief>GTK_RELIEF_NORMAL</relief>
+	  <active>False</active>
+	</widget>
+
+	<widget>
+	  <class>GtkToggleButton</class>
+	  <name>togglebutton69</name>
+	  <x>68</x>
+	  <y>0</y>
+	  <width>15</width>
+	  <height>15</height>
+	  <can_focus>True</can_focus>
+	  <signal>
+	    <name>toggled</name>
+	    <handler>on_togglebutton69_toggled</handler>
+	    <last_modification_time>Sun, 04 Nov 2001 05:35:43 GMT</last_modification_time>
+	  </signal>
+	  <label></label>
+	  <relief>GTK_RELIEF_NORMAL</relief>
+	  <active>False</active>
+	</widget>
+
+	<widget>
+	  <class>GtkToggleButton</class>
+	  <name>togglebutton150</name>
+	  <x>4</x>
+	  <y>116</y>
+	  <width>80</width>
+	  <height>16</height>
+	  <can_focus>True</can_focus>
+	  <signal>
+	    <name>toggled</name>
+	    <handler>on_togglebutton150_toggled</handler>
+	    <last_modification_time>Sun, 04 Nov 2001 06:50:03 GMT</last_modification_time>
+	  </signal>
+	  <label>All on/ off</label>
+	  <relief>GTK_RELIEF_NORMAL</relief>
+	  <active>False</active>
+	</widget>
+      </widget>
+    </widget>
+
+    <widget>
+      <class>GtkFrame</class>
+      <name>frame8</name>
+      <x>152</x>
+      <y>152</y>
+      <width>132</width>
+      <height>160</height>
+      <label>KEY</label>
+      <label_xalign>0.5</label_xalign>
+      <shadow_type>GTK_SHADOW_ETCHED_IN</shadow_type>
+
+      <widget>
+	<class>GtkFixed</class>
+	<name>fixed17</name>
+
+	<widget>
+	  <class>GtkToggleButton</class>
+	  <name>togglebutton100</name>
+	  <x>8</x>
+	  <y>0</y>
+	  <width>26</width>
+	  <height>26</height>
+	  <can_focus>True</can_focus>
+	  <label></label>
+	  <relief>GTK_RELIEF_NORMAL</relief>
+	  <active>False</active>
+	</widget>
+
+	<widget>
+	  <class>GtkToggleButton</class>
+	  <name>togglebutton101</name>
+	  <x>36</x>
+	  <y>0</y>
+	  <width>26</width>
+	  <height>26</height>
+	  <can_focus>True</can_focus>
+	  <label></label>
+	  <relief>GTK_RELIEF_NORMAL</relief>
+	  <active>False</active>
+	</widget>
+
+	<widget>
+	  <class>GtkToggleButton</class>
+	  <name>togglebutton102</name>
+	  <x>64</x>
+	  <y>0</y>
+	  <width>26</width>
+	  <height>26</height>
+	  <can_focus>True</can_focus>
+	  <label></label>
+	  <relief>GTK_RELIEF_NORMAL</relief>
+	  <active>False</active>
+	</widget>
+
+	<widget>
+	  <class>GtkToggleButton</class>
+	  <name>togglebutton103</name>
+	  <x>92</x>
+	  <y>0</y>
+	  <width>26</width>
+	  <height>26</height>
+	  <can_focus>True</can_focus>
+	  <label></label>
+	  <relief>GTK_RELIEF_NORMAL</relief>
+	  <active>False</active>
+	</widget>
+
+	<widget>
+	  <class>GtkToggleButton</class>
+	  <name>togglebutton104</name>
+	  <x>8</x>
+	  <y>32</y>
+	  <width>26</width>
+	  <height>26</height>
+	  <can_focus>True</can_focus>
+	  <label></label>
+	  <relief>GTK_RELIEF_NORMAL</relief>
+	  <active>False</active>
+	</widget>
+
+	<widget>
+	  <class>GtkToggleButton</class>
+	  <name>togglebutton105</name>
+	  <x>36</x>
+	  <y>32</y>
+	  <width>26</width>
+	  <height>26</height>
+	  <can_focus>True</can_focus>
+	  <label></label>
+	  <relief>GTK_RELIEF_NORMAL</relief>
+	  <active>False</active>
+	</widget>
+
+	<widget>
+	  <class>GtkToggleButton</class>
+	  <name>togglebutton106</name>
+	  <x>64</x>
+	  <y>32</y>
+	  <width>26</width>
+	  <height>26</height>
+	  <can_focus>True</can_focus>
+	  <label></label>
+	  <relief>GTK_RELIEF_NORMAL</relief>
+	  <active>False</active>
+	</widget>
+
+	<widget>
+	  <class>GtkToggleButton</class>
+	  <name>togglebutton107</name>
+	  <x>92</x>
+	  <y>32</y>
+	  <width>26</width>
+	  <height>26</height>
+	  <can_focus>True</can_focus>
+	  <label></label>
+	  <relief>GTK_RELIEF_NORMAL</relief>
+	  <active>False</active>
+	</widget>
+
+	<widget>
+	  <class>GtkToggleButton</class>
+	  <name>togglebutton108</name>
+	  <x>8</x>
+	  <y>64</y>
+	  <width>26</width>
+	  <height>26</height>
+	  <can_focus>True</can_focus>
+	  <label></label>
+	  <relief>GTK_RELIEF_NORMAL</relief>
+	  <active>False</active>
+	</widget>
+
+	<widget>
+	  <class>GtkToggleButton</class>
+	  <name>togglebutton112</name>
+	  <x>8</x>
+	  <y>96</y>
+	  <width>26</width>
+	  <height>26</height>
+	  <can_focus>True</can_focus>
+	  <label></label>
+	  <relief>GTK_RELIEF_NORMAL</relief>
+	  <active>False</active>
+	</widget>
+
+	<widget>
+	  <class>GtkToggleButton</class>
+	  <name>togglebutton109</name>
+	  <x>36</x>
+	  <y>64</y>
+	  <width>26</width>
+	  <height>26</height>
+	  <can_focus>True</can_focus>
+	  <label></label>
+	  <relief>GTK_RELIEF_NORMAL</relief>
+	  <active>False</active>
+	</widget>
+
+	<widget>
+	  <class>GtkToggleButton</class>
+	  <name>togglebutton110</name>
+	  <x>64</x>
+	  <y>64</y>
+	  <width>26</width>
+	  <height>26</height>
+	  <can_focus>True</can_focus>
+	  <label></label>
+	  <relief>GTK_RELIEF_NORMAL</relief>
+	  <active>False</active>
+	</widget>
+
+	<widget>
+	  <class>GtkToggleButton</class>
+	  <name>togglebutton111</name>
+	  <x>92</x>
+	  <y>64</y>
+	  <width>26</width>
+	  <height>26</height>
+	  <can_focus>True</can_focus>
+	  <label></label>
+	  <relief>GTK_RELIEF_NORMAL</relief>
+	  <active>False</active>
+	</widget>
+
+	<widget>
+	  <class>GtkToggleButton</class>
+	  <name>togglebutton113</name>
+	  <x>36</x>
+	  <y>96</y>
+	  <width>26</width>
+	  <height>26</height>
+	  <can_focus>True</can_focus>
+	  <label></label>
+	  <relief>GTK_RELIEF_NORMAL</relief>
+	  <active>False</active>
+	</widget>
+
+	<widget>
+	  <class>GtkToggleButton</class>
+	  <name>togglebutton114</name>
+	  <x>64</x>
+	  <y>96</y>
+	  <width>26</width>
+	  <height>26</height>
+	  <can_focus>True</can_focus>
+	  <label></label>
+	  <relief>GTK_RELIEF_NORMAL</relief>
+	  <active>False</active>
+	</widget>
+
+	<widget>
+	  <class>GtkToggleButton</class>
+	  <name>togglebutton115</name>
+	  <x>92</x>
+	  <y>96</y>
+	  <width>26</width>
+	  <height>26</height>
+	  <can_focus>True</can_focus>
+	  <label></label>
+	  <relief>GTK_RELIEF_NORMAL</relief>
+	  <active>False</active>
+	</widget>
+      </widget>
+    </widget>
+
+    <widget>
+      <class>GtkFrame</class>
+      <name>frame5</name>
+      <x>320</x>
+      <y>152</y>
+      <width>100</width>
+      <height>160</height>
+      <label>DC MOTOR</label>
+      <label_xalign>0.5</label_xalign>
+      <shadow_type>GTK_SHADOW_ETCHED_OUT</shadow_type>
+
+      <widget>
+	<class>GtkFixed</class>
+	<name>fixed14</name>
+
+	<widget>
+	  <class>GtkButton</class>
+	  <name>button1</name>
+	  <x>36</x>
+	  <y>16</y>
+	  <width>26</width>
+	  <height>26</height>
+	  <can_focus>True</can_focus>
+	  <signal>
+	    <name>clicked</name>
+	    <handler>on_button1_clicked</handler>
+	    <last_modification_time>Sun, 04 Nov 2001 09:03:20 GMT</last_modification_time>
+	  </signal>
+	  <label>F</label>
+	  <relief>GTK_RELIEF_NORMAL</relief>
+	</widget>
+
+	<widget>
+	  <class>GtkButton</class>
+	  <name>button2</name>
+	  <x>4</x>
+	  <y>48</y>
+	  <width>26</width>
+	  <height>26</height>
+	  <can_focus>True</can_focus>
+	  <signal>
+	    <name>clicked</name>
+	    <handler>on_button2_clicked</handler>
+	    <last_modification_time>Sun, 04 Nov 2001 09:03:30 GMT</last_modification_time>
+	  </signal>
+	  <label>&lt;&lt;-</label>
+	  <relief>GTK_RELIEF_NORMAL</relief>
+	</widget>
+
+	<widget>
+	  <class>GtkButton</class>
+	  <name>button3</name>
+	  <x>36</x>
+	  <y>48</y>
+	  <width>26</width>
+	  <height>26</height>
+	  <can_focus>True</can_focus>
+	  <signal>
+	    <name>clicked</name>
+	    <handler>on_button3_clicked</handler>
+	    <last_modification_time>Sun, 04 Nov 2001 09:03:35 GMT</last_modification_time>
+	  </signal>
+	  <label>P</label>
+	  <relief>GTK_RELIEF_NORMAL</relief>
+	</widget>
+
+	<widget>
+	  <class>GtkButton</class>
+	  <name>button4</name>
+	  <x>68</x>
+	  <y>48</y>
+	  <width>26</width>
+	  <height>26</height>
+	  <can_focus>True</can_focus>
+	  <signal>
+	    <name>clicked</name>
+	    <handler>on_button4_clicked</handler>
+	    <last_modification_time>Sun, 04 Nov 2001 09:03:39 GMT</last_modification_time>
+	  </signal>
+	  <label>-&gt;&gt;</label>
+	  <relief>GTK_RELIEF_NORMAL</relief>
+	</widget>
+
+	<widget>
+	  <class>GtkButton</class>
+	  <name>button5</name>
+	  <x>36</x>
+	  <y>80</y>
+	  <width>26</width>
+	  <height>26</height>
+	  <can_focus>True</can_focus>
+	  <signal>
+	    <name>clicked</name>
+	    <handler>on_button5_clicked</handler>
+	    <last_modification_time>Sun, 04 Nov 2001 09:03:44 GMT</last_modification_time>
+	  </signal>
+	  <label>R</label>
+	  <relief>GTK_RELIEF_NORMAL</relief>
+	</widget>
+      </widget>
+    </widget>
+
+    <widget>
+      <class>GtkFrame</class>
+      <name>frame6</name>
+      <x>448</x>
+      <y>152</y>
+      <width>100</width>
+      <height>160</height>
+      <label>STEP MOTOR</label>
+      <label_xalign>0.5</label_xalign>
+      <shadow_type>GTK_SHADOW_ETCHED_OUT</shadow_type>
+
+      <widget>
+	<class>GtkFixed</class>
+	<name>fixed15</name>
+
+	<widget>
+	  <class>GtkButton</class>
+	  <name>button6</name>
+	  <x>8</x>
+	  <y>24</y>
+	  <width>34</width>
+	  <height>24</height>
+	  <can_focus>True</can_focus>
+	  <signal>
+	    <name>clicked</name>
+	    <handler>on_button6_clicked</handler>
+	    <last_modification_time>Sun, 04 Nov 2001 08:21:43 GMT</last_modification_time>
+	  </signal>
+	  <label>&lt;-</label>
+	  <relief>GTK_RELIEF_NORMAL</relief>
+	</widget>
+
+	<widget>
+	  <class>GtkButton</class>
+	  <name>button7</name>
+	  <x>52</x>
+	  <y>24</y>
+	  <width>36</width>
+	  <height>24</height>
+	  <can_focus>True</can_focus>
+	  <signal>
+	    <name>clicked</name>
+	    <handler>on_button7_clicked</handler>
+	    <last_modification_time>Sun, 04 Nov 2001 08:21:54 GMT</last_modification_time>
+	  </signal>
+	  <label>-&gt;</label>
+	  <relief>GTK_RELIEF_NORMAL</relief>
+	</widget>
+
+	<widget>
+	  <class>GtkButton</class>
+	  <name>button8</name>
+	  <x>8</x>
+	  <y>68</y>
+	  <width>34</width>
+	  <height>24</height>
+	  <can_focus>True</can_focus>
+	  <signal>
+	    <name>clicked</name>
+	    <handler>on_button8_clicked</handler>
+	    <last_modification_time>Sun, 04 Nov 2001 08:21:59 GMT</last_modification_time>
+	  </signal>
+	  <label>up</label>
+	  <relief>GTK_RELIEF_NORMAL</relief>
+	</widget>
+
+	<widget>
+	  <class>GtkButton</class>
+	  <name>button9</name>
+	  <x>52</x>
+	  <y>68</y>
+	  <width>36</width>
+	  <height>24</height>
+	  <can_focus>True</can_focus>
+	  <signal>
+	    <name>clicked</name>
+	    <handler>on_button9_clicked</handler>
+	    <last_modification_time>Sun, 04 Nov 2001 08:22:05 GMT</last_modification_time>
+	  </signal>
+	  <label>down</label>
+	  <relief>GTK_RELIEF_NORMAL</relief>
+	</widget>
+
+	<widget>
+	  <class>GtkButton</class>
+	  <name>button10</name>
+	  <x>32</x>
+	  <y>100</y>
+	  <width>36</width>
+	  <height>24</height>
+	  <can_focus>True</can_focus>
+	  <signal>
+	    <name>clicked</name>
+	    <handler>on_button10_clicked</handler>
+	    <last_modification_time>Sun, 04 Nov 2001 08:22:09 GMT</last_modification_time>
+	  </signal>
+	  <label>stop</label>
+	  <relief>GTK_RELIEF_NORMAL</relief>
+	</widget>
+
+	<widget>
+	  <class>GtkLabel</class>
+	  <name>label1</name>
+	  <x>20</x>
+	  <y>4</y>
+	  <width>64</width>
+	  <height>20</height>
+	  <label>Direction</label>
+	  <justify>GTK_JUSTIFY_CENTER</justify>
+	  <wrap>False</wrap>
+	  <xalign>0.5</xalign>
+	  <yalign>0.5</yalign>
+	  <xpad>0</xpad>
+	  <ypad>0</ypad>
+	</widget>
+
+	<widget>
+	  <class>GtkLabel</class>
+	  <name>label2</name>
+	  <x>32</x>
+	  <y>52</y>
+	  <width>34</width>
+	  <height>16</height>
+	  <label>Speed</label>
+	  <justify>GTK_JUSTIFY_CENTER</justify>
+	  <wrap>False</wrap>
+	  <xalign>0.5</xalign>
+	  <yalign>0.5</yalign>
+	  <xpad>0</xpad>
+	  <ypad>0</ypad>
+	</widget>
+      </widget>
+    </widget>
+
+    <widget>
+      <class>GtkFrame</class>
+      <name>frame7</name>
+      <x>576</x>
+      <y>152</y>
+      <width>36</width>
+      <height>160</height>
+      <label>LED</label>
+      <label_xalign>0.5</label_xalign>
+      <shadow_type>GTK_SHADOW_ETCHED_OUT</shadow_type>
+
+      <widget>
+	<class>GtkFixed</class>
+	<name>fixed16</name>
+
+	<widget>
+	  <class>GtkToggleButton</class>
+	  <name>togglebutton131</name>
+	  <x>8</x>
+	  <y>16</y>
+	  <width>16</width>
+	  <height>20</height>
+	  <can_focus>True</can_focus>
+	  <signal>
+	    <name>toggled</name>
+	    <handler>on_togglebutton131_toggled</handler>
+	    <last_modification_time>Sun, 04 Nov 2001 07:52:51 GMT</last_modification_time>
+	  </signal>
+	  <label></label>
+	  <relief>GTK_RELIEF_NORMAL</relief>
+	  <active>False</active>
+	</widget>
+
+	<widget>
+	  <class>GtkToggleButton</class>
+	  <name>togglebutton176</name>
+	  <x>44</x>
+	  <y>4</y>
+	  <width>26</width>
+	  <height>26</height>
+	  <can_focus>True</can_focus>
+	  <label></label>
+	  <relief>GTK_RELIEF_NORMAL</relief>
+	  <active>False</active>
+	</widget>
+
+	<widget>
+	  <class>GtkToggleButton</class>
+	  <name>togglebutton130</name>
+	  <x>8</x>
+	  <y>0</y>
+	  <width>16</width>
+	  <height>16</height>
+	  <can_focus>True</can_focus>
+	  <signal>
+	    <name>toggled</name>
+	    <handler>on_togglebutton130_toggled</handler>
+	    <last_modification_time>Sun, 04 Nov 2001 07:28:21 GMT</last_modification_time>
+	  </signal>
+	  <label></label>
+	  <relief>GTK_RELIEF_NORMAL</relief>
+	  <active>False</active>
+	</widget>
+
+	<widget>
+	  <class>GtkToggleButton</class>
+	  <name>togglebutton132</name>
+	  <x>8</x>
+	  <y>36</y>
+	  <width>16</width>
+	  <height>16</height>
+	  <can_focus>True</can_focus>
+	  <signal>
+	    <name>toggled</name>
+	    <handler>on_togglebutton132_toggled</handler>
+	    <last_modification_time>Sun, 04 Nov 2001 07:52:56 GMT</last_modification_time>
+	  </signal>
+	  <label></label>
+	  <relief>GTK_RELIEF_NORMAL</relief>
+	  <active>False</active>
+	</widget>
+
+	<widget>
+	  <class>GtkToggleButton</class>
+	  <name>togglebutton133</name>
+	  <x>8</x>
+	  <y>52</y>
+	  <width>16</width>
+	  <height>16</height>
+	  <can_focus>True</can_focus>
+	  <signal>
+	    <name>toggled</name>
+	    <handler>on_togglebutton133_toggled</handler>
+	    <last_modification_time>Sun, 04 Nov 2001 07:53:02 GMT</last_modification_time>
+	  </signal>
+	  <label></label>
+	  <relief>GTK_RELIEF_NORMAL</relief>
+	  <active>False</active>
+	</widget>
+
+	<widget>
+	  <class>GtkToggleButton</class>
+	  <name>togglebutton134</name>
+	  <x>8</x>
+	  <y>68</y>
+	  <width>16</width>
+	  <height>16</height>
+	  <can_focus>True</can_focus>
+	  <signal>
+	    <name>toggled</name>
+	    <handler>on_togglebutton134_toggled</handler>
+	    <last_modification_time>Sun, 04 Nov 2001 07:53:07 GMT</last_modification_time>
+	  </signal>
+	  <label></label>
+	  <relief>GTK_RELIEF_NORMAL</relief>
+	  <active>False</active>
+	</widget>
+
+	<widget>
+	  <class>GtkToggleButton</class>
+	  <name>togglebutton135</name>
+	  <x>8</x>
+	  <y>84</y>
+	  <width>16</width>
+	  <height>16</height>
+	  <can_focus>True</can_focus>
+	  <signal>
+	    <name>toggled</name>
+	    <handler>on_togglebutton135_toggled</handler>
+	    <last_modification_time>Sun, 04 Nov 2001 07:53:11 GMT</last_modification_time>
+	  </signal>
+	  <label></label>
+	  <relief>GTK_RELIEF_NORMAL</relief>
+	  <active>False</active>
+	</widget>
+
+	<widget>
+	  <class>GtkToggleButton</class>
+	  <name>togglebutton136</name>
+	  <x>8</x>
+	  <y>100</y>
+	  <width>16</width>
+	  <height>16</height>
+	  <can_focus>True</can_focus>
+	  <signal>
+	    <name>toggled</name>
+	    <handler>on_togglebutton136_toggled</handler>
+	    <last_modification_time>Sun, 04 Nov 2001 07:53:15 GMT</last_modification_time>
+	  </signal>
+	  <label></label>
+	  <relief>GTK_RELIEF_NORMAL</relief>
+	  <active>False</active>
+	</widget>
+
+	<widget>
+	  <class>GtkToggleButton</class>
+	  <name>togglebutton137</name>
+	  <x>8</x>
+	  <y>116</y>
+	  <width>16</width>
+	  <height>16</height>
+	  <can_focus>True</can_focus>
+	  <signal>
+	    <name>toggled</name>
+	    <handler>on_togglebutton137_toggled</handler>
+	    <last_modification_time>Sun, 04 Nov 2001 07:53:19 GMT</last_modification_time>
+	  </signal>
+	  <label></label>
+	  <relief>GTK_RELIEF_NORMAL</relief>
+	  <active>False</active>
+	</widget>
+      </widget>
+    </widget>
+
+    <widget>
+      <class>GtkFrame</class>
+      <name>frame4</name>
+      <x>16</x>
+      <y>320</y>
+      <width>288</width>
+      <height>88</height>
+      <label>Char LCD</label>
+      <label_xalign>0.5</label_xalign>
+      <shadow_type>GTK_SHADOW_ETCHED_OUT</shadow_type>
+
+      <widget>
+	<class>GtkFixed</class>
+	<name>fixed8</name>
+
+	<widget>
+	  <class>GtkEntry</class>
+	  <name>entry1</name>
+	  <x>0</x>
+	  <y>0</y>
+	  <width>216</width>
+	  <height>56</height>
+	  <can_focus>True</can_focus>
+	  <editable>True</editable>
+	  <text_visible>True</text_visible>
+	  <text_max_length>0</text_max_length>
+	  <text>www.hybus.net </text>
+	</widget>
+
+	<widget>
+	  <class>GtkButton</class>
+	  <name>button11</name>
+	  <x>224</x>
+	  <y>12</y>
+	  <width>52</width>
+	  <height>32</height>
+	  <can_focus>True</can_focus>
+	  <signal>
+	    <name>clicked</name>
+	    <handler>on_button11_clicked</handler>
+	    <last_modification_time>Sun, 04 Nov 2001 10:40:42 GMT</last_modification_time>
+	  </signal>
+	  <label>Send</label>
+	  <relief>GTK_RELIEF_NORMAL</relief>
+	</widget>
+      </widget>
+    </widget>
+
+    <widget>
+      <class>GtkFrame</class>
+      <name>frame9</name>
+      <x>312</x>
+      <y>328</y>
+      <width>296</width>
+      <height>80</height>
+      <label_xalign>0</label_xalign>
+      <shadow_type>GTK_SHADOW_ETCHED_IN</shadow_type>
+
+      <widget>
+	<class>GtkFixed</class>
+	<name>fixed18</name>
+
+	<widget>
+	  <class>GnomePixmap</class>
+	  <name>pixmap2</name>
+	  <x>0</x>
+	  <y>0</y>
+	  <width>21</width>
+	  <height>21</height>
+	  <filename>logo.png</filename>
+	</widget>
+      </widget>
+    </widget>
+  </widget>
+</widget>
+
+</GTK-Interface>

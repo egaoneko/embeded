@@ -1,0 +1,1 @@
+cmd_/XHyper270-TKU/IEB_Device/key/key.ko := /opt/iwmmxt-1.0.0/bin/arm-linux-ld -EL  -r -o /XHyper270-TKU/IEB_Device/key/key.ko /XHyper270-TKU/IEB_Device/key/key.o /XHyper270-TKU/IEB_Device/key/key.mod.o

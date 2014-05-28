@@ -1,0 +1,1 @@
+cmd_/home/kjlee/work/ieb_device/adc0808/adc0808.ko := /opt/iwmmxt-1.0.0/bin/arm-linux-ld -EL  -r -o /home/kjlee/work/ieb_device/adc0808/adc0808.ko /home/kjlee/work/ieb_device/adc0808/adc0808.o /home/kjlee/work/ieb_device/adc0808/adc0808.mod.o

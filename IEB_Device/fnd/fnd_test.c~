@@ -1,0 +1,138 @@
+/*
+ * X-HYPER270-TKU IEB Board Rev
+ * FND Control Program
+ * 2006-08-19   <kjlee@hybus.net>
+ */
+
+#include <stdio.h>
+#include <fcntl.h>
+
+#define MAX		10
+#define FND_DISPLAY0    0
+#define FND_DISPLAY1    1
+#define FND_DISPLAY2    2
+#define FND_DISPLAY3    3
+#define FND_DISPLAY4    4
+#define FND_DISPLAY5    5
+#define FND_DISPLAY6    6
+#define FND_DISPLAY7    7
+
+unsigned char asc_to_fnd(int n){
+	unsigned char c;
+
+		switch (n) {
+			/* \BF\A9\B7\AF\B0\A1\C1\F6 \B9\AE\C0ڸ\A6 \C3߰\A1\C7Ҽ\F6 \C0ִ\D9 */
+			case  0: c = 0x3f; break;
+			case  1: c = 0x06; break;
+			case  2: c = 0x5b; break;
+			case  3: c = 0x4f; break;
+			case  4: c = 0x66; break;
+			case  5: c = 0x6d; break;
+			case  6: c = 0x7d; break;
+			case  7: c = 0x07; break;
+			case  8: c = 0x7f; break;
+			case  9: c = 0x67; break;
+			default: c = 0x00; break;
+		}
+	return c;
+}
+
+int main()
+{
+	int dev, i, n, count;
+	unsigned long fndValue1 = 0, fndValue2 = 0, fndValue3 = 0, fndValue4 = 0, fndValue5 = 0, fndValue6 = 0, fndValue7 = 0, fndValue8 = 0;
+	unsigned long fndValue[MAX] = {0};
+
+	char s[MAX] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+	char t[MAX] = {1, 2, 3, 4, 5, 6, 7, 8, 0, 0};
+	unsigned char buf[MAX+1];
+
+        dev = open("/dev/fnd", O_WRONLY);
+        if(dev < 0)
+	{
+        	printf("Application : FND driver open fails!\n");
+                return -1;
+        }
+
+	printf("\n");
+	printf("     [7Segment Display]    \n");
+        printf("---------------------------\n");
+        printf("     Input the SegCode!    \n");
+	printf("     MAX = 8		   \n");
+        printf("     q -> Quit             \n");
+        printf("---------------------------\n");
+
+        while(1)
+	{
+		memset(s, 0, MAX);
+		memset(buf, 0, sizeof(buf));
+		
+		/*
+		fgets(s, MAX, stdin);
+
+		for(i=0; i < MAX; i++)
+		{
+			if(s[i] < 0x30 || s[i] > 0x39)
+			{
+				if(s[i] != 0x71)
+					s[i] = 0xF;
+			}
+		}
+		
+		if(s[0] == 'q' || s[1] == 'q' || s[2] == 'q' || s[3] == 'q' || s[4] == 'q' || s[5] == 'q' || s[6] == 'q' || s[7] == 'q')
+			break;
+		
+		for(i=0; i< MAX; i++)
+		{
+			fndValue[i] = (unsigned long)s[i];
+		}
+
+		for(i=0; i< MAX; i++)
+		{
+			buf[i]= asc_to_fnd((unsigned long)fndValue[i]);
+		}
+		write(dev, buf,MAX);
+		*/
+		for (n = 0 ; n <= 9; n++)
+			{
+				for( count = 0 ; count < MAX; count++){
+				buf[count]= asc_to_fnd(n);
+				}
+				write(dev, buf,MAX);
+				usleep(500000);
+			}
+
+		/*
+		fndValue1 = (unsigned long)s[0];
+		fndValue2 = (unsigned long)s[1];
+		fndValue3 = (unsigned long)s[2];
+		fndValue4 = (unsigned long)s[3];
+		fndValue5 = (unsigned long)s[4];
+		fndValue6 = (unsigned long)s[5];
+		fndValue7 = (unsigned long)s[6];
+		fndValue8 = (unsigned long)s[7];
+
+		ioctl(dev, FND_DISPLAY0, &fndValue[1]);
+		ioctl(dev, FND_DISPLAY1, &fndValue[1]);
+		ioctl(dev, FND_DISPLAY2, &fndValue[1]);
+		ioctl(dev, FND_DISPLAY3, &fndValue[1]);
+		ioctl(dev, FND_DISPLAY4, &fndValue[1]);
+		ioctl(dev, FND_DISPLAY5, &fndValue[1]);
+		ioctl(dev, FND_DISPLAY6, &fndValue[1]);
+		ioctl(dev, FND_DISPLAY7, &fndValue[1]);
+
+		ioctl(dev, FND_DISPLAY0, &fndValue1);
+		ioctl(dev, FND_DISPLAY1, &fndValue2);
+		ioctl(dev, FND_DISPLAY2, &fndValue3);
+		ioctl(dev, FND_DISPLAY3, &fndValue4);
+		ioctl(dev, FND_DISPLAY4, &fndValue5);
+		ioctl(dev, FND_DISPLAY5, &fndValue6);
+		ioctl(dev, FND_DISPLAY6, &fndValue7);
+		ioctl(dev, FND_DISPLAY7, &fndValue8);
+		*/
+	}
+	printf("Exit Program\n");			
+        close(dev);
+	return 0;
+}
+
