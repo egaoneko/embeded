@@ -30,7 +30,7 @@ unsigned char asc_to_dot(int asc){
 			case 12 : dot_col[0] = 0x08; dot_col[1] = 0x08; dot_col[2] = 0x08; dot_col[3] = 0x08; dot_col[4] = 0x08; break;
 			case 13 : dot_col[0] = 0x22; dot_col[1] = 0x14; dot_col[2] = 0x08; dot_col[3] = 0x14; dot_col[4] = 0x22; break;
 			case 14 : dot_col[0] = 0x08; dot_col[1] = 0x08; dot_col[2] = 0x2A; dot_col[3] = 0x08; dot_col[4] = 0x08; break;
-			case 15 : dot_col[0] = 0x7F; dot_col[1] = 0x4F; dot_col[2] = 0x4F; dot_col[3] = 0x4F; dot_col[4] = 0x40; break;
+			case 15 : dot_col[0] = 0x7F; dot_col[1] = 0x48; dot_col[2] = 0x48; dot_col[3] = 0x48; dot_col[4] = 0x40; break;
 	
 			defualt : break;
 	}	

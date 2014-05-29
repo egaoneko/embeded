@@ -41,7 +41,7 @@ unsigned char asc_to_fnd(int n){
 	case  7: c = 0x07; break;
 	case  8: c = 0x7f; break;
 	case  9: c = 0x67; break;
-	case 10: c = 0x3f; break;
+	case -2: c = 0x80; break;
 	default: c = 0x40; break;
 	}
 	return c;

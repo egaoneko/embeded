@@ -59,7 +59,7 @@ unsigned char asc_to_dot(int asc){
 	case 1:  dot_col[0] = 0x00; dot_col[1] = 0x00; dot_col[2] = 0x7F; dot_col[3] = 0x00; dot_col[4] = 0x00; break;
 	case 2:  dot_col[0] = 0x4F; dot_col[1] = 0x49; dot_col[2] = 0x49; dot_col[3] = 0x49; dot_col[4] = 0x79; break;
 	case 3:  dot_col[0] = 0x49; dot_col[1] = 0x49; dot_col[2] = 0x49; dot_col[3] = 0x49; dot_col[4] = 0x7F; break;
-	case 4:  dot_col[0] = 0x78; dot_col[1] = 0x08; dot_col[2] = 0x7F; dot_col[3] = 0x08; dot_col[4] = 0x08; break;
+	case 4:  dot_col[0] = 0x78; dot_col[1] = 0x08; dot_col[2] = 0x08; dot_col[3] = 0x7F; dot_col[4] = 0x08; break;
 	case 5:  dot_col[0] = 0x79; dot_col[1] = 0x49; dot_col[2] = 0x49; dot_col[3] = 0x49; dot_col[4] = 0x4F; break;
 	case 6:  dot_col[0] = 0x7F; dot_col[1] = 0x49; dot_col[2] = 0x49; dot_col[3] = 0x49; dot_col[4] = 0x4F; break;
 	case 7:  dot_col[0] = 0x40; dot_col[1] = 0x40; dot_col[2] = 0x40; dot_col[3] = 0x40; dot_col[4] = 0x7F; break;
