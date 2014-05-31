@@ -38,6 +38,7 @@
 static void *mem_base_wr, *mem_base_rs;
 static unsigned long mem_addr_wr, mem_addr_rs, mem_len;
 
+
 static void lcd_init(void)
 {
 	*((volatile unsigned char *)(mem_base_wr)) = 0x38; 
@@ -61,19 +62,51 @@ static void string_out(char *str)
 
 	printk("clcd.o: %s\n", str);
 
-	lcd_init();
+	//lcd_init();
 
 	for (s=str; *s; s++){
 	*((volatile unsigned char *)(mem_base_rs)) = *s; 
-	//	CLCD_DATA_ADDR = *s;
-
 		if(i == 15) { 
 			udelay(100);
-			//CLCD_CMD_ADDR = 0xC0;
-			//*((volatile unsigned char *)(mem_base_wr)) = 0xC0; 
-			*((volatile unsigned char *)(mem_base_wr)) = 0x28; 
+			*((volatile unsigned char *)(mem_base_wr)) = 0xC0; 
 		}
 
+		udelay(100);
+		i++;
+	}
+}
+
+static void string_out_up(char *str)
+{
+	char *s;
+	int i=0;
+	printk("clcd.o: %s\n",str);
+	//lcd_init();
+
+	udelay(100);
+	*((volatile unsigned char *)(mem_base_wr)) = 0x80; 
+	udelay(100);
+
+	for (s=str; *s; s++){
+		*((volatile unsigned char *)(mem_base_rs)) = *s; 
+		udelay(100);
+		i++;
+	}
+}
+
+static void string_out_dn(char *str)
+{
+	char *s;
+	int i=0;
+	printk("clcd.o: %s\n",str);
+	//lcd_init();
+
+	udelay(100);
+	*((volatile unsigned char *)(mem_base_wr)) = 0xC0; 
+	udelay(100);
+
+	for (s=str; *s; s++){
+		*((volatile unsigned char *)(mem_base_rs)) = *s; 
 		udelay(100);
 		i++;
 	}
@@ -111,13 +144,33 @@ static ssize_t clcd_write (struct file *filp, const char *buf, size_t count, lof
     memset(data, 0 , 32);
     copy_from_user(data, buf, count);
 
-    string_out(data);
+    lcd_init();
+    string_out_up(data);
+    string_out_dn(data);
+
 
     return 0;
 }
-		
+
+static ssize_t clcd_write2 (struct file *filp, const char *buf, size_t count, loff_t *f_pos)
+{
+    char data[32];
+
+    memset(data, 0 , 32);
+    copy_from_user(data, buf, count);
+
+    lcd_init();
+    string_out_up(data);
+    string_out_dn(data);
+
+
+    return 0;
+}
+
+	
 static struct file_operations clcd_fops = {
     .write	=	clcd_write,
+    .write2	=	clcd_write2,
     .ioctl	=	clcd_ioctl,
     .open	=	clcd_open,
     .release	=	clcd_release,

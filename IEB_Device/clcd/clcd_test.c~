@@ -33,7 +33,7 @@ int main()
 	while(1)
 	{
 		memset(str, 0, sizeof(str));
-        memset(buf, 0, sizeof(buf));
+        	memset(buf, 0, sizeof(buf));
 		fgets(str, MAXCHR, stdin);
 
 		if(str[0] == 'q' && str[1] == 'u' && str[2] == 'i' && str[3] == 't')
@@ -42,10 +42,10 @@ int main()
 		n = strlen(str);
 	        if (n > MAXCHR)
         	    n = MAXCHR;
-        str[n-1]='\0';
+        	str[n-1]='\0';
 		memcpy(buf, str, n);
-		write(lcdFd, buf, MAXCHR);
-		memset(buf, 0, sizeof(buf));
+		//write(lcdFd, buf, MAXCHR, 0);
+		write(lcdFd, buf, MAXCHR, 1);
 	}
 	printf("Exit Program\n");
 	close(lcdFd);

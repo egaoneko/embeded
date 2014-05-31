@@ -44,8 +44,8 @@ int main()
         	    n = MAXCHR;
         	str[n-1]='\0';
 		memcpy(buf, str, n);
+		//write(lcdFd, buf, MAXCHR, 0);
 		write(lcdFd, buf, MAXCHR);
-		memset(buf, 0, sizeof(buf));
 	}
 	printf("Exit Program\n");
 	close(lcdFd);

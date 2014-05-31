@@ -1,7 +1,7 @@
-cmd_/XHyper270-TKU/IEB_Device/clcd/clcd.o := /opt/iwmmxt-1.0.0/bin/arm-linux-gcc -Wp,-MD,/XHyper270-TKU/IEB_Device/clcd/.clcd.o.d -nostdinc -isystem /opt/iwmmxt-1.0.0/lib/gcc/arm-linux/3.4.3/include -D__KERNEL__ -Iinclude  -Wall -Wstrict-prototypes -Wno-trigraphs -fno-strict-aliasing -fno-common -ffreestanding -Os     -fno-omit-frame-pointer -fno-omit-frame-pointer -mapcs -mno-sched-prolog -mlittle-endian -mapcs-32 -D__LINUX_ARM_ARCH__=5 -march=armv5te -mtune=xscale -Wa,-mcpu=xscale -malignment-traps -msoft-float -Uarm -Wdeclaration-after-statement    -DMODULE -DKBUILD_BASENAME=clcd -DKBUILD_MODNAME=clcd -c -o /XHyper270-TKU/IEB_Device/clcd/clcd.o /XHyper270-TKU/IEB_Device/clcd/clcd.c
+cmd_/root/embeded/IEB_Device/clcd/clcd.o := /opt/iwmmxt-1.0.0/bin/arm-linux-gcc -Wp,-MD,/root/embeded/IEB_Device/clcd/.clcd.o.d -nostdinc -isystem /opt/iwmmxt-1.0.0/lib/gcc/arm-linux/3.4.3/include -D__KERNEL__ -Iinclude  -Wall -Wstrict-prototypes -Wno-trigraphs -fno-strict-aliasing -fno-common -ffreestanding -Os     -fno-omit-frame-pointer -fno-omit-frame-pointer -mapcs -mno-sched-prolog -mlittle-endian -mapcs-32 -D__LINUX_ARM_ARCH__=5 -march=armv5te -mtune=xscale -Wa,-mcpu=xscale -malignment-traps -msoft-float -Uarm -Wdeclaration-after-statement    -DMODULE -DKBUILD_BASENAME=clcd -DKBUILD_MODNAME=clcd -c -o /root/embeded/IEB_Device/clcd/clcd.o /root/embeded/IEB_Device/clcd/clcd.c
 
-deps_/XHyper270-TKU/IEB_Device/clcd/clcd.o := \
-  /XHyper270-TKU/IEB_Device/clcd/clcd.c \
+deps_/root/embeded/IEB_Device/clcd/clcd.o := \
+  /root/embeded/IEB_Device/clcd/clcd.c \
   include/linux/delay.h \
   include/asm/delay.h \
   include/linux/poll.h \
@@ -257,6 +257,6 @@ deps_/XHyper270-TKU/IEB_Device/clcd/clcd.o := \
   include/asm/arch/xhyper270tku.h \
   include/asm/arch/io.h \
 
-/XHyper270-TKU/IEB_Device/clcd/clcd.o: $(deps_/XHyper270-TKU/IEB_Device/clcd/clcd.o)
+/root/embeded/IEB_Device/clcd/clcd.o: $(deps_/root/embeded/IEB_Device/clcd/clcd.o)
 
-$(deps_/XHyper270-TKU/IEB_Device/clcd/clcd.o):
+$(deps_/root/embeded/IEB_Device/clcd/clcd.o):

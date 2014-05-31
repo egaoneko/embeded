@@ -10,7 +10,11 @@
 int save_history(char *s, char *r, int flag){
 	struct history record;
 	int b_Id = 1;
-	FILE *fp = fopen("history.txt", "a+b");
+	FILE *fp = fopen("history.txt", "r+b"); //r+ : overwrite, w+ : rewrite, a+ : append
+
+	if (fp == NULL){
+		fp = fopen("history.txt", "a+b");
+	}
 
 	fseek(fp, 0L, SEEK_SET);
 	do{
@@ -23,6 +27,7 @@ int save_history(char *s, char *r, int flag){
 
 	if (flag != 0)
 		b_Id = flag;
+
 
 	record.id = b_Id;
 	strcpy(record.exp, s);

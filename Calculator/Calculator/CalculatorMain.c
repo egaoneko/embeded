@@ -159,3 +159,39 @@ int do_to_str(double d, char* r) {
 		r[CLEN - 1] = '\0';
 	}
 }
+
+int exp_checker(char* s) {
+	int len = strlen(s);
+	int i;
+	int opt_cnt = 0, dgt_cnt = 0, brkl_cnt = 0, brkr_cnt = 0;
+
+
+	for (i = 0; i< len; i++){
+		if (isdigit(s[i])){
+			dgt_cnt++;
+			continue;
+		}
+
+		switch (s[i]){
+		case '(':
+			brkl_cnt++;
+			break;
+		case ')':
+			brkr_cnt++;
+			break;
+		case '+':
+		case '-':
+		case '*':
+		case '/':
+			opt_cnt++;
+			break;
+		}
+	}
+
+	if (brkl_cnt != brkr_cnt)
+		return -1;
+	else if ((dgt_cnt - 1) != opt_cnt)
+		return -1;
+
+	return 0;
+}

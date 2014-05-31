@@ -9,8 +9,16 @@
 int open_history(char *s, char *r, int flag)  {
 	struct history record;
 	char str[] = "Not Exist";
+	char str2[] = "Not Exist File";
 
 	FILE *fp = fopen("history.txt", "rb");
+
+	if (fp == NULL){
+		strcpy(s, str2);
+		strcpy(r, str2);
+		fclose(fp);
+		return -1;
+	}
 
 	fseek(fp, (flag - START_ID) * sizeof(record), SEEK_SET);
 	if ((fread(&record, sizeof(record), 1, fp) > 0) && (record.id != 0)){

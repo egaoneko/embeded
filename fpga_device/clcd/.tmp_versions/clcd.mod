@@ -1,2 +1,2 @@
-/root/문서/fpga_device/clcd/clcd.ko
-/root/문서/fpga_device/clcd/clcd.o
+/root/embeded/fpga_device/clcd/clcd.ko
+/root/embeded/fpga_device/clcd/clcd.o

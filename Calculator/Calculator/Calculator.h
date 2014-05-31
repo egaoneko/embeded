@@ -7,6 +7,7 @@
 void spray(char before[LEN], char in[LEN]);
 int isFun(char in);
 int do_to_str(double d, char* r);
+int exp_checker(char* s);
 
 
 #endif

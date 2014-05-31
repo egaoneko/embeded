@@ -15,28 +15,43 @@ static int  lcdFd = (-1);
 
 main(int ac, char *av[])
 {
-    int n;
-    char        buf[MAXCHR];
+	int n;
+	char str[MAXCHR];
+	char buf[MAXCHR];
+	lcdFd = open(lcdDev, O_RDWR);
+	if (lcdFd < 0){
+		fprintf(stderr, "Cannot open CLCD (%d)", lcdFd);
+		exit(2);
+	}
 
-    lcdFd = open( lcdDev, O_RDWR);
-    if (lcdFd < 0) {
-        fprintf(stderr, "cannot open LCD (%d)", lcdFd);
-        exit(2);
-    }
-
-	ioctl(lcdFd, 0, 0);
-//	sleep(1);
+	printf("\n");
+	printf("     [Character LCD TEST]     \n");
+	printf("------------------------------\n");
+	printf("     Input string! (MAX = 32) \n");
+	printf("     [Ctrl + C] -> Quit	      \n");
+	printf("------------------------------\n");
 	
-    memset(buf, 0, sizeof(buf));
-    if (ac > 1) {
-        n = strlen(av[1]);
+	while(1)
+	{
+		memset(str, 0, sizeof(str));
+        	memset(buf, 0, sizeof(buf));
+		fgets(str, MAXCHR, stdin);
 
-        if (n > MAXCHR)
-            n = MAXCHR; //plus the newline
-		memcpy(buf, av[1], n);
-    }
+		if(str[0] == 'q' && str[1] == 'u' && str[2] == 'i' && str[3] == 't')
+			break;
 	
-	write(lcdFd, buf, MAXCHR);
+		n = strlen(str);
+	        if (n > MAXCHR)
+        	    n = MAXCHR;
+        	str[n-1]='\0';
+		memcpy(buf, str, n);
+		
+		printf("%s\n", buf);
+		write(lcdFd, buf, MAXCHR);
+	}
+	printf("Exit Program\n");
+	close(lcdFd);
+	return 0;
 
 }
 

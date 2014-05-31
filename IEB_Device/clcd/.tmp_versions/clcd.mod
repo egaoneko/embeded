@@ -1,2 +1,2 @@
-/XHyper270-TKU/IEB_Device/clcd/clcd.ko
-/XHyper270-TKU/IEB_Device/clcd/clcd.o
+/root/embeded/IEB_Device/clcd/clcd.ko
+/root/embeded/IEB_Device/clcd/clcd.o
