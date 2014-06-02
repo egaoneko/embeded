@@ -8,6 +8,9 @@
 #include    <stdio.h>
 #include    <fcntl.h>
 
+ssize_t writeup (struct file *filp, const char *buf, size_t count){};
+ssize_t writedn (struct file *filp, const char *buf, size_t count){};
+
 static char lcdDev[] = "/dev/clcd";
 static int  lcdFd = (-1);
 
@@ -18,6 +21,7 @@ main(int ac, char *av[])
 	int n;
 	char str[MAXCHR];
 	char buf[MAXCHR];
+	char str2[MAXCHR]="0123456789      0123456789      ";
 	lcdFd = open(lcdDev, O_RDWR);
 	if (lcdFd < 0){
 		fprintf(stderr, "Cannot open CLCD (%d)", lcdFd);
@@ -48,6 +52,7 @@ main(int ac, char *av[])
 		
 		printf("%s\n", buf);
 		write(lcdFd, buf, MAXCHR);
+		write(lcdFd, str2, MAXCHR);
 	}
 	printf("Exit Program\n");
 	close(lcdFd);

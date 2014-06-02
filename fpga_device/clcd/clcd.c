@@ -112,6 +112,21 @@ static void string_out_dn(char *str)
 	}
 }
 
+static void make_str(char *str1, char *str2, int flag)
+{
+	int i;
+	if(flag==0){
+		for(i=0; i<16; i++) {
+			str1[i]=str2[i];
+		}
+	}
+	else if(flag==1){
+		for(i=16; i<32; i++) {
+			str1[i-16]=str2[i];
+		}
+	}
+}
+
 static int clcd_open (struct inode *inode, struct file *filp)
 {
     return 0;          /* success */
@@ -140,50 +155,27 @@ static int clcd_ioctl(struct inode *inode, struct file *filp, unsigned int cmd, 
 static ssize_t clcd_write (struct file *filp, const char *buf, size_t count, loff_t *f_pos)
 {
     char data[32];
+    char data_up[16];
+    char data_dn[16];
 
     memset(data, 0 , 32);
+    memset(data_up, 0 , 16);
+    memset(data_dn, 0 , 16);
     copy_from_user(data, buf, count);
+    make_str(data_up, data, 0);
+    make_str(data_dn, data, 1);
 
     lcd_init();
-    string_out(data);
+
+    string_out_up(data_up);
+    string_out_dn(data_dn);
 
 
     return 0;
 }
-
-static ssize_t clcd_writeup (struct file *filp, const char *buf, size_t count, loff_t *f_pos)
-{
-    char data[16];
-
-    memset(data, 0 , 16);
-    copy_from_user(data, buf, count);
-
-    lcd_init();
-    string_out_up(data);
-
-
-    return 0;
-}
-
-static ssize_t clcd_writedn (struct file *filp, const char *buf, size_t count, loff_t *f_pos)
-{
-    char data[16];
-
-    memset(data, 0 , 16);
-    copy_from_user(data, buf, count);
-
-    lcd_init();
-    string_out_dn(data);
-
-
-    return 0;
-}
-
 	
 static struct file_operations clcd_fops = {
     .write	=	clcd_write,
-    .writeup	=	clcd_writeup,
-    .writedn	=	clcd_writedn,
     .ioctl	=	clcd_ioctl,
     .open	=	clcd_open,
     .release	=	clcd_release,
