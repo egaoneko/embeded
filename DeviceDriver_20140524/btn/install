@@ -1,0 +1,13 @@
+#!/bin/sh
+DEV_FILE=btn
+DEV_NAME=BTN
+
+/sbin/rmmod $DEV_FILE &> /dev/null
+/sbin/insmod $DEV_FILE.ko
+
+/bin/rm /dev/$DEV_NAME &> /dev/null
+
+/bin/mknod /dev/$DEV_NAME c 241 0
+
+./btn_test
+

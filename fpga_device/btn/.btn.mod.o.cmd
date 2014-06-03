@@ -1,34 +1,50 @@
-cmd_/root/embeded/IEB_Device/bled/led.o := /opt/iwmmxt-1.0.0/bin/arm-linux-gcc -Wp,-MD,/root/embeded/IEB_Device/bled/.led.o.d -nostdinc -isystem /opt/iwmmxt-1.0.0/lib/gcc/arm-linux/3.4.3/include -D__KERNEL__ -Iinclude  -Wall -Wstrict-prototypes -Wno-trigraphs -fno-strict-aliasing -fno-common -ffreestanding -Os     -fno-omit-frame-pointer -fno-omit-frame-pointer -mapcs -mno-sched-prolog -mlittle-endian -mapcs-32 -D__LINUX_ARM_ARCH__=5 -march=armv5te -mtune=xscale -Wa,-mcpu=xscale -malignment-traps -msoft-float -Uarm -Wdeclaration-after-statement    -DMODULE -DKBUILD_BASENAME=led -DKBUILD_MODNAME=led -c -o /root/embeded/IEB_Device/bled/led.o /root/embeded/IEB_Device/bled/led.c
+cmd_/root/embeded/fpga_device/btn/btn.mod.o := /opt/iwmmxt-1.0.0/bin/arm-linux-gcc -Wp,-MD,/root/embeded/fpga_device/btn/.btn.mod.o.d -nostdinc -isystem /opt/iwmmxt-1.0.0/lib/gcc/arm-linux/3.4.3/include -D__KERNEL__ -Iinclude  -Wall -Wstrict-prototypes -Wno-trigraphs -fno-strict-aliasing -fno-common -ffreestanding -Os     -fno-omit-frame-pointer -fno-omit-frame-pointer -mapcs -mno-sched-prolog -mlittle-endian -mapcs-32 -D__LINUX_ARM_ARCH__=5 -march=armv5te -mtune=xscale -Wa,-mcpu=xscale -malignment-traps -msoft-float -Uarm -Wdeclaration-after-statement     -DKBUILD_BASENAME=btn -DKBUILD_MODNAME=btn -DMODULE -c -o /root/embeded/fpga_device/btn/btn.mod.o /root/embeded/fpga_device/btn/btn.mod.c
 
-deps_/root/embeded/IEB_Device/bled/led.o := \
-  /root/embeded/IEB_Device/bled/led.c \
-  include/linux/poll.h \
-  include/asm/poll.h \
-  include/linux/compiler.h \
-  include/linux/compiler-gcc3.h \
-  include/linux/compiler-gcc.h \
-  include/linux/wait.h \
+deps_/root/embeded/fpga_device/btn/btn.mod.o := \
+  /root/embeded/fpga_device/btn/btn.mod.c \
+    $(wildcard include/config/module/unload.h) \
+  include/linux/module.h \
+    $(wildcard include/config/modules.h) \
+    $(wildcard include/config/modversions.h) \
+    $(wildcard include/config/kallsyms.h) \
   include/linux/config.h \
     $(wildcard include/config/h.h) \
-  include/linux/list.h \
-  include/linux/stddef.h \
-  include/linux/prefetch.h \
+  include/linux/sched.h \
+    $(wildcard include/config/keys.h) \
+    $(wildcard include/config/schedstats.h) \
+    $(wildcard include/config/smp.h) \
+    $(wildcard include/config/bsd/process/acct.h) \
+    $(wildcard include/config/numa.h) \
+    $(wildcard include/config/hotplug/cpu.h) \
+    $(wildcard include/config/security.h) \
+    $(wildcard include/config/preempt.h) \
+    $(wildcard include/config/magic/sysrq.h) \
+    $(wildcard include/config/pm.h) \
+  include/asm/param.h \
+  include/asm/arch/param.h \
+  include/linux/capability.h \
   include/linux/types.h \
     $(wildcard include/config/uid16.h) \
   include/linux/posix_types.h \
+  include/linux/stddef.h \
+  include/linux/compiler.h \
+  include/linux/compiler-gcc3.h \
+  include/linux/compiler-gcc.h \
   include/asm/posix_types.h \
   include/asm/types.h \
-  include/asm/processor.h \
-  include/asm/ptrace.h \
-    $(wildcard include/config/arm/thumb.h) \
-    $(wildcard include/config/smp.h) \
-  include/asm/procinfo.h \
-  include/asm/cache.h \
+  include/linux/spinlock.h \
+    $(wildcard include/config/debug/spinlock.h) \
+    $(wildcard include/config/lockmeter.h) \
+  include/linux/preempt.h \
+    $(wildcard include/config/debug/preempt.h) \
+  include/linux/linkage.h \
+  include/asm/linkage.h \
+  include/linux/thread_info.h \
+  include/linux/bitops.h \
+  include/asm/bitops.h \
   include/asm/system.h \
     $(wildcard include/config/cpu/sa1100.h) \
     $(wildcard include/config/cpu/sa110.h) \
-  include/linux/linkage.h \
-  include/asm/linkage.h \
   include/asm/proc-fns.h \
     $(wildcard include/config/cpu/32.h) \
     $(wildcard include/config/cpu/arm610.h) \
@@ -60,18 +76,11 @@ deps_/root/embeded/IEB_Device/bled/led.o := \
   include/asm/memory.h \
     $(wildcard include/config/discontigmem.h) \
   include/asm/arch/memory.h \
-  include/linux/spinlock.h \
-    $(wildcard include/config/preempt.h) \
-    $(wildcard include/config/debug/spinlock.h) \
-    $(wildcard include/config/lockmeter.h) \
-  include/linux/preempt.h \
-    $(wildcard include/config/debug/preempt.h) \
-  include/linux/thread_info.h \
-  include/linux/bitops.h \
-  include/asm/bitops.h \
   include/asm/thread_info.h \
   include/asm/fpstate.h \
     $(wildcard include/config/iwmmxt.h) \
+  include/asm/ptrace.h \
+    $(wildcard include/config/arm/thumb.h) \
   include/asm/domain.h \
   include/linux/kernel.h \
     $(wildcard include/config/debug/spinlock/sleep.h) \
@@ -84,31 +93,9 @@ deps_/root/embeded/IEB_Device/bled/led.o := \
     $(wildcard include/config/debug/bugverbose.h) \
   include/asm-generic/bug.h \
   include/linux/stringify.h \
+  include/asm/processor.h \
+  include/asm/procinfo.h \
   include/asm/atomic.h \
-  include/asm/current.h \
-  include/linux/string.h \
-  include/asm/string.h \
-  include/linux/mm.h \
-    $(wildcard include/config/sysctl.h) \
-    $(wildcard include/config/mmu.h) \
-    $(wildcard include/config/numa.h) \
-    $(wildcard include/config/stack/growsup.h) \
-    $(wildcard include/config/hugetlb/page.h) \
-    $(wildcard include/config/highmem.h) \
-    $(wildcard include/config/shmem.h) \
-    $(wildcard include/config/proc/fs.h) \
-    $(wildcard include/config/debug/pagealloc.h) \
-  include/linux/sched.h \
-    $(wildcard include/config/keys.h) \
-    $(wildcard include/config/schedstats.h) \
-    $(wildcard include/config/bsd/process/acct.h) \
-    $(wildcard include/config/hotplug/cpu.h) \
-    $(wildcard include/config/security.h) \
-    $(wildcard include/config/magic/sysrq.h) \
-    $(wildcard include/config/pm.h) \
-  include/asm/param.h \
-  include/asm/arch/param.h \
-  include/linux/capability.h \
   include/linux/threads.h \
     $(wildcard include/config/nr/cpus.h) \
   include/linux/timex.h \
@@ -125,11 +112,18 @@ deps_/root/embeded/IEB_Device/bled/led.o := \
   include/linux/rbtree.h \
   include/linux/cpumask.h \
   include/linux/bitmap.h \
+  include/linux/string.h \
+  include/asm/string.h \
   include/linux/errno.h \
   include/asm/errno.h \
   include/asm-generic/errno.h \
   include/asm-generic/errno-base.h \
   include/asm/semaphore.h \
+  include/linux/wait.h \
+  include/linux/list.h \
+  include/linux/prefetch.h \
+  include/asm/cache.h \
+  include/asm/current.h \
   include/linux/rwsem.h \
     $(wildcard include/config/rwsem/generic/spinlock.h) \
   include/linux/rwsem-spinlock.h \
@@ -168,9 +162,9 @@ deps_/root/embeded/IEB_Device/bled/led.o := \
   include/asm/topology.h \
   include/asm-generic/topology.h \
   include/linux/init.h \
-    $(wildcard include/config/modules.h) \
     $(wildcard include/config/hotplug.h) \
   include/linux/kmalloc_sizes.h \
+    $(wildcard include/config/mmu.h) \
     $(wildcard include/config/large/allocs.h) \
   include/asm/percpu.h \
   include/asm-generic/percpu.h \
@@ -179,59 +173,37 @@ deps_/root/embeded/IEB_Device/bled/led.o := \
   include/linux/aio.h \
   include/linux/workqueue.h \
   include/linux/aio_abi.h \
-  include/linux/prio_tree.h \
-  include/linux/fs.h \
-    $(wildcard include/config/dnotify.h) \
-    $(wildcard include/config/quota.h) \
-    $(wildcard include/config/epoll.h) \
-    $(wildcard include/config/auditsyscall.h) \
-  include/linux/limits.h \
-  include/linux/ioctl.h \
-  include/asm/ioctl.h \
-  include/linux/kdev_t.h \
-  include/linux/dcache.h \
-  include/linux/rcupdate.h \
   include/linux/stat.h \
   include/asm/stat.h \
+  include/linux/kmod.h \
+    $(wildcard include/config/kmod.h) \
+  include/linux/elf.h \
+  include/asm/elf.h \
+  include/asm/user.h \
   include/linux/kobject.h \
   include/linux/sysfs.h \
     $(wildcard include/config/sysfs.h) \
   include/linux/kref.h \
   include/linux/kobject_uevent.h \
     $(wildcard include/config/kobject/uevent.h) \
-  include/linux/radix-tree.h \
-  include/linux/audit.h \
-    $(wildcard include/config/audit.h) \
-  include/linux/quota.h \
-  include/linux/dqblk_xfs.h \
-  include/linux/dqblk_v1.h \
-  include/linux/dqblk_v2.h \
-  include/linux/nfs_fs_i.h \
-  include/linux/nfs.h \
-  include/linux/sunrpc/msg_prot.h \
-  include/linux/fcntl.h \
-  include/asm/fcntl.h \
-  include/linux/err.h \
-  include/asm/pgtable.h \
-  include/asm-generic/4level-fixup.h \
-  include/asm/arch/vmalloc.h \
-  include/asm-generic/pgtable.h \
-  include/linux/page-flags.h \
-    $(wildcard include/config/swap.h) \
-  include/asm/uaccess.h \
-  include/linux/ioport.h \
-  include/asm/io.h \
-  include/asm/arch/hardware.h \
-    $(wildcard include/config/arch/pxa.h) \
-    $(wildcard include/config/mach/xhyper27x.h) \
-  include/asm/arch/sram.h \
-  include/asm/arch/xhyper27x.h \
-    $(wildcard include/config/mach/xhyper270a.h) \
-    $(wildcard include/config/mach/xhyper272a.h) \
-    $(wildcard include/config/mach/xhyper270tku.h) \
-  include/asm/arch/xhyper270tku.h \
-  include/asm/arch/io.h \
+  include/linux/moduleparam.h \
+  include/asm/local.h \
+  include/asm-generic/local.h \
+  include/linux/hardirq.h \
+    $(wildcard include/config/preempt/bkl.h) \
+    $(wildcard include/config/virt/cpu/accounting.h) \
+  include/linux/smp_lock.h \
+    $(wildcard include/config/lock/kernel.h) \
+  include/asm/hardirq.h \
+  include/asm/irq.h \
+  include/asm/arch/irqs.h \
+    $(wildcard include/config/sa1111.h) \
+    $(wildcard include/config/arch/lubbock.h) \
+  include/linux/irq_cpustat.h \
+  include/asm/module.h \
+  include/linux/vermagic.h \
+  include/linux/version.h \
 
-/root/embeded/IEB_Device/bled/led.o: $(deps_/root/embeded/IEB_Device/bled/led.o)
+/root/embeded/fpga_device/btn/btn.mod.o: $(deps_/root/embeded/fpga_device/btn/btn.mod.o)
 
-$(deps_/root/embeded/IEB_Device/bled/led.o):
+$(deps_/root/embeded/fpga_device/btn/btn.mod.o):

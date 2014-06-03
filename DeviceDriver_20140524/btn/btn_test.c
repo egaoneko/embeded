@@ -11,7 +11,7 @@
 #include <stdio.h>
 #include <fcntl.h>
 
-static char btn_dev[] = "/dev/btn";
+static char btn_dev[] = "/dev/BTN";
 static int  btn_fd = (-1);
 
 #define GPIO_BTN_READ       0x1000
@@ -20,7 +20,7 @@ int main()
 {
 	char  buf;
 
-	if(( btn_fd = open( "/dev/btn",  O_RDONLY)) < 0){ 
+	if(( btn_fd = open( btn_dev, O_RDWR )) < 0){ 
 		printf("Failed to open %s\n", btn_dev);
 		exit(-1);
 	}

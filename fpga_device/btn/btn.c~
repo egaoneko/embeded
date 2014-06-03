@@ -37,7 +37,7 @@
 #define IRQ_BTN4        IRQ_GPIO(37)   //FF-DSR
 
 #define BTN_MAJOR 	241
-#define BTN_NAME     	"btn"
+#define BTN_NAME     	"BTN"
 
 #define GPIO_BTN_READ	0x1000
 

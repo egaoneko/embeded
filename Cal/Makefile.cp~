@@ -1,0 +1,9 @@
+CC 	:= /opt/iwmmxt-1.0.0/bin/arm-linux-gcc
+
+Main : Main.o dev.o
+	/opt/iwmmxt-1.0.0/bin/arm-linux-gcc -o Main Main.o dev.o
+Main.o : Main.c dev.h
+	/opt/iwmmxt-1.0.0/bin/arm-linux-gcc -c Main.c
+dev.o : dev.c dev.h
+	/opt/iwmmxt-1.0.0/bin/arm-linux-gcc -c dev.c
+

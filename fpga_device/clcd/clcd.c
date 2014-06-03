@@ -65,6 +65,11 @@ static void string_out(char *str)
 	lcd_init();
 
 	for (s=str; *s; s++){
+		if(*s=='\n'){
+			udelay(100);
+			*((volatile unsigned char *)(mem_base_wr)) = 0xC0;
+			continue;
+		}
 	*((volatile unsigned char *)(mem_base_rs)) = *s; 
 		if(i == 15) { 
 			udelay(100);
@@ -155,20 +160,21 @@ static int clcd_ioctl(struct inode *inode, struct file *filp, unsigned int cmd, 
 static ssize_t clcd_write (struct file *filp, const char *buf, size_t count, loff_t *f_pos)
 {
     char data[32];
-    char data_up[16];
-    char data_dn[16];
+    //char data_up[16];
+    //char data_dn[16];
 
     memset(data, 0 , 32);
-    memset(data_up, 0 , 16);
-    memset(data_dn, 0 , 16);
+    //memset(data_up, 0 , 16);
+    //memset(data_dn, 0 , 16);
     copy_from_user(data, buf, count);
-    make_str(data_up, data, 0);
-    make_str(data_dn, data, 1);
+    //make_str(data_up, data, 0);
+   // make_str(data_dn, data, 1);
 
-    lcd_init();
+    //lcd_init();
 
-    string_out_up(data_up);
-    string_out_dn(data_dn);
+    string_out(data);
+    //string_out_up(data_up);
+    //string_out_dn(data_dn);
 
 
     return 0;

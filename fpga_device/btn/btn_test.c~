@@ -20,7 +20,7 @@ int main()
 {
 	char  buf;
 
-	if(( btn_fd = open( "/dev/btn",  O_RDONLY)) < 0){ 
+	if(( btn_fd = open( btn_dev,  O_RDONLY)) < 0){ 
 		printf("Failed to open %s\n", btn_dev);
 		exit(-1);
 	}

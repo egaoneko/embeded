@@ -27,7 +27,7 @@
 #define K_SUB   8
 #define K_MUL   12
 #define K_DIV   16
-#define K_FUN   15
+#define K_EQU   15
 
 /* CLCD */
 #define	MAXCHR  32
@@ -71,7 +71,6 @@ void fnd_clear(char* s, char* fnd_buf);
 void error_handling(char *msg, int fd);
 
 /* DOT_FUN */
-unsigned char dot_col[5] = {0};
 unsigned char asc_to_dot(int asc);
 
 #endif
