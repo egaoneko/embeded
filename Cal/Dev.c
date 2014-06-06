@@ -4,7 +4,7 @@
 
 unsigned char dot_col[5] = {0};
 
-/* KEY_FUN */
+/* KEY_FUN 
 unsigned char key_get(int tmo)
 {
 	unsigned char b;
@@ -26,7 +26,7 @@ unsigned char key_get(int tmo)
 		read(keyFd, &b, sizeof(b));
 		return(b);
 	}
-}
+} */
 
 /* FND_FUN */
 unsigned char asc_to_fnd(int n){

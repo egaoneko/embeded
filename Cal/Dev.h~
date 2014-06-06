@@ -50,9 +50,6 @@
  */
 #define MAXFND		8
 
-/* BTN */
-#define GPIO_BTN_READ       0x1000
-
 /* Dev_FD */
 static char keyDev[] = "/dev/key";
 static int  keyFd = (-1);

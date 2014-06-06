@@ -1,0 +1,1 @@
+cmd_/root/embeded/DeviceDriver_20140524/btn/btn.ko := /opt/iwmmxt-1.0.0/bin/arm-linux-ld -EL  -r -o /root/embeded/DeviceDriver_20140524/btn/btn.ko /root/embeded/DeviceDriver_20140524/btn/btn.o /root/embeded/DeviceDriver_20140524/btn/btn.mod.o

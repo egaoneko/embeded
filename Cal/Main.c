@@ -4,6 +4,54 @@
 #include "InfixCalculator.h"
 #include "History.h"
 
+/* KEY_FUN */
+unsigned char key_get(int tmo)
+{
+	unsigned char b;
+
+	if (tmo){
+		if (tmo < 0)
+			tmo = ~tmo * 1000;
+		else
+			tmo *= 1000000;
+		while (tmo > 0){
+			usleep(400000);
+			ioctl(keyFd, FIONREAD, &b);
+			if (b) return(b);
+			tmo -= 10000;
+		}
+		return(-1);
+	}
+	else {
+		read(keyFd, &b, sizeof(b));
+		return(b);
+	}
+} 
+
+/* BTN_FUN */
+unsigned char btn_get(int tmo)
+{
+	unsigned char b;
+
+	if (tmo){
+		if (tmo < 0)
+			tmo = ~tmo * 1000;
+		else
+			tmo *= 1000000;
+		while (tmo > 0){
+			usleep(400000);
+			ioctl(btnFd, GPIO_BTN_READ, &b);
+			if (b) return(b);
+			tmo -= 10000;
+		}
+		return(-1);
+	}
+	else {
+		read(btnFd, &b, sizeof(b));
+		return(b);
+	}
+} 
+
 /* Sample */
 int main(int ac, char *av[])
 {
@@ -32,6 +80,9 @@ int main(int ac, char *av[])
 	unsigned char fnd_buf[MAXFND + 1];
 	int fndValue[MAXFND] = { 0 };
 
+	/* BTN Init */
+	unsigned char c2;
+
 	if ((keyFd = open(keyDev, O_RDONLY)) < 0){
 		error_handling("KEY", keyFd);
 	}
@@ -44,6 +95,10 @@ int main(int ac, char *av[])
 	if ((fndFd = open(fndDev, O_WRONLY)) < 0){
 		error_handling("FND", fndFd);
 	}
+	if(( btnFd = open(btnDev, O_RDWR )) < 0){ 
+		error_handling("BTN", btnFd);
+	}
+
 
 	printf("\n");
 	printf("--------------------------\n");
@@ -70,9 +125,11 @@ int main(int ac, char *av[])
 		if (strcmp(exp, null) == 0) {
 			flag_s = 1;
 		}
-		
-		c = key_get(10);
 
+		c = key_get(10);
+		c2 = btn_get(10);
+
+		printf("##%d\n",c2);
 
 		switch (c){
 		case K_NUM0:		
@@ -138,6 +195,7 @@ int main(int ac, char *av[])
 			strcpy(before, exp);
 			memset(exp, 0, sizeof(exp));
 			memset(res, 0, sizeof(res));
+			continue;
 			break;
 		default: /* timeout */
 			break;

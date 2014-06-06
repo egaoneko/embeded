@@ -90,9 +90,15 @@ void error_handling(char *msg, int fd)
 void spr_dis(char ch, int lcdFd, int dotFd, char *s, char* lcd, int* idx) {
 	int fnd_end=MAXFND-1;
 	int ch_to_int = ch - '0';
-	lcd[*idx]=ch;
-	lcd[*idx+1]='\0';
-	write(lcdFd, lcd, MAXCHR);
+	
+	if(ch!=0x3D){
+		lcd[*idx]=ch;
+		lcd[*idx+1]='\0';
+		write(lcdFd, lcd, MAXCHR);
+	}
+	else if(ch==0x3D) {
+		lcd[*idx]='\0';
+	}
 	asc_to_dot(ch_to_int);
 	write(dotFd, dot_col, DOT_COL);
 	s[fnd_end] = ch;

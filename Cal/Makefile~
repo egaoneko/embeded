@@ -1,4 +1,4 @@
-Main : Main.o Dev.o Calculator.o HisOpen.o HisSave.o
+Main : Main.o Dev.o Calculator.o HisOpen.o HisSave.o ListBaseStack.o InfixCalculator.o InfixToPostfix.o PostCalculator.o
 	/opt/iwmmxt-1.0.0/bin/arm-linux-gcc -o Main Main.o Dev.o Calculator.o HisOpen.o HisSave.o
 Main.o : Main.c Dev.h Calculator.h InfixCalculator.h History.h
 	/opt/iwmmxt-1.0.0/bin/arm-linux-gcc -c Main.c

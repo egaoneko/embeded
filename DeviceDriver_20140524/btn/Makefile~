@@ -6,7 +6,7 @@ TEST_TARGET = btn_test
 TEST_OBJS   = btn_test.o
 TEST_SRCS   = btn_test.c 
 
-obj-m	:= btn.o
+obj-y	:= btn.o
 
 build: $(TEST_TARGET) 
 	make -C $(KDIR) SUBDIRS=`pwd` modules
