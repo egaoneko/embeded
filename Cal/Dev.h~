@@ -8,7 +8,7 @@
 #include <asm/ioctls.h>
 
 /* Dev_Init */
-#define DEV_NUM	5
+#define DEV_NUM	6
 
 /* KEY */
 #define dbg(x...)       printf(x)
@@ -50,6 +50,9 @@
  */
 #define MAXFND		8
 
+/* BTN */
+#define GPIO_BTN_READ       0x1000
+
 /* Dev_FD */
 static char keyDev[] = "/dev/key";
 static int  keyFd = (-1);
@@ -61,6 +64,8 @@ static char fndDev[] = "/dev/fnd";
 static int  fndFd = (-1);
 static char btnDev[] = "/dev/BTN";
 static int  btnFd = (-1);
+static char ledDev[] = "/dev/led";
+static int  ledFd = (-1);
 
 /* KEY_FUN */
 //unsigned char key_get(int tmo);
@@ -74,5 +79,12 @@ void error_handling(char *msg, int fd);
 
 /* DOT_FUN */
 unsigned char asc_to_dot(int asc);
+
+/* Spray Display */
+//void spr_dis(char ch, int lcdFd, int dotFd, char *s, char* lcd, int* idx);
+//void spr_lcd(int lcdFd, char* exp, char* res) ;
+
+/* LED Write */
+void led_start(int *dev, int num);
 
 #endif

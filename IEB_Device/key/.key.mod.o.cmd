@@ -1,7 +1,7 @@
-cmd_/XHyper270-TKU/IEB_Device/key/key.mod.o := /opt/iwmmxt-1.0.0/bin/arm-linux-gcc -Wp,-MD,/XHyper270-TKU/IEB_Device/key/.key.mod.o.d -nostdinc -isystem /opt/iwmmxt-1.0.0/lib/gcc/arm-linux/3.4.3/include -D__KERNEL__ -Iinclude  -Wall -Wstrict-prototypes -Wno-trigraphs -fno-strict-aliasing -fno-common -ffreestanding -Os     -fno-omit-frame-pointer -fno-omit-frame-pointer -mapcs -mno-sched-prolog -mlittle-endian -mapcs-32 -D__LINUX_ARM_ARCH__=5 -march=armv5te -mtune=xscale -Wa,-mcpu=xscale -malignment-traps -msoft-float -Uarm -Wdeclaration-after-statement     -DKBUILD_BASENAME=key -DKBUILD_MODNAME=key -DMODULE -c -o /XHyper270-TKU/IEB_Device/key/key.mod.o /XHyper270-TKU/IEB_Device/key/key.mod.c
+cmd_/root/embeded/IEB_Device/key/key.mod.o := /opt/iwmmxt-1.0.0/bin/arm-linux-gcc -Wp,-MD,/root/embeded/IEB_Device/key/.key.mod.o.d -nostdinc -isystem /opt/iwmmxt-1.0.0/lib/gcc/arm-linux/3.4.3/include -D__KERNEL__ -Iinclude  -Wall -Wstrict-prototypes -Wno-trigraphs -fno-strict-aliasing -fno-common -ffreestanding -Os     -fno-omit-frame-pointer -fno-omit-frame-pointer -mapcs -mno-sched-prolog -mlittle-endian -mapcs-32 -D__LINUX_ARM_ARCH__=5 -march=armv5te -mtune=xscale -Wa,-mcpu=xscale -malignment-traps -msoft-float -Uarm -Wdeclaration-after-statement     -DKBUILD_BASENAME=key -DKBUILD_MODNAME=key -DMODULE -c -o /root/embeded/IEB_Device/key/key.mod.o /root/embeded/IEB_Device/key/key.mod.c
 
-deps_/XHyper270-TKU/IEB_Device/key/key.mod.o := \
-  /XHyper270-TKU/IEB_Device/key/key.mod.c \
+deps_/root/embeded/IEB_Device/key/key.mod.o := \
+  /root/embeded/IEB_Device/key/key.mod.c \
     $(wildcard include/config/module/unload.h) \
   include/linux/module.h \
     $(wildcard include/config/modules.h) \
@@ -204,6 +204,6 @@ deps_/XHyper270-TKU/IEB_Device/key/key.mod.o := \
   include/linux/vermagic.h \
   include/linux/version.h \
 
-/XHyper270-TKU/IEB_Device/key/key.mod.o: $(deps_/XHyper270-TKU/IEB_Device/key/key.mod.o)
+/root/embeded/IEB_Device/key/key.mod.o: $(deps_/root/embeded/IEB_Device/key/key.mod.o)
 
-$(deps_/XHyper270-TKU/IEB_Device/key/key.mod.o):
+$(deps_/root/embeded/IEB_Device/key/key.mod.o):

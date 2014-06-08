@@ -112,4 +112,46 @@ void spr_lcd(int lcdFd, char* exp, char* res) {
 	write(lcdFd, data, MAXCHR);
 }
 
+/* LED Write */
+void led_start(int *dev, int num){
+  
+	unsigned char data;
 
+	switch(num){
+		case 1:
+			data  =0x7f;
+			write(*dev, &data, sizeof(unsigned char));
+			break;
+		case 2:
+			data  = 0xbf;
+			write(*dev, &data, sizeof(unsigned char));
+			break;
+		case 3:
+			data  = 0xdf;
+			write(*dev, &data, sizeof(unsigned char));
+			break;
+		case 4:
+			data  =0xef;
+			write(*dev, &data, sizeof(unsigned char));
+			break;
+		case 5:
+			data  = 0xf7; 
+			write(*dev, &data, sizeof(unsigned char));
+			break;
+		case 6:
+			data  =0xfb;
+			write(*dev, &data, sizeof(unsigned char));
+			break;
+		case 7:
+			data  = 0xfd; 
+			write(*dev, &data, sizeof(unsigned char));
+			break;
+		case 8:
+			data  = 0xfe;
+			write(*dev, &data, sizeof(unsigned char));
+			break;
+		case 0:
+			break;
+	}
+
+ }

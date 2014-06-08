@@ -8,7 +8,7 @@
 #include <asm/ioctls.h>
 
 /* Dev_Init */
-#define DEV_NUM	5
+#define DEV_NUM	6
 
 /* KEY */
 #define dbg(x...)       printf(x)
@@ -64,6 +64,8 @@ static char fndDev[] = "/dev/fnd";
 static int  fndFd = (-1);
 static char btnDev[] = "/dev/BTN";
 static int  btnFd = (-1);
+static char ledDev[] = "/dev/led";
+static int  ledFd = (-1);
 
 /* KEY_FUN */
 //unsigned char key_get(int tmo);
@@ -77,5 +79,8 @@ void error_handling(char *msg, int fd);
 
 /* DOT_FUN */
 unsigned char asc_to_dot(int asc);
+
+/* LED Write */
+void led_start(int *dev, int num);
 
 #endif

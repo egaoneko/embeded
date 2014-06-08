@@ -1,56 +1,20 @@
 #include <stdio.h>
 #include <fcntl.h>
+#include <pthread.h>
 #include "Dev.h"
 #include "InfixCalculator.h"
 #include "History.h"
 
 /* KEY_FUN */
-unsigned char key_get(int tmo)
-{
-	unsigned char b;
-
-	if (tmo){
-		if (tmo < 0)
-			tmo = ~tmo * 1000;
-		else
-			tmo *= 1000000;
-		while (tmo > 0){
-			usleep(400000);
-			ioctl(keyFd, FIONREAD, &b);
-			if (b) return(b);
-			tmo -= 10000;
-		}
-		return(-1);
-	}
-	else {
-		read(keyFd, &b, sizeof(b));
-		return(b);
-	}
-} 
+unsigned char key_get(int tmo);
 
 /* BTN_FUN */
-unsigned char btn_get(int tmo)
-{
-	unsigned char b;
+unsigned char btn_get(int tmo);
 
-	if (tmo){
-		if (tmo < 0)
-			tmo = ~tmo * 1000;
-		else
-			tmo *= 1000000;
-		while (tmo > 0){
-			usleep(400000);
-			ioctl(btnFd, GPIO_BTN_READ, &b);
-			if (b) return(b);
-			tmo -= 10000;
-		}
-		return(-1);
-	}
-	else {
-		read(btnFd, &b, sizeof(b));
-		return(b);
-	}
-} 
+/* BTN_Thread */
+void * handle_btn(void * arg);
+pthread_mutex_t mutx;
+int btn_flag[4]={0,};
 
 /* Sample */
 int main(int ac, char *av[])
@@ -60,6 +24,7 @@ int main(int ac, char *av[])
 	int idx=0;
 	int flag_s = 0;
 	char null[5] = "NULL";
+	pthread_t t_id;
 
 	/* KEY Init */
 	unsigned char c;
@@ -80,9 +45,6 @@ int main(int ac, char *av[])
 	unsigned char fnd_buf[MAXFND + 1];
 	int fndValue[MAXFND] = { 0 };
 
-	/* BTN Init */
-	unsigned char c2;
-
 	if ((keyFd = open(keyDev, O_RDONLY)) < 0){
 		error_handling("KEY", keyFd);
 	}
@@ -95,10 +57,15 @@ int main(int ac, char *av[])
 	if ((fndFd = open(fndDev, O_WRONLY)) < 0){
 		error_handling("FND", fndFd);
 	}
-	//if(( btnFd = open(btnDev, O_RDWR )) < 0){ 
-	//	error_handling("BTN", btnFd);
-	//}
+	if(( btnFd = open(btnDev, O_RDWR )) < 0){ 
+		error_handling("BTN", btnFd);
+	}
+	if(( ledFd = open(btnDev, O_RDWR )) < 0){ 
+		error_handling("LED", ledFd);
+	}
 
+	pthread_mutex_init(&mutx, NULL);
+	pthread_create(&t_id, NULL, handle_btn, (void*)&btnFd);
 
 	printf("\n");
 	printf("--------------------------\n");
@@ -127,9 +94,6 @@ int main(int ac, char *av[])
 		}
 
 		c = key_get(10);
-		//c2 = btn_get(10);
-
-		printf("##%d\n",c2);
 
 		switch (c){
 		case K_NUM0:		
@@ -229,9 +193,99 @@ int main(int ac, char *av[])
 		idx++;
 	}
 	printf("Exit Program\n");
+	pthread_cancel(t_id);
 	close(keyFd);
 	close(dotFd);
 	close(fndFd);
 	close(lcdFd);
+	close(btnFd);
+	close(ledFd);
 	return 0;
+}
+
+/* KEY_FUN */
+unsigned char key_get(int tmo)
+{
+	unsigned char b;
+
+	if (tmo){
+		if (tmo < 0)
+			tmo = ~tmo * 1000;
+		else
+			tmo *= 1000000;
+		while (tmo > 0){
+			usleep(400000);
+			ioctl(keyFd, FIONREAD, &b);
+			if (b) return(b);
+			tmo -= 10000;
+		}
+		return(-1);
+	}
+	else {
+		read(keyFd, &b, sizeof(b));
+		return(b);
+	}
+} 
+
+/* BTN_FUN */
+unsigned char btn_get(int tmo)
+{
+	unsigned char b;
+
+	if (tmo){
+		if (tmo < 0)
+			tmo = ~tmo * 1000;
+		else
+			tmo *= 1000000;
+		while (tmo > 0){
+			usleep(400000);
+			ioctl(btnFd, GPIO_BTN_READ, &b);
+			if (b) return(b);
+			tmo -= 10000;
+		}
+		return(-1);
+	}
+	else {
+		read(btnFd, &b, sizeof(b));
+		return(b);
+	}
+} 
+
+/* BTN_Thread */
+void * handle_btn(void * arg)
+{
+	int bf=*((int*)arg);
+	char  buf;
+
+	while(1) {
+	read( bf, &buf, sizeof(buf));
+	printf("GPIO BTN %x PUSH \n",buf);
+	switch(buf) {
+		case 1:
+			pthread_mutex_lock(&mutx);
+			btn_flag[0]=1;
+			pthread_mutex_unlock(&mutx);
+			break;
+		case 2:
+			pthread_mutex_lock(&mutx);
+			if(btn_flag[1]==0)			
+				btn_flag[1]=1;
+			else
+				btn_flag[1]=0;
+			pthread_mutex_unlock(&mutx);
+			break;
+		case 3:
+			pthread_mutex_lock(&mutx);
+			btn_flag[2]=1;
+			pthread_mutex_unlock(&mutx);
+			break;
+		case 4:
+			pthread_mutex_lock(&mutx);
+			btn_flag[3]=1;
+			pthread_mutex_unlock(&mutx);
+			break;
+		default:
+			break;
+		}
+	}
 }
