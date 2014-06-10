@@ -81,6 +81,6 @@ void error_handling(char *msg, int fd);
 unsigned char asc_to_dot(int asc);
 
 /* LED Write */
-void led_start(int *dev, int num);
+void led_start(int dev, int num);
 
 #endif

@@ -80,10 +80,6 @@ void error_handling(char *msg, int fd);
 /* DOT_FUN */
 unsigned char asc_to_dot(int asc);
 
-/* Spray Display */
-//void spr_dis(char ch, int lcdFd, int dotFd, char *s, char* lcd, int* idx);
-//void spr_lcd(int lcdFd, char* exp, char* res) ;
-
 /* LED Write */
 void led_start(int *dev, int num);
 

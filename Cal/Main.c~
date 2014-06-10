@@ -24,6 +24,7 @@ int main(int ac, char *av[])
 	int idx=0;
 	int k;
 	int flag_s = 0;
+	int data;
 	char null[5] = "NULL";
 	pthread_t t_id;
 
@@ -33,17 +34,21 @@ int main(int ac, char *av[])
 	int flag_D=0;
 	int flag_B=0;
 	int flag_H=0;
+	int flag_HE=0;
+	int HL_C=0;
+	int HL_N=0;
 
 	/* KEY Init */
 	unsigned char c;
 
 	/* DOT Init */
 	char ch;
+	unsigned char dot_col_C[5]={0x00, 0x00, 0x00, 0x00, 0x00};
 
 	/* CLCD Init */
 	char exp[MAXCHR]="NULL";
 	char res[MAXCHR];
-	char before[MAXCHR] = "Calculator";
+	char before[MAXCHR] = "   Calculator   ";
 	char b_his_1[LEN];
 	char r_his_1[CLEN];
 	char b_his_2[LEN];
@@ -52,7 +57,7 @@ int main(int ac, char *av[])
 	/* FND Init */
 	int i, n, count;
 	char temp;
-	//char s[MAXFND] = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+	unsigned char fnd_C[MAXFND + 1] = { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
 	char s[MAXFND];
 	unsigned char fnd_buf[MAXFND + 1];
 	int fndValue[MAXFND] = { 0 };
@@ -72,7 +77,7 @@ int main(int ac, char *av[])
 	if(( btnFd = open(btnDev, O_RDWR )) < 0){ 
 		error_handling("BTN", btnFd);
 	}
-	if(( ledFd = open(btnDev, O_RDWR )) < 0){ 
+	if(( ledFd = open(ledDev, O_RDWR )) < 0){ 
 		error_handling("LED", ledFd);
 	}
 
@@ -91,13 +96,12 @@ int main(int ac, char *av[])
 	memset(exp, 0, sizeof(exp));
 	memset(res, 0, sizeof(res));
 
-	while (1){
-		if(idx==32) {
-			memset(exp, 0, sizeof(exp));
-			memset(res, 0, sizeof(res));
-			idx=0;
-		}
+	spr_lcd(lcdFd,"   Calculator   ","");
+	write(dotFd, dot_col_C, DOT_COL);
+	write(fndFd, fnd_C, MAXFND);
+	led_start(ledFd,1);
 
+	while (1){
 		if (flag_s != 0){
 			spr_lcd(before, exp);
 		}
@@ -106,6 +110,18 @@ int main(int ac, char *av[])
 		}
 
 		c = key_get(10);
+
+		if(idx==15) {
+			if(c==K_EQU && btn_flag[3]==0){
+			}
+			else if(c==K_DIV && btn_flag[3]==1){
+			}
+			else{
+				spr_lcd("Too many input", exp);
+				led_start(ledFd,8);
+				continue;
+			}
+		}
 
 		switch (c){
 		case K_NUM0:
@@ -118,13 +134,19 @@ int main(int ac, char *av[])
 				flag_D=0;
 				flag_B=0;
 				flag_H=0;
-				spr_dis(0x30, lcdFd, dotFd, s, exp, &idx, before);
+				if(flag_HE==1)
+					spr_dis(0x30, lcdFd, dotFd, s, exp, &idx, "      EDIT     ");
+				else
+					spr_dis(0x30, lcdFd, dotFd, s, exp, &idx, before);
 			}
 			else{
 				/* Basket Left '(' */
 				if(flag_B==0){
 					fnd_clear(s, fnd_buf);
-					spr_dis(0x28, lcdFd, dotFd, s, exp, &idx, before);
+					if(flag_HE==1)
+						spr_dis(0x28, lcdFd, dotFd, s, exp, &idx, "      EDIT     ");
+					else
+						spr_dis(0x28, lcdFd, dotFd, s, exp, &idx, before);
 					flag_B=1;
 				}
 				else{
@@ -141,7 +163,10 @@ int main(int ac, char *av[])
 				flag_D=0;
 				flag_B=0;
 				flag_H=0;
-				spr_dis(0x31, lcdFd, dotFd, s, exp, &idx, before);
+				if(flag_HE==1)
+					spr_dis(0x31, lcdFd, dotFd, s, exp, &idx, "      EDIT     ");
+				else
+					spr_dis(0x31, lcdFd, dotFd, s, exp, &idx, before);
 			}
 			else{
 				continue;
@@ -156,7 +181,10 @@ int main(int ac, char *av[])
 				flag_D=0;
 				flag_B=0;
 				flag_H=0;
-				spr_dis(0x32, lcdFd, dotFd, s, exp, &idx, before);
+				if(flag_HE==1)
+					spr_dis(0x32, lcdFd, dotFd, s, exp, &idx, "      EDIT     ");
+				else
+					spr_dis(0x32, lcdFd, dotFd, s, exp, &idx, before);
 			}
 			else{
 				continue;
@@ -171,7 +199,10 @@ int main(int ac, char *av[])
 				flag_D=0;
 				flag_B=0;
 				flag_H=0;
-				spr_dis(0x33, lcdFd, dotFd, s, exp, &idx, before);
+				if(flag_HE==1)
+					spr_dis(0x33, lcdFd, dotFd, s, exp, &idx, "      EDIT     ");
+				else
+					spr_dis(0x33, lcdFd, dotFd, s, exp, &idx, before);
 			}
 			else{
 				continue;
@@ -186,7 +217,10 @@ int main(int ac, char *av[])
 				flag_D=0;
 				flag_B=0;
 				flag_H=0;
-				spr_dis(0x34, lcdFd, dotFd, s, exp, &idx, before);
+				if(flag_HE==1)
+					spr_dis(0x34, lcdFd, dotFd, s, exp, &idx, "      EDIT     ");
+				else
+					spr_dis(0x34, lcdFd, dotFd, s, exp, &idx, before);
 			}
 			else{
 				continue;
@@ -201,16 +235,36 @@ int main(int ac, char *av[])
 				flag_D=0;
 				flag_B=0;
 				flag_H=0;
-				spr_dis(0x35, lcdFd, dotFd, s, exp, &idx, before);
+				if(flag_HE==1)
+					spr_dis(0x35, lcdFd, dotFd, s, exp, &idx, "      EDIT     ");
+				else
+					spr_dis(0x35, lcdFd, dotFd, s, exp, &idx, before);
 			}
 			else{
 				if(flag_H==1){
-					/* History Down */
+					/* History Up */
 					fnd_clear(s, fnd_buf);
-					spr_dis(0x44, lcdFd, dotFd, s, exp, &idx, before);
+					spr_dis(0x55, lcdFd, dotFd, s, exp, &idx, before);
 					idx=0;
 					memset(exp, 0, sizeof(exp));
 					memset(res, 0, sizeof(res));
+
+					if(HL_N < HL_C+1){
+						memset(&b_his_1, 0, sizeof(b_his_1));
+						memset(&r_his_1, 0, sizeof(r_his_1));
+						open_history(b_his_1, r_his_1, HL_N);
+						spr_lcd(lcdFd,b_his_1,"______END______");
+					}
+					else{
+						HL_C++;
+						memset(&b_his_1, 0, sizeof(b_his_1));
+						memset(&r_his_1, 0, sizeof(r_his_1));
+						memset(&b_his_2, 0, sizeof(b_his_2));
+						memset(&r_his_2, 0, sizeof(r_his_2));
+						open_history(b_his_1, r_his_1, HL_C);
+						open_history(b_his_2, r_his_2, HL_C-1);
+						spr_lcd(lcdFd,b_his_2,b_his_1);
+					}
 					continue;
 				}
 				else {
@@ -227,7 +281,10 @@ int main(int ac, char *av[])
 				flag_D=0;
 				flag_B=0;
 				flag_H=0;
-				spr_dis(0x36, lcdFd, dotFd, s, exp, &idx, before);
+				if(flag_HE==1)
+					spr_dis(0x36, lcdFd, dotFd, s, exp, &idx, "      EDIT     ");
+				else
+					spr_dis(0x36, lcdFd, dotFd, s, exp, &idx, before);
 			}
 			else{
 				continue;
@@ -242,7 +299,10 @@ int main(int ac, char *av[])
 				flag_D=0;
 				flag_B=0;
 				flag_H=0;
-				spr_dis(0x37, lcdFd, dotFd, s, exp, &idx, before);
+				if(flag_HE==1)
+					spr_dis(0x37, lcdFd, dotFd, s, exp, &idx, "      EDIT     ");
+				else
+					spr_dis(0x37, lcdFd, dotFd, s, exp, &idx, before);
 			}
 			else{
 				continue;
@@ -257,16 +317,36 @@ int main(int ac, char *av[])
 				flag_D=0;
 				flag_B=0;
 				flag_H=0;
-				spr_dis(0x38, lcdFd, dotFd, s, exp, &idx, before);
+				if(flag_HE==1)
+					spr_dis(0x38, lcdFd, dotFd, s, exp, &idx, "      EDIT     ");
+				else
+					spr_dis(0x38, lcdFd, dotFd, s, exp, &idx, before);
 			}
 			else{
 				if(flag_H==1){
-					/* History Up */
+					/* History Down */
 					fnd_clear(s, fnd_buf);
-					spr_dis(0x55, lcdFd, dotFd, s, exp, &idx, before);
+					spr_dis(0x44, lcdFd, dotFd, s, exp, &idx, before);
 					idx=0;
 					memset(exp, 0, sizeof(exp));
 					memset(res, 0, sizeof(res));
+
+					if(HL_C-1==1){
+						memset(&b_his_1, 0, sizeof(b_his_1));
+						memset(&r_his_1, 0, sizeof(r_his_1));
+						open_history(b_his_1, r_his_1, HL_C);
+						spr_lcd(lcdFd,"_____FIRST_____",b_his_1);
+					}
+					else{
+						HL_C--;
+						memset(&b_his_1, 0, sizeof(b_his_1));
+						memset(&r_his_1, 0, sizeof(r_his_1));
+						memset(&b_his_2, 0, sizeof(b_his_2));
+						memset(&r_his_2, 0, sizeof(r_his_2));
+						open_history(b_his_1, r_his_1, HL_C);
+						open_history(b_his_2, r_his_2, HL_C-1);
+						spr_lcd(lcdFd,b_his_2,b_his_1);
+					}
 					continue;
 				}
 				else {
@@ -283,7 +363,10 @@ int main(int ac, char *av[])
 				flag_D=0;
 				flag_B=0;
 				flag_H=0;
-				spr_dis(0x39, lcdFd, dotFd, s, exp, &idx, before);
+				if(flag_HE==1)
+					spr_dis(0x39, lcdFd, dotFd, s, exp, &idx, "      EDIT     ");
+				else
+					spr_dis(0x39, lcdFd, dotFd, s, exp, &idx, before);
 			}
 			else{
 				continue;
@@ -294,7 +377,10 @@ int main(int ac, char *av[])
 			//pthread_mutex_lock(&mutx);
 			if(btn_flag[3]==0){
 				if(flag_E==0 && flag_O==0 && flag_D==0){
-					spr_dis(0x2E, lcdFd, dotFd, s, exp, &idx, before);
+					if(flag_HE==1)
+						spr_dis(0x2E, lcdFd, dotFd, s, exp, &idx, "      EDIT     ");
+					else
+						spr_dis(0x2E, lcdFd, dotFd, s, exp, &idx, before);
 					flag_D=1;
 				}
 				else{
@@ -305,7 +391,10 @@ int main(int ac, char *av[])
 				/* Basket Right ')' */
 				if(flag_B==0){
 					fnd_clear(s, fnd_buf);
-					spr_dis(0x28, lcdFd, dotFd, s, exp, &idx, before);
+					if(flag_HE==1)
+						spr_dis(0x29, lcdFd, dotFd, s, exp, &idx, "      EDIT     ");
+					else
+						spr_dis(0x29, lcdFd, dotFd, s, exp, &idx, before);
 					flag_B=1;
 				}
 				else{
@@ -319,7 +408,10 @@ int main(int ac, char *av[])
 			if(btn_flag[3]==0){
 				if(flag_E==0 && flag_O==0 && flag_D==0){
 					fnd_clear(s, fnd_buf);
-					spr_dis(0x2B, lcdFd, dotFd, s, exp, &idx, before);
+					if(flag_HE==1)
+						spr_dis(0x2B, lcdFd, dotFd, s, exp, &idx, "      EDIT     ");
+					else
+						spr_dis(0x2B, lcdFd, dotFd, s, exp, &idx, before);
 					flag_O=1;
 				}
 				else{
@@ -328,8 +420,10 @@ int main(int ac, char *av[])
 			}
 			else{
 				/* History List */
+				flag_HE=0;
 				flag_H=1;
 				for (k = 1; num_history(k); k++);
+				HL_N=k-1; HL_C=k-1;
 
 				fnd_clear(s, fnd_buf);
 				spr_dis(0x4C, lcdFd, dotFd, s, exp, &idx, before);
@@ -337,13 +431,13 @@ int main(int ac, char *av[])
 				memset(exp, 0, sizeof(exp));
 				memset(res, 0, sizeof(res));
 
-				if((k-1)<1){
+				if((HL_N)<1){
 					spr_lcd(lcdFd,"   Not Exist","     History");
 				}
-				else if((k-1)==1){
+				else if(HL_N==1){
 					memset(&b_his_1, 0, sizeof(b_his_1));
 					memset(&r_his_1, 0, sizeof(r_his_1));
-					open_history(b_his_1, b_his_1, k-1);
+					open_history(b_his_1, r_his_1, HL_N);
 					spr_lcd(lcdFd,b_his_1,"");
 				}
 				else {
@@ -351,9 +445,9 @@ int main(int ac, char *av[])
 					memset(&r_his_1, 0, sizeof(r_his_1));
 					memset(&b_his_2, 0, sizeof(b_his_2));
 					memset(&r_his_2, 0, sizeof(r_his_2));
-					open_history(b_his_1, r_his_1, k-1);
-					open_history(b_his_2, r_his_2, k-2);
-					spr_lcd(lcdFd,b_his_1,b_his_2);
+					open_history(b_his_1, r_his_1, HL_N);
+					open_history(b_his_2, r_his_2, HL_N-1);
+					spr_lcd(lcdFd,b_his_2,b_his_1);
 				}
 				continue;
 			}
@@ -364,7 +458,10 @@ int main(int ac, char *av[])
 			if(btn_flag[3]==0){
 				if(flag_E==0 && flag_O==0 && flag_D==0){
 					fnd_clear(s, fnd_buf);
-					spr_dis(0x2D, lcdFd, dotFd, s, exp, &idx, before);
+					if(flag_HE==1)
+						spr_dis(0x2D, lcdFd, dotFd, s, exp, &idx, "      EDIT     ");
+					else
+						spr_dis(0x2D, lcdFd, dotFd, s, exp, &idx, before);
 					flag_O=1;
 				}
 				else{
@@ -379,6 +476,17 @@ int main(int ac, char *av[])
 					idx=0;
 					memset(exp, 0, sizeof(exp));
 					memset(res, 0, sizeof(res));
+
+
+					if(HL_C!=0){
+						flag_HE=1;
+						btn_flag[3]=0;
+
+						spr_lcd(lcdFd,"      EDIT     ","");
+						memset(&b_his_1, 0, sizeof(b_his_1));
+						memset(&r_his_1, 0, sizeof(r_his_1));
+						open_history(b_his_1, r_his_1, HL_C);
+					}
 					continue;
 				}
 				else {
@@ -392,7 +500,10 @@ int main(int ac, char *av[])
 			if(btn_flag[3]==0){
 				if(flag_E==0 && flag_O==0 && flag_D==0){
 					fnd_clear(s, fnd_buf);
-					spr_dis(0x2A, lcdFd, dotFd, s, exp, &idx, before);
+					if(flag_HE==1)
+						spr_dis(0x2A, lcdFd, dotFd, s, exp, &idx, "      EDIT     ");
+					else
+						spr_dis(0x2A, lcdFd, dotFd, s, exp, &idx, before);
 					flag_O=1;
 				}
 				else{
@@ -407,6 +518,13 @@ int main(int ac, char *av[])
 					idx=0;
 					memset(exp, 0, sizeof(exp));
 					memset(res, 0, sizeof(res));
+
+					if(HL_C!=0){
+						memset(&b_his_1, 0, sizeof(b_his_1));
+						memset(&r_his_1, 0, sizeof(r_his_1));
+						open_history(b_his_1, r_his_1, HL_C);
+						spr_lcd(lcdFd,b_his_1,r_his_1);
+					}
 					continue;
 				}
 				else {
@@ -420,7 +538,10 @@ int main(int ac, char *av[])
 			if(btn_flag[3]==0){
 				if(flag_E==0 && flag_O==0 && flag_D==0){
 					fnd_clear(s, fnd_buf);
-					spr_dis(0x2F, lcdFd, dotFd, s, exp, &idx, before);
+					if(flag_HE==1)
+						spr_dis(0x2F, lcdFd, dotFd, s, exp, &idx, "      EDIT     ");
+					else
+						spr_dis(0x2F, lcdFd, dotFd, s, exp, &idx, before);
 					flag_O=1;
 				}
 				else{
@@ -443,20 +564,51 @@ int main(int ac, char *av[])
 			//pthread_mutex_lock(&mutx);
 			if(btn_flag[3]==0){
 				/* Equal */
-				if(flag_E==0 && flag_O==0 && flag_D==0){
+				if(flag_E==0 && flag_O==0 && flag_D==0 && flag_HE==0){
+					fnd_clear(s, fnd_buf);
+					spr_dis(0x3D, lcdFd, dotFd, s, exp, &idx, before);
+					
+					if(exp_checker(exp)!=-1){
+						do_to_str(EvalInfixExp(exp), res);
+						idx=0;
+						save_history(exp,res,0);
+
+						spr_lcd(lcdFd,exp,res);
+
+						memset(before, 0, sizeof(before));
+						strcpy(before, exp);
+						led_start(ledFd,3);
+					}
+					else{
+						spr_lcd(lcdFd,"  Syntax Error ","");
+						led_start(ledFd,2);
+					}
+					
+					memset(exp, 0, sizeof(exp));
+					memset(res, 0, sizeof(res));
+					flag_E=1;
+					continue;
+				}
+				else if(flag_E==0 && flag_O==0 && flag_D==0 && flag_HE==1){
 					fnd_clear(s, fnd_buf);
 					spr_dis(0x3D, lcdFd, dotFd, s, exp, &idx, before);
 
-					do_to_str(EvalInfixExp(exp), res);
-					idx=0;
-					save_history(exp,res,0);
+					if(exp_checker(exp)!=-1){
+						do_to_str(EvalInfixExp(exp), res);
+						idx=0;
+						save_history(exp,res,HL_C);
 
-					spr_lcd(lcdFd,exp,res);
+						spr_lcd(lcdFd,exp,res);
+						led_start(ledFd,2);
+					}
+					else{
+						spr_lcd(lcdFd,"  Syntax Error ","");
+						led_start(ledFd,6);
+					}
 
-					memset(before, 0, sizeof(before));
-					strcpy(before, exp);
 					memset(exp, 0, sizeof(exp));
 					memset(res, 0, sizeof(res));
+					flag_HE=0;
 					flag_E=1;
 					continue;
 				}
@@ -569,6 +721,8 @@ unsigned char btn_get(int tmo)
 /* BTN_Thread */
 void * handle_btn(void * arg)
 {
+	unsigned char dot_col_F[5]={0x7F, 0x48, 0x48, 0x48, 0x40};
+	unsigned char dot_col_M[5]={0x7F, 0x20, 0x10, 0x20, 0x7F};
 	int bf=*((int*)arg);
 	int df=dotFd;
 	char  buf;
@@ -593,12 +747,15 @@ void * handle_btn(void * arg)
 			break;
 		case 4:
 			pthread_mutex_lock(&mutx);
-			asc_to_dot('F'-'0');
-			write(df, dot_col, DOT_COL);
-			if(btn_flag[3]==0)			
+			
+			if(btn_flag[3]==0){			
 				btn_flag[3]=1;
-			else
+				write(df, dot_col_F, DOT_COL);
+			}
+			else{
 				btn_flag[3]=0;
+				write(df, dot_col_M, DOT_COL);
+			}
 			pthread_mutex_unlock(&mutx);
 			break;
 		default:

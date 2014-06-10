@@ -81,10 +81,10 @@ unsigned char asc_to_dot(int asc){
 	case -8: dot_col[0] = 0x00; dot_col[1] = 0x00; dot_col[2] = 0x3E; dot_col[3] = 0x41; dot_col[4] = 0x00; break;
 	case -7: dot_col[0] = 0x00; dot_col[1] = 0x41; dot_col[2] = 0x3E; dot_col[3] = 0x00; dot_col[4] = 0x00; break;
 	case 37: dot_col[0] = 0x7C; dot_col[1] = 0x02; dot_col[2] = 0x01; dot_col[3] = 0x02; dot_col[4] = 0x7C; break;
-	case 20: dot_col[0] = 0x1F; dot_col[1] = 0x41; dot_col[2] = 0x41; dot_col[3] = 0x22; dot_col[4] = 0x1C; break;
+	case 20: dot_col[0] = 0x7F; dot_col[1] = 0x41; dot_col[2] = 0x41; dot_col[3] = 0x22; dot_col[4] = 0x1C; break;
 	case 19: dot_col[0] = 0x1C; dot_col[1] = 0x22; dot_col[2] = 0x41; dot_col[3] = 0x41; dot_col[4] = 0x22; break;
 	case 35: dot_col[0] = 0x32; dot_col[1] = 0x49; dot_col[2] = 0x49; dot_col[3] = 0x49; dot_col[4] = 0x26; break;
-	defualt: break;
+	defualt: dot_col[0] = 0x00; dot_col[1] = 0x00; dot_col[2] = 0x00; dot_col[3] = 0x00; dot_col[4] = 0x00; break;
 	}
 }
 
@@ -101,7 +101,7 @@ void spr_dis(char ch, int lcdFd, int dotFd, char *s, char* lcd, int* idx, char* 
 	int ch_to_int = ch - '0';
 	char data[32];
 	
-	if(ch!=0x3D &&  ch!=0x42 &&  ch!=0x4C &&  ch!=0x45){
+	if(ch!=0x3D &&  ch!=0x42 &&  ch!=0x4C &&  ch!=0x45 && ch!=0x44 && ch!=0x55 && ch!=0x53 && ch!=0x43){
 		lcd[*idx]=ch;
 		lcd[*idx+1]='\0';
 		strcpy(data, before);
@@ -118,7 +118,7 @@ void spr_dis(char ch, int lcdFd, int dotFd, char *s, char* lcd, int* idx, char* 
 		strcat(data, lcd);
 		write(lcdFd, data, MAXCHR);
 	}
-	else if(ch==0x4C || ch==0x45) {
+	else if(ch==0x4C || ch==0x45 || ch==0x44 || ch==0x55 || ch==0x53 || ch==0x43) {
 	}
 	asc_to_dot(ch_to_int);
 	write(dotFd, dot_col, DOT_COL);
@@ -135,42 +135,42 @@ void spr_lcd(int lcdFd, char* exp, char* res) {
 }
 
 /* LED Write */
-void led_start(int *dev, int num){
+void led_start(int dev, int num){
   
 	unsigned char data;
 
 	switch(num){
 		case 1:
 			data  =0x7f;
-			write(*dev, &data, sizeof(unsigned char));
+			write(dev, &data, sizeof(unsigned char));
 			break;
 		case 2:
 			data  = 0xbf;
-			write(*dev, &data, sizeof(unsigned char));
+			write(dev, &data, sizeof(unsigned char));
 			break;
 		case 3:
 			data  = 0xdf;
-			write(*dev, &data, sizeof(unsigned char));
+			write(dev, &data, sizeof(unsigned char));
 			break;
 		case 4:
 			data  =0xef;
-			write(*dev, &data, sizeof(unsigned char));
+			write(dev, &data, sizeof(unsigned char));
 			break;
 		case 5:
 			data  = 0xf7; 
-			write(*dev, &data, sizeof(unsigned char));
+			write(dev, &data, sizeof(unsigned char));
 			break;
 		case 6:
 			data  =0xfb;
-			write(*dev, &data, sizeof(unsigned char));
+			write(dev, &data, sizeof(unsigned char));
 			break;
 		case 7:
 			data  = 0xfd; 
-			write(*dev, &data, sizeof(unsigned char));
+			write(dev, &data, sizeof(unsigned char));
 			break;
 		case 8:
 			data  = 0xfe;
-			write(*dev, &data, sizeof(unsigned char));
+			write(dev, &data, sizeof(unsigned char));
 			break;
 		case 0:
 			break;
