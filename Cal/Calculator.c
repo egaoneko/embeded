@@ -13,7 +13,12 @@ int do_to_str(double d, char* r) {
 	int i;
 	char tmp;
 
-	if (d < 1 && d > -1){
+	if (d==0) {
+		r[0] = ' ';
+		r[1] = '0';
+		r[2] = '\0';
+	}	
+	else if (d < 1 && d > -1){
 		str = ecvt(d, 1, &count, &sign);
 
 		if (sign == 0)

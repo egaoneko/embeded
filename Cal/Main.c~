@@ -22,9 +22,17 @@ int main(int ac, char *av[])
 	/* Init */
 	int ch_to_int;
 	int idx=0;
+	int k;
 	int flag_s = 0;
 	char null[5] = "NULL";
 	pthread_t t_id;
+
+	int flag_F=0;
+	int flag_E=0;
+	int flag_O=0;
+	int flag_D=0;
+	int flag_B=0;
+	int flag_H=0;
 
 	/* KEY Init */
 	unsigned char c;
@@ -33,9 +41,13 @@ int main(int ac, char *av[])
 	char ch;
 
 	/* CLCD Init */
-	char exp[MAXCHR];
+	char exp[MAXCHR]="NULL";
 	char res[MAXCHR];
-	char before[MAXCHR] = "NULL";
+	char before[MAXCHR] = "Calculator";
+	char b_his_1[LEN];
+	char r_his_1[CLEN];
+	char b_his_2[LEN];
+	char r_his_2[CLEN];
 
 	/* FND Init */
 	int i, n, count;
@@ -96,70 +108,373 @@ int main(int ac, char *av[])
 		c = key_get(10);
 
 		switch (c){
-		case K_NUM0:		
-			spr_dis(0x30, lcdFd, dotFd, s, exp, &idx);
+		case K_NUM0:
+			printf("##\n");
+			//pthread_mutex_lock(&mutx);
+			printf("##\n");
+			if(btn_flag[3]==0){
+				flag_E=0;
+				flag_O=0;
+				flag_D=0;
+				flag_B=0;
+				flag_H=0;
+				spr_dis(0x30, lcdFd, dotFd, s, exp, &idx, before);
+			}
+			else{
+				/* Basket Left '(' */
+				if(flag_B==0){
+					fnd_clear(s, fnd_buf);
+					spr_dis(0x28, lcdFd, dotFd, s, exp, &idx, before);
+					flag_B=1;
+				}
+				else{
+					continue;
+				}
+			}
+			//pthread_mutex_unlock(&mutx);
 			break;
 		case K_NUM1:
-			spr_dis(0x31, lcdFd, dotFd, s, exp, &idx);
+			//pthread_mutex_lock(&mutx);
+			if(btn_flag[3]==0){
+				flag_E=0;
+				flag_O=0;
+				flag_D=0;
+				flag_B=0;
+				flag_H=0;
+				spr_dis(0x31, lcdFd, dotFd, s, exp, &idx, before);
+			}
+			else{
+				continue;
+			}
+			//pthread_mutex_unlock(&mutx);
 			break;
 		case K_NUM2:
-			spr_dis(0x32, lcdFd, dotFd, s, exp, &idx);
+			//pthread_mutex_lock(&mutx);
+			if(btn_flag[3]==0){
+				flag_E=0;
+				flag_O=0;
+				flag_D=0;
+				flag_B=0;
+				flag_H=0;
+				spr_dis(0x32, lcdFd, dotFd, s, exp, &idx, before);
+			}
+			else{
+				continue;
+			}
+			//pthread_mutex_unlock(&mutx);
 			break;
 		case K_NUM3:
-			spr_dis(0x33, lcdFd, dotFd, s, exp, &idx);
+			//pthread_mutex_lock(&mutx);
+			if(btn_flag[3]==0){
+				flag_E=0;
+				flag_O=0;
+				flag_D=0;
+				flag_B=0;
+				flag_H=0;
+				spr_dis(0x33, lcdFd, dotFd, s, exp, &idx, before);
+			}
+			else{
+				continue;
+			}
+			//pthread_mutex_unlock(&mutx);
 			break;
 		case K_NUM4:
-			spr_dis(0x34, lcdFd, dotFd, s, exp, &idx);
+			//pthread_mutex_lock(&mutx);
+			if(btn_flag[3]==0){
+				flag_E=0;
+				flag_O=0;
+				flag_D=0;
+				flag_B=0;
+				flag_H=0;
+				spr_dis(0x34, lcdFd, dotFd, s, exp, &idx, before);
+			}
+			else{
+				continue;
+			}
+			//pthread_mutex_unlock(&mutx);
 			break;
 		case K_NUM5:
-			spr_dis(0x35, lcdFd, dotFd, s, exp, &idx);
+			//pthread_mutex_lock(&mutx);
+			if(btn_flag[3]==0){
+				flag_E=0;
+				flag_O=0;
+				flag_D=0;
+				flag_B=0;
+				flag_H=0;
+				spr_dis(0x35, lcdFd, dotFd, s, exp, &idx, before);
+			}
+			else{
+				if(flag_H==1){
+					/* History Down */
+					fnd_clear(s, fnd_buf);
+					spr_dis(0x44, lcdFd, dotFd, s, exp, &idx, before);
+					idx=0;
+					memset(exp, 0, sizeof(exp));
+					memset(res, 0, sizeof(res));
+					continue;
+				}
+				else {
+					continue;
+				}
+			}
+			//pthread_mutex_unlock(&mutx);
 			break;
 		case K_NUM6:
-			spr_dis(0x36, lcdFd, dotFd, s, exp, &idx);
+			//pthread_mutex_lock(&mutx);
+			if(btn_flag[3]==0){
+				flag_E=0;
+				flag_O=0;
+				flag_D=0;
+				flag_B=0;
+				flag_H=0;
+				spr_dis(0x36, lcdFd, dotFd, s, exp, &idx, before);
+			}
+			else{
+				continue;
+			}
+			//pthread_mutex_unlock(&mutx);
 			break;
 		case K_NUM7:
-			spr_dis(0x37, lcdFd, dotFd, s, exp, &idx);
+			//pthread_mutex_lock(&mutx);
+			if(btn_flag[3]==0){
+				flag_E=0;
+				flag_O=0;
+				flag_D=0;
+				flag_B=0;
+				flag_H=0;
+				spr_dis(0x37, lcdFd, dotFd, s, exp, &idx, before);
+			}
+			else{
+				continue;
+			}
+			//pthread_mutex_unlock(&mutx);
 			break;
 		case K_NUM8:
-			spr_dis(0x38, lcdFd, dotFd, s, exp, &idx);
+			//pthread_mutex_lock(&mutx);
+			if(btn_flag[3]==0){
+				flag_E=0;
+				flag_O=0;
+				flag_D=0;
+				flag_B=0;
+				flag_H=0;
+				spr_dis(0x38, lcdFd, dotFd, s, exp, &idx, before);
+			}
+			else{
+				if(flag_H==1){
+					/* History Up */
+					fnd_clear(s, fnd_buf);
+					spr_dis(0x55, lcdFd, dotFd, s, exp, &idx, before);
+					idx=0;
+					memset(exp, 0, sizeof(exp));
+					memset(res, 0, sizeof(res));
+					continue;
+				}
+				else {
+					continue;
+				}
+			}
+			//pthread_mutex_unlock(&mutx);
 			break;
 		case K_NUM9:
-			spr_dis(0x39, lcdFd, dotFd, s, exp, &idx);
+			//pthread_mutex_lock(&mutx);
+			if(btn_flag[3]==0){
+				flag_E=0;
+				flag_O=0;
+				flag_D=0;
+				flag_B=0;
+				flag_H=0;
+				spr_dis(0x39, lcdFd, dotFd, s, exp, &idx, before);
+			}
+			else{
+				continue;
+			}
+			//pthread_mutex_unlock(&mutx);
 			break;
 		case K_DOT:
-			spr_dis(0x2E, lcdFd, dotFd, s, exp, &idx);
+			//pthread_mutex_lock(&mutx);
+			if(btn_flag[3]==0){
+				if(flag_E==0 && flag_O==0 && flag_D==0){
+					spr_dis(0x2E, lcdFd, dotFd, s, exp, &idx, before);
+					flag_D=1;
+				}
+				else{
+					continue;
+				}
+			}
+			else{
+				/* Basket Right ')' */
+				if(flag_B==0){
+					fnd_clear(s, fnd_buf);
+					spr_dis(0x28, lcdFd, dotFd, s, exp, &idx, before);
+					flag_B=1;
+				}
+				else{
+					continue;
+				}
+			}
+			//pthread_mutex_unlock(&mutx);
 			break;
 		case K_ADD:
-			fnd_clear(s, fnd_buf);
-			spr_dis(0x2B, lcdFd, dotFd, s, exp, &idx);
+			//pthread_mutex_lock(&mutx);
+			if(btn_flag[3]==0){
+				if(flag_E==0 && flag_O==0 && flag_D==0){
+					fnd_clear(s, fnd_buf);
+					spr_dis(0x2B, lcdFd, dotFd, s, exp, &idx, before);
+					flag_O=1;
+				}
+				else{
+					continue;
+				}
+			}
+			else{
+				/* History List */
+				flag_H=1;
+				for (k = 1; num_history(k); k++);
+
+				fnd_clear(s, fnd_buf);
+				spr_dis(0x4C, lcdFd, dotFd, s, exp, &idx, before);
+				idx=0;
+				memset(exp, 0, sizeof(exp));
+				memset(res, 0, sizeof(res));
+
+				if((k-1)<1){
+					spr_lcd(lcdFd,"   Not Exist","     History");
+				}
+				else if((k-1)==1){
+					memset(&b_his_1, 0, sizeof(b_his_1));
+					memset(&r_his_1, 0, sizeof(r_his_1));
+					open_history(b_his_1, b_his_1, k-1);
+					spr_lcd(lcdFd,b_his_1,"");
+				}
+				else {
+					memset(&b_his_1, 0, sizeof(b_his_1));
+					memset(&r_his_1, 0, sizeof(r_his_1));
+					memset(&b_his_2, 0, sizeof(b_his_2));
+					memset(&r_his_2, 0, sizeof(r_his_2));
+					open_history(b_his_1, r_his_1, k-1);
+					open_history(b_his_2, r_his_2, k-2);
+					spr_lcd(lcdFd,b_his_1,b_his_2);
+				}
+				continue;
+			}
+			//pthread_mutex_unlock(&mutx);
 			break;
 		case K_SUB:
-			fnd_clear(s, fnd_buf);
-			spr_dis(0x2D, lcdFd, dotFd, s, exp, &idx);
+			//pthread_mutex_lock(&mutx);
+			if(btn_flag[3]==0){
+				if(flag_E==0 && flag_O==0 && flag_D==0){
+					fnd_clear(s, fnd_buf);
+					spr_dis(0x2D, lcdFd, dotFd, s, exp, &idx, before);
+					flag_O=1;
+				}
+				else{
+					continue;
+				}
+			}
+			else{
+				if(flag_H==1){
+					/* History Edit */
+					fnd_clear(s, fnd_buf);
+					spr_dis(0x45, lcdFd, dotFd, s, exp, &idx, before);
+					idx=0;
+					memset(exp, 0, sizeof(exp));
+					memset(res, 0, sizeof(res));
+					continue;
+				}
+				else {
+					continue;
+				}
+			}
+			//pthread_mutex_unlock(&mutx);
 			break;
 		case K_MUL:
-			fnd_clear(s, fnd_buf);
-			spr_dis(0x2A, lcdFd, dotFd, s, exp, &idx);
+			//pthread_mutex_lock(&mutx);
+			if(btn_flag[3]==0){
+				if(flag_E==0 && flag_O==0 && flag_D==0){
+					fnd_clear(s, fnd_buf);
+					spr_dis(0x2A, lcdFd, dotFd, s, exp, &idx, before);
+					flag_O=1;
+				}
+				else{
+					continue;
+				}
+			}
+			else{
+				if(flag_H==1){
+					/* History Select */
+					fnd_clear(s, fnd_buf);
+					spr_dis(0x53, lcdFd, dotFd, s, exp, &idx, before);
+					idx=0;
+					memset(exp, 0, sizeof(exp));
+					memset(res, 0, sizeof(res));
+					continue;
+				}
+				else {
+					continue;
+				}
+			}
+			//pthread_mutex_unlock(&mutx);
 			break;
 		case K_DIV:
-			fnd_clear(s, fnd_buf);
-			spr_dis(0x2F, lcdFd, dotFd, s, exp, &idx);
+			//pthread_mutex_lock(&mutx);
+			if(btn_flag[3]==0){
+				if(flag_E==0 && flag_O==0 && flag_D==0){
+					fnd_clear(s, fnd_buf);
+					spr_dis(0x2F, lcdFd, dotFd, s, exp, &idx, before);
+					flag_O=1;
+				}
+				else{
+					continue;
+				}
+			}
+			else{
+				/* BackSpace */
+				if(idx > 0) {
+					exp[idx-1] = '\0';
+					idx--;
+					fnd_clear(s, fnd_buf);
+					spr_dis(0x42, lcdFd, dotFd, s, exp, &idx, before);
+				}			
+				continue;
+			}
+			//pthread_mutex_unlock(&mutx);
 			break;
 		case K_EQU:
-			fnd_clear(s, fnd_buf);
-			spr_dis(0x3D, lcdFd, dotFd, s, exp, &idx);
+			//pthread_mutex_lock(&mutx);
+			if(btn_flag[3]==0){
+				/* Equal */
+				if(flag_E==0 && flag_O==0 && flag_D==0){
+					fnd_clear(s, fnd_buf);
+					spr_dis(0x3D, lcdFd, dotFd, s, exp, &idx, before);
 
-			do_to_str(EvalInfixExp(exp), res);
-			idx=0;
-			save_history(exp,res,0);
+					do_to_str(EvalInfixExp(exp), res);
+					idx=0;
+					save_history(exp,res,0);
 
-			spr_lcd(lcdFd,exp,res);
+					spr_lcd(lcdFd,exp,res);
 
-			memset(before, 0, sizeof(before));
-			strcpy(before, exp);
-			memset(exp, 0, sizeof(exp));
-			memset(res, 0, sizeof(res));
-			continue;
+					memset(before, 0, sizeof(before));
+					strcpy(before, exp);
+					memset(exp, 0, sizeof(exp));
+					memset(res, 0, sizeof(res));
+					flag_E=1;
+					continue;
+				}
+				else{
+					continue;
+				}
+			}
+			else{
+				/* Clear */
+				fnd_clear(s, fnd_buf);
+				spr_dis(0x43, lcdFd, dotFd, s, exp, &idx, before);
+				idx=0;
+				spr_lcd(lcdFd,before," ");
+				memset(exp, 0, sizeof(exp));
+				memset(res, 0, sizeof(res));
+				continue;
+			}
+			//pthread_mutex_unlock(&mutx);
 			break;
 		default: /* timeout */
 			break;
@@ -255,11 +570,11 @@ unsigned char btn_get(int tmo)
 void * handle_btn(void * arg)
 {
 	int bf=*((int*)arg);
+	int df=dotFd;
 	char  buf;
 
 	while(1) {
 	read( bf, &buf, sizeof(buf));
-	printf("GPIO BTN %x PUSH \n",buf);
 	switch(buf) {
 		case 1:
 			pthread_mutex_lock(&mutx);
@@ -268,10 +583,7 @@ void * handle_btn(void * arg)
 			break;
 		case 2:
 			pthread_mutex_lock(&mutx);
-			if(btn_flag[1]==0)			
-				btn_flag[1]=1;
-			else
-				btn_flag[1]=0;
+			btn_flag[1]=1;
 			pthread_mutex_unlock(&mutx);
 			break;
 		case 3:
@@ -281,11 +593,17 @@ void * handle_btn(void * arg)
 			break;
 		case 4:
 			pthread_mutex_lock(&mutx);
-			btn_flag[3]=1;
+			asc_to_dot('F'-'0');
+			write(df, dot_col, DOT_COL);
+			if(btn_flag[3]==0)			
+				btn_flag[3]=1;
+			else
+				btn_flag[3]=0;
 			pthread_mutex_unlock(&mutx);
 			break;
 		default:
 			break;
 		}
+	usleep(400000);
 	}
 }

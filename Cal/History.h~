@@ -14,6 +14,5 @@ struct history{
 
 int save_history(char *s, char *r, int flag);
 int open_history(char *s, char *r, int flag);
-int num_history(int flag);
 
 #endif

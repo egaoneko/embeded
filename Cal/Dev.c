@@ -74,7 +74,16 @@ unsigned char asc_to_dot(int asc){
 	case -1: dot_col[0] = 0x08; dot_col[1] = 0x08; dot_col[2] = 0x2A; dot_col[3] = 0x08; dot_col[4] = 0x08; break;
 	case 13: dot_col[0] = 0x00; dot_col[1] = 0x14; dot_col[2] = 0x14; dot_col[3] = 0x14; dot_col[4] = 0x00; break;
 	case 22: dot_col[0] = 0x7F; dot_col[1] = 0x48; dot_col[2] = 0x48; dot_col[3] = 0x48; dot_col[4] = 0x40; break;
-
+	case 18: dot_col[0] = 0x7F; dot_col[1] = 0x49; dot_col[2] = 0x49; dot_col[3] = 0x49; dot_col[4] = 0x36; break;
+	case 29: dot_col[0] = 0x7F; dot_col[1] = 0x20; dot_col[2] = 0x10; dot_col[3] = 0x20; dot_col[4] = 0x7F; break;
+	case 28: dot_col[0] = 0x7F; dot_col[1] = 0x01; dot_col[2] = 0x01; dot_col[3] = 0x01; dot_col[4] = 0x01; break;
+	case 21: dot_col[0] = 0x7F; dot_col[1] = 0x49; dot_col[2] = 0x49; dot_col[3] = 0x49; dot_col[4] = 0x49; break;
+	case -8: dot_col[0] = 0x00; dot_col[1] = 0x00; dot_col[2] = 0x3E; dot_col[3] = 0x41; dot_col[4] = 0x00; break;
+	case -7: dot_col[0] = 0x00; dot_col[1] = 0x41; dot_col[2] = 0x3E; dot_col[3] = 0x00; dot_col[4] = 0x00; break;
+	case 37: dot_col[0] = 0x7C; dot_col[1] = 0x02; dot_col[2] = 0x01; dot_col[3] = 0x02; dot_col[4] = 0x7C; break;
+	case 20: dot_col[0] = 0x1F; dot_col[1] = 0x41; dot_col[2] = 0x41; dot_col[3] = 0x22; dot_col[4] = 0x1C; break;
+	case 19: dot_col[0] = 0x1C; dot_col[1] = 0x22; dot_col[2] = 0x41; dot_col[3] = 0x41; dot_col[4] = 0x22; break;
+	case 35: dot_col[0] = 0x32; dot_col[1] = 0x49; dot_col[2] = 0x49; dot_col[3] = 0x49; dot_col[4] = 0x26; break;
 	defualt: break;
 	}
 }
@@ -87,17 +96,29 @@ void error_handling(char *msg, int fd)
 }
 
 /* Spray Display */
-void spr_dis(char ch, int lcdFd, int dotFd, char *s, char* lcd, int* idx) {
+void spr_dis(char ch, int lcdFd, int dotFd, char *s, char* lcd, int* idx, char* before) {
 	int fnd_end=MAXFND-1;
 	int ch_to_int = ch - '0';
+	char data[32];
 	
-	if(ch!=0x3D){
+	if(ch!=0x3D &&  ch!=0x42 &&  ch!=0x4C &&  ch!=0x45){
 		lcd[*idx]=ch;
 		lcd[*idx+1]='\0';
-		write(lcdFd, lcd, MAXCHR);
+		strcpy(data, before);
+		strcat(data, "\n");
+		strcat(data, lcd);
+		write(lcdFd, data, MAXCHR);
 	}
 	else if(ch==0x3D) {
 		lcd[*idx]='\0';
+	}
+	else if(ch==0x42) {
+		strcpy(data, before);
+		strcat(data, "\n");
+		strcat(data, lcd);
+		write(lcdFd, data, MAXCHR);
+	}
+	else if(ch==0x4C || ch==0x45) {
 	}
 	asc_to_dot(ch_to_int);
 	write(dotFd, dot_col, DOT_COL);
@@ -108,6 +129,7 @@ void spr_lcd(int lcdFd, char* exp, char* res) {
 	char data[32];
 	memset(data, 0, sizeof(data));
 	strcpy(data, exp);
+	strcat(data, "\n");
 	strcat(data, res);
 	write(lcdFd, data, MAXCHR);
 }

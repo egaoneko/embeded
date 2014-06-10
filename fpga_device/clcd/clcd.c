@@ -70,11 +70,15 @@ static void string_out(char *str)
 			*((volatile unsigned char *)(mem_base_wr)) = 0xC0;
 			continue;
 		}
-	*((volatile unsigned char *)(mem_base_rs)) = *s; 
+		else {
+			udelay(100);
+			*((volatile unsigned char *)(mem_base_rs)) = *s; 
+		}
+		/*
 		if(i == 15) { 
 			udelay(100);
 			*((volatile unsigned char *)(mem_base_wr)) = 0xC0; 
-		}
+		}*/
 
 		udelay(100);
 		i++;

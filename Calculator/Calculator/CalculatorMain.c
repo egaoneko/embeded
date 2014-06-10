@@ -10,14 +10,14 @@
 
 int main(void)
 {
-	int i =0;
+	int i = 0, j = 0, k = 0;
 	int flag_s = 0;
 	char null[5] = "NULL";
 	char in[LEN] = "NULL";
 	char before[LEN] = "NULL";
 	char res[CLEN];
-	//char before_2[LEN] = "NULL";
-	//char res_2[CLEN];
+	char before_2[LEN] = "NULL";
+	char res_2[CLEN];
 	
 
 	//printf("=======================\n");
@@ -57,6 +57,18 @@ int main(void)
 			i = 0;
 
 			save_history(in,res,0);
+
+			for (k = 1; num_history(k); k++);
+
+			printf("\n##%d##\n", k-1);
+
+			for (j = 1; j < k; j++){
+				memset(&before_2, 0, sizeof(before_2));
+				memset(&res_2, 0, sizeof(res_2));
+				open_history(before_2, res_2, j);
+				printf("\n%s\n", before_2);
+				printf("%s\n", res_2);
+			}
 
 			memset(&before, 0, sizeof(before));
 			strcpy(before, in);

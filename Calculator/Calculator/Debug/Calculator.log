@@ -1,23 +1,35 @@
-﻿빌드 시작: 2014-05-31 오후 11:04:02
+﻿빌드 시작: 2014-06-10 오전 12:46:13
      1>2 노드의 "C:\Dev\Test\Calculator\Calculator\Calculator.vcxproj" 프로젝트(Build 대상)입니다.
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TC /analyze- /errorReport:prompt HisOpen.c HisSave.c
-         HisSave.c
-         HisOpen.c
-         코드를 생성하고 있습니다...
-     1>c:\dev\test\calculator\calculator\hisopen.c(35): warning C4715: 'open_history' : 모든 제어 경로에서 값을 반환하지는 않습니다.
-     1>c:\dev\test\calculator\calculator\hissave.c(39): warning C4716: 'save_history' : 값을 반환해야 합니다.
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TC /analyze- /errorReport:prompt CalculatorMain.c
+         CalculatorMain.c
+     1>c:\dev\test\calculator\calculator\calculatormain.c(29): warning C4013: 'system'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
+     1>c:\dev\test\calculator\calculator\calculatormain.c(39): warning C4013: 'getche'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
+     1>c:\dev\test\calculator\calculator\calculatormain.c(59): warning C4013: 'save_history'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
+     1>c:\dev\test\calculator\calculator\calculatormain.c(61): warning C4013: 'num_history'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
+     1>c:\dev\test\calculator\calculator\calculatormain.c(68): warning C4013: 'open_history'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
+     1>c:\dev\test\calculator\calculator\calculatormain.c(96): warning C4013: 'getch'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
+     1>c:\dev\test\calculator\calculator\calculatormain.c(132): warning C4013: 'ecvt'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
+     1>c:\dev\test\calculator\calculator\calculatormain.c(132): warning C4047: '=' : 'char *'의 간접 참조 수준이 'int'과(와) 다릅니다.
+     1>c:\dev\test\calculator\calculator\calculatormain.c(141): warning C4013: 'itoa'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
+     1>c:\dev\test\calculator\calculator\calculatormain.c(141): warning C4013: 'abs'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
+     1>c:\dev\test\calculator\calculator\calculatormain.c(143): warning C4018: '<' : signed 또는 unsigned가 일치하지 않습니다.
+     1>c:\dev\test\calculator\calculator\calculatormain.c(150): warning C4047: '=' : 'char *'의 간접 참조 수준이 'int'과(와) 다릅니다.
+     1>c:\dev\test\calculator\calculator\calculatormain.c(129): warning C4101: 'tmp' :참조되지 않은 지역 변수입니다.
+     1>c:\dev\test\calculator\calculator\calculatormain.c(173): warning C4715: 'do_to_str' : 모든 제어 경로에서 값을 반환하지는 않습니다.
        Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Dev\Test\Calculator\Debug\Calculator.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Dev\Test\Calculator\Debug\Calculator.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Dev\Test\Calculator\Debug\Calculator.lib" /MACHINE:X86 Debug\HisOpen.obj
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Dev\Test\Calculator\Debug\Calculator.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Dev\Test\Calculator\Debug\Calculator.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Dev\Test\Calculator\Debug\Calculator.lib" /MACHINE:X86 Debug\HisNum.obj
+         Debug\HisOpen.obj
          Debug\HisSave.obj
          Debug\InfixCalculator.obj
          Debug\CalculatorMain.obj
          Debug\InfixToPostfix.obj
          Debug\ListBaseStack.obj
          Debug\PostCalculator.obj
+         LINK : C:\Dev\Test\Calculator\Debug\Calculator.exe을(를) 찾을 수 없거나 마지막 증분 링크에 의해 빌드되지 않았습니다. 전체 링크를 수행하고 있습니다.
          Calculator.vcxproj -> C:\Dev\Test\Calculator\Debug\Calculator.exe
      1>"C:\Dev\Test\Calculator\Calculator\Calculator.vcxproj" 프로젝트를 빌드했습니다(Build 대상).
 
 빌드했습니다.
 
-경과 시간: 00:00:01.26
+경과 시간: 00:00:02.63

@@ -10,7 +10,12 @@
 int save_history(char *s, char *r, int flag){
 	struct history record;
 	int b_Id = 1;
-	FILE *fp = fopen("history.txt", "r+b"); //r+ : overwrite, w+ : rewrite, a+ : append
+	FILE *fp;
+	
+	if (flag != 0)
+		fp= fopen("history.txt", "r+b"); //r+ : overwrite, w+ : rewrite, a+ : append
+	else
+		fp = fopen("history.txt", "a+b");
 
 	if (fp == NULL){
 		fp = fopen("history.txt", "a+b");
