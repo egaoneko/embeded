@@ -1,3 +1,12 @@
+/* =================================================
+ * Program ID : PostCalculator.c
+ * Author     : SUM Project
+ * Create Date: 2014-05-28
+ * Compile Row: make - Reference Makefile
+ * Description: Calculate Postfix
+ * =================================================
+ */
+
 #include <string.h>
 #include <ctype.h>
 #include "Calculator.h"

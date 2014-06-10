@@ -1,0 +1,1 @@
+cmd_/XHyper270TKURev11/fpga_device/btn/btn.ko := /opt/iwmmxt-1.0.0/bin/arm-linux-ld -EL  -r -o /XHyper270TKURev11/fpga_device/btn/btn.ko /XHyper270TKURev11/fpga_device/btn/btn.o /XHyper270TKURev11/fpga_device/btn/btn.mod.o

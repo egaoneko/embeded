@@ -1,0 +1,26 @@
+Target  : X-Hyper270TKU
+Program : KEY Matrix Test program
+Hybus Co.,Ltd
+2006. 8. 28 Made by kjlee@hybus.net
+
+1.Source
+ - Makefile
+ - key.c
+ - key_test.c
+
+2.Setting
+ - Makefile에서 Compiler가 위치한 경로로 수정(Default PATH : /opt/iwmmxt-1.0.0)
+ - Makefile에서 Kernel이 위치한 경로로 수정(Default PATH : /project/xhyper270-TKU-Rev/kernel/linux-2.6.11-h270-tku_v1.1)  
+ - make
+ - Target Board를 Host PC로 NFS Mount
+ - rmmod key
+ - insmod key.ko
+
+3.KEY Matrix의 기능
+ - IEB Board상에 16개의 KEY Matrix를 이용
+ - 해당 KEY Button을 눌렀을 때 콘솔창에 KEY 정보를 출력
+
+4.KEY Matrix 사용법
+ - ./key_test
+ - 16개의 KEY중 하나를 Press
+

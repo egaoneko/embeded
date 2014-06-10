@@ -1,7 +1,7 @@
-cmd_/root/문서/fpga_device/fnd/fnd.o := /opt/iwmmxt-1.0.0/bin/arm-linux-gcc -Wp,-MD,/root/문서/fpga_device/fnd/.fnd.o.d -nostdinc -isystem /opt/iwmmxt-1.0.0/lib/gcc/arm-linux/3.4.3/include -D__KERNEL__ -Iinclude  -Wall -Wstrict-prototypes -Wno-trigraphs -fno-strict-aliasing -fno-common -ffreestanding -Os     -fno-omit-frame-pointer -fno-omit-frame-pointer -mapcs -mno-sched-prolog -mlittle-endian -mapcs-32 -D__LINUX_ARM_ARCH__=5 -march=armv5te -mtune=xscale -Wa,-mcpu=xscale -malignment-traps -msoft-float -Uarm -Wdeclaration-after-statement    -DMODULE -DKBUILD_BASENAME=fnd -DKBUILD_MODNAME=fnd -c -o /root/문서/fpga_device/fnd/fnd.o /root/문서/fpga_device/fnd/fnd.c
+cmd_/root/embeded/fpga_device/fnd/fnd.o := /opt/iwmmxt-1.0.0/bin/arm-linux-gcc -Wp,-MD,/root/embeded/fpga_device/fnd/.fnd.o.d -nostdinc -isystem /opt/iwmmxt-1.0.0/lib/gcc/arm-linux/3.4.3/include -D__KERNEL__ -Iinclude  -Wall -Wstrict-prototypes -Wno-trigraphs -fno-strict-aliasing -fno-common -ffreestanding -Os     -fno-omit-frame-pointer -fno-omit-frame-pointer -mapcs -mno-sched-prolog -mlittle-endian -mapcs-32 -D__LINUX_ARM_ARCH__=5 -march=armv5te -mtune=xscale -Wa,-mcpu=xscale -malignment-traps -msoft-float -Uarm -Wdeclaration-after-statement    -DMODULE -DKBUILD_BASENAME=fnd -DKBUILD_MODNAME=fnd -c -o /root/embeded/fpga_device/fnd/fnd.o /root/embeded/fpga_device/fnd/fnd.c
 
-deps_/root/문서/fpga_device/fnd/fnd.o := \
-  /root/문서/fpga_device/fnd/fnd.c \
+deps_/root/embeded/fpga_device/fnd/fnd.o := \
+  /root/embeded/fpga_device/fnd/fnd.c \
   include/linux/module.h \
     $(wildcard include/config/modules.h) \
     $(wildcard include/config/modversions.h) \
@@ -263,6 +263,6 @@ deps_/root/문서/fpga_device/fnd/fnd.o := \
   include/asm/io.h \
   include/asm/arch/io.h \
 
-/root/문서/fpga_device/fnd/fnd.o: $(deps_/root/문서/fpga_device/fnd/fnd.o)
+/root/embeded/fpga_device/fnd/fnd.o: $(deps_/root/embeded/fpga_device/fnd/fnd.o)
 
-$(deps_/root/문서/fpga_device/fnd/fnd.o):
+$(deps_/root/embeded/fpga_device/fnd/fnd.o):

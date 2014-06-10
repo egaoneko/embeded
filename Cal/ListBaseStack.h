@@ -1,9 +1,19 @@
+/* =================================================
+ * Program ID : ListBaseStack.h
+ * Author     : SUM Project
+ * Create Date: 2014-05-28
+ * Compile Row: make - Reference Makefile
+ * Description: ListBaseStack Application Header
+ * =================================================
+ */
+
 #ifndef __LB_STACK_H__
 #define __LB_STACK_H__
 
 #define TRUE	1
 #define FALSE	0
 
+/* ListBaseStack Datatype */ 
 typedef double Data;
 
 typedef struct _node

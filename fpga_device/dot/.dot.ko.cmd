@@ -1,1 +1,1 @@
-cmd_/root/문서/fpga_device/dot/dot.ko := /opt/iwmmxt-1.0.0/bin/arm-linux-ld -EL  -r -o /root/문서/fpga_device/dot/dot.ko /root/문서/fpga_device/dot/dot.o /root/문서/fpga_device/dot/dot.mod.o
+cmd_/root/embeded/fpga_device/dot/dot.ko := /opt/iwmmxt-1.0.0/bin/arm-linux-ld -EL  -r -o /root/embeded/fpga_device/dot/dot.ko /root/embeded/fpga_device/dot/dot.o /root/embeded/fpga_device/dot/dot.mod.o

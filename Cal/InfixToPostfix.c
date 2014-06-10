@@ -1,9 +1,20 @@
+/* =================================================
+ * Program ID : InfixToPostfix.c
+ * Author     : SUM Project
+ * Create Date: 2014-05-28
+ * Compile Row: make - Reference Makefile
+ * Description: Make Infix to Postfix
+ * =================================================
+ */
+
+
 #include <string.h>
 #include <stdlib.h>
 #include <ctype.h>
 #include "Calculator.h"
 #include "ListBaseStack.h"
 
+/* Get Operator Priority */
 int GetOpPrec(char op)
 {
 	switch(op)
@@ -21,6 +32,7 @@ int GetOpPrec(char op)
 	return -1;
 }
 
+/* Compare Operator Priority */
 int WhoPrecOp(char op1, char op2)
 {
 	int op1Prec = GetOpPrec(op1);
@@ -34,6 +46,7 @@ int WhoPrecOp(char op1, char op2)
 		return 0;
 }
 
+/* Convert Infix to Postfix */
 void ConvToRPNExp(char exp[LEN])
 {
 	Stack stack;

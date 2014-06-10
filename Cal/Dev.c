@@ -1,3 +1,12 @@
+/* =================================================
+ * Program ID : Dev.c
+ * Author     : SUM Project
+ * Create Date: 2014-05-28
+ * Compile Row: make - Reference Makefile
+ * Description: Device Driver Application Function
+ * =================================================
+ */
+
 #include <stdio.h>
 #include <fcntl.h>
 #include "Dev.h"
@@ -140,14 +149,19 @@ void led_start(int dev, int num){
 	unsigned char data;
 
 	switch(num){
+		/* Start Success */
 		case 1:
 			data  =0x7f;
 			write(dev, &data, sizeof(unsigned char));
 			break;
+		
+		/* Syntax Error */
 		case 2:
 			data  = 0xbf;
 			write(dev, &data, sizeof(unsigned char));
 			break;
+
+		/* Calulate Success */
 		case 3:
 			data  = 0xdf;
 			write(dev, &data, sizeof(unsigned char));
@@ -156,6 +170,8 @@ void led_start(int dev, int num){
 			data  =0xef;
 			write(dev, &data, sizeof(unsigned char));
 			break;
+
+		/* Exit Success */
 		case 5:
 			data  = 0xf7; 
 			write(dev, &data, sizeof(unsigned char));

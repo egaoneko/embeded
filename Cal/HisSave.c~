@@ -1,3 +1,12 @@
+/* =================================================
+ * Program ID : HisSave.c
+ * Author     : SUM Project
+ * Create Date: 2014-06-09
+ * Compile Row: make - Reference Makefile
+ * Description: History Saver
+ * =================================================
+ */
+
 #include <stdio.h> 
 #include <stdlib.h>
 #include <string.h>
@@ -9,7 +18,12 @@
 int save_history(char *s, char *r, int flag){
 	struct history record;
 	int b_Id = 1;
-	FILE *fp = fopen("history.txt", "r+b"); //r+ : overwrite, w+ : rewrite, a+ : append
+	FILE *fp;
+	
+	if (flag != 0)
+		fp= fopen("history.txt", "r+b"); //r+ : overwrite, w+ : rewrite, a+ : append
+	else
+		fp = fopen("history.txt", "a+b");
 
 	if (fp == NULL){
 		fp = fopen("history.txt", "a+b");

@@ -1,8 +1,11 @@
-/*
- * XHYPER255_TKU3
- * lcd test.c
- * 2004-07-01   <newboder@hybus.net>
- * 
+/* =================================================
+ * Program ID : clcd.c
+ * Author     : SUM Project
+ * Create Date: 2014-06-09
+ * Compile Row: make - Reference Makefile
+ * Description: CLCD control test program
+ *            : with XHYPER270-TKU
+ * =================================================
  */
 
 #include    <stdio.h>
@@ -45,14 +48,13 @@ main(int ac, char *av[])
 			break;
 	
 		n = strlen(str);
-	        if (n > MAXCHR)
+	        if (n > MAXCHR) /* Don't make the length of a string over buffer size*/
         	    n = MAXCHR;
-        	str[n-1]='\0';
+        	str[n-1]='\0'; /* insert the end token of string*/ 
 		memcpy(buf, str, n);
 		
 		printf("%s\n", buf);
 		write(lcdFd, buf, MAXCHR);
-		write(lcdFd, str2, MAXCHR);
 	}
 	printf("Exit Program\n");
 	close(lcdFd);

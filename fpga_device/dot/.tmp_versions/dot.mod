@@ -1,2 +1,2 @@
-/root/문서/fpga_device/dot/dot.ko
-/root/문서/fpga_device/dot/dot.o
+/root/embeded/fpga_device/dot/dot.ko
+/root/embeded/fpga_device/dot/dot.o

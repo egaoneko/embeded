@@ -1,3 +1,12 @@
+/* =================================================
+ * Program ID : Dev.h
+ * Author     : SUM Project
+ * Create Date: 2014-06-09
+ * Compile Row: make - Reference Makefile
+ * Description: Device Driver Application Function Header
+ * =================================================
+ */
+
 #ifndef __DEV_H__
 #define __DEV_H__
 
@@ -81,6 +90,6 @@ void error_handling(char *msg, int fd);
 unsigned char asc_to_dot(int asc);
 
 /* LED Write */
-void led_start(int *dev, int num);
+void led_start(int dev, int num);
 
 #endif

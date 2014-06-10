@@ -1,0 +1,1 @@
+cmd_/PROJECT/PXA27X/X-Hyper270-TKU_V1.0/fpga_device/clcd/clcd.ko := /opt/iwmmxt-1.0.0/bin/arm-linux-ld -EL  -r -o /PROJECT/PXA27X/X-Hyper270-TKU_V1.0/fpga_device/clcd/clcd.ko /PROJECT/PXA27X/X-Hyper270-TKU_V1.0/fpga_device/clcd/clcd.o /PROJECT/PXA27X/X-Hyper270-TKU_V1.0/fpga_device/clcd/clcd.mod.o

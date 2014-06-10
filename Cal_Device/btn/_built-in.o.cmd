@@ -1,0 +1,1 @@
+cmd_/home/newboder/X-Hyper270B-2.3/device/btn/built-in.o :=  rm -f /home/newboder/X-Hyper270B-2.3/device/btn/built-in.o; /opt/iwmmxt-1.0.0/bin/arm-linux-ar rcs /home/newboder/X-Hyper270B-2.3/device/btn/built-in.o

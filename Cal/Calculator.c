@@ -1,3 +1,12 @@
+/* =================================================
+ * Program ID : Calculator.c
+ * Author     : SUM Project
+ * Create Date: 2014-05-28
+ * Compile Row: make - Reference Makefile
+ * Description: Calculator Application Function
+ * =================================================
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -5,6 +14,7 @@
 #include "Calculator.h"
 #include "InfixCalculator.h"
 
+/* Result To String */
 int do_to_str(double d, char* r) {
 	char *str;
 	char str2[5];
@@ -17,7 +27,7 @@ int do_to_str(double d, char* r) {
 		r[0] = ' ';
 		r[1] = '0';
 		r[2] = '\0';
-	}	
+	}
 	else if (d < 1 && d > -1){
 		str = ecvt(d, 1, &count, &sign);
 
@@ -63,6 +73,7 @@ int do_to_str(double d, char* r) {
 	}
 }
 
+/* Expression Checker */
 int exp_checker(char* s) {
 	int len = strlen(s);
 	int i;

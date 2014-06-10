@@ -1,3 +1,12 @@
+/* =================================================
+ * Program ID : History.h
+ * Author     : SUM Project
+ * Create Date: 2014-06-09
+ * Compile Row: make - Reference Makefile
+ * Description: History Application Function Header
+ * =================================================
+ */
+
 #ifndef __HISTORY__
 #define __HISTORY__
 
@@ -14,5 +23,6 @@ struct history{
 
 int save_history(char *s, char *r, int flag);
 int open_history(char *s, char *r, int flag);
+int num_history(int flag);
 
 #endif

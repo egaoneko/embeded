@@ -1,6 +1,14 @@
+/* =================================================
+ * Program ID : InfixCalculator.c
+ * Author     : SUM Project
+ * Create Date: 2014-06-09
+ * Compile Row: make - Reference Makefile
+ * Description: Calculate Infix
+ * =================================================
+ */
+
 #include <string.h>
 #include <stdlib.h>
-#include <conio.h>
 #include "Calculator.h"
 #include "InfixToPostfix.h"
 #include "PostCalculator.h"
