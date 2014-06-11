@@ -78,13 +78,20 @@ int exp_checker(char* s) {
 	int len = strlen(s);
 	int i;
 	int opt_cnt = 0, dgt_cnt = 0, brkl_cnt = 0, brkr_cnt = 0;
+	char str[16];
+	char op[7]="+-*/()";
+	char * pointer = NULL;
 
+	strcpy(str,s);
+	pointer=strtok(str,op);
+
+	while(1){
+		if(pointer == NULL) break;
+		dgt_cnt++;
+		pointer=strtok(NULL,op);
+	}
 
 	for (i = 0; i< len; i++){
-		if (isdigit(s[i])){
-			dgt_cnt++;
-			continue;
-		}
 
 		switch (s[i]){
 		case '(':

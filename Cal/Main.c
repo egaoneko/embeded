@@ -129,6 +129,9 @@ int main(int ac, char *av[])
 		}
 		/* Exit */
 		if (btn_flag[0]==1) {
+			spr_lcd(lcdFd,"_____Exit_____", "");
+			write(dotFd, dot_col_C, DOT_COL);
+			write(fndFd, fnd_C, MAXFND);
 			led_start(ledFd,5);
 			break;
 		}
@@ -596,9 +599,8 @@ int main(int ac, char *av[])
 					
 					if(exp_checker(exp)!=-1){
 						do_to_str(EvalInfixExp(exp), res);
-						idx=0;
+						
 						save_history(exp,res,0);
-
 						spr_lcd(lcdFd,exp,res);
 
 						memset(before, 0, sizeof(before));
@@ -609,7 +611,7 @@ int main(int ac, char *av[])
 						spr_lcd(lcdFd,"  Syntax Error ","");
 						led_start(ledFd,2);
 					}
-					
+					idx=0;
 					memset(exp, 0, sizeof(exp));
 					memset(res, 0, sizeof(res));
 					flag_E=1;
@@ -621,17 +623,16 @@ int main(int ac, char *av[])
 
 					if(exp_checker(exp)!=-1){
 						do_to_str(EvalInfixExp(exp), res);
-						idx=0;
 						save_history(exp,res,HL_C);
 
 						spr_lcd(lcdFd,exp,res);
-						led_start(ledFd,2);
+						led_start(ledFd,3);
 					}
 					else{
 						spr_lcd(lcdFd,"  Syntax Error ","");
-						led_start(ledFd,6);
+						led_start(ledFd,2);
 					}
-
+					idx=0;
 					memset(exp, 0, sizeof(exp));
 					memset(res, 0, sizeof(res));
 					flag_HE=0;

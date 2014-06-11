@@ -1,3 +1,14 @@
+/* =================================================
+ * Program ID : Main.c
+ * Author     : SUM Project
+ * Create Date: 2014-05-28
+ * Compile Row: make - Reference Makefile
+ * Description: Merge Device Driver Application and
+ *            : Calculator Application 
+ * =================================================
+ */
+
+
 #include <stdio.h>
 #include <fcntl.h>
 #include <pthread.h>
@@ -16,7 +27,7 @@ void * handle_btn(void * arg);
 pthread_mutex_t mutx;
 int btn_flag[4]={0,};
 
-/* Sample */
+/* Main */
 int main(int ac, char *av[])
 {
 	/* Init */
@@ -62,6 +73,7 @@ int main(int ac, char *av[])
 	unsigned char fnd_buf[MAXFND + 1];
 	int fndValue[MAXFND] = { 0 };
 
+	/* Init Device Driver */ 
 	if ((keyFd = open(keyDev, O_RDONLY)) < 0){
 		error_handling("KEY", keyFd);
 	}
@@ -81,6 +93,7 @@ int main(int ac, char *av[])
 		error_handling("LED", ledFd);
 	}
 
+	/* Init Thread */
 	pthread_mutex_init(&mutx, NULL);
 	pthread_create(&t_id, NULL, handle_btn, (void*)&btnFd);
 
@@ -90,27 +103,43 @@ int main(int ac, char *av[])
 	printf("     Ctrl + C -> Quit	  \n");
 	printf("--------------------------\n");
 
+	/* Init FND */
 	memset(s, 0, MAXFND + 2);
 	memset(fnd_buf, 0, sizeof(fnd_buf));
 
+	/* Init Clcd */
 	memset(exp, 0, sizeof(exp));
 	memset(res, 0, sizeof(res));
 
+	/* Clear for Calculator */
 	spr_lcd(lcdFd,"   Calculator   ","");
 	write(dotFd, dot_col_C, DOT_COL);
 	write(fndFd, fnd_C, MAXFND);
 	led_start(ledFd,1);
 
+	/* Main Loop */
 	while (1){
+		/* Check First or Not */
 		if (flag_s != 0){
 			spr_lcd(before, exp);
 		}
+		/* First Flag set false */
 		if (strcmp(exp, null) == 0) {
 			flag_s = 1;
 		}
+		/* Exit */
+		if (btn_flag[0]==1) {
+			spr_lcd(lcdFd,"_____Exit_____", "");
+			write(dotFd, dot_col_C, DOT_COL);
+			write(fndFd, fnd_C, MAXFND);
+			led_start(ledFd,5);
+			break;
+		}
 
+		/* Get Key */
 		c = key_get(10);
 
+		/* Check String Length */
 		if(idx==15) {
 			if(c==K_EQU && btn_flag[3]==0){
 			}
@@ -123,11 +152,11 @@ int main(int ac, char *av[])
 			}
 		}
 
+		/* Do Calculator Function by using key values */
 		switch (c){
+
+		/* Num 0 Key */
 		case K_NUM0:
-			printf("##\n");
-			//pthread_mutex_lock(&mutx);
-			printf("##\n");
 			if(btn_flag[3]==0){
 				flag_E=0;
 				flag_O=0;
@@ -153,10 +182,10 @@ int main(int ac, char *av[])
 					continue;
 				}
 			}
-			//pthread_mutex_unlock(&mutx);
 			break;
+
+		/* Num 1 Key */
 		case K_NUM1:
-			//pthread_mutex_lock(&mutx);
 			if(btn_flag[3]==0){
 				flag_E=0;
 				flag_O=0;
@@ -171,10 +200,10 @@ int main(int ac, char *av[])
 			else{
 				continue;
 			}
-			//pthread_mutex_unlock(&mutx);
 			break;
+
+		/* Num 2 Key */
 		case K_NUM2:
-			//pthread_mutex_lock(&mutx);
 			if(btn_flag[3]==0){
 				flag_E=0;
 				flag_O=0;
@@ -189,10 +218,10 @@ int main(int ac, char *av[])
 			else{
 				continue;
 			}
-			//pthread_mutex_unlock(&mutx);
 			break;
+
+		/* Num 3 Key */
 		case K_NUM3:
-			//pthread_mutex_lock(&mutx);
 			if(btn_flag[3]==0){
 				flag_E=0;
 				flag_O=0;
@@ -207,10 +236,10 @@ int main(int ac, char *av[])
 			else{
 				continue;
 			}
-			//pthread_mutex_unlock(&mutx);
 			break;
+
+		/* Num 4 Key */
 		case K_NUM4:
-			//pthread_mutex_lock(&mutx);
 			if(btn_flag[3]==0){
 				flag_E=0;
 				flag_O=0;
@@ -225,10 +254,10 @@ int main(int ac, char *av[])
 			else{
 				continue;
 			}
-			//pthread_mutex_unlock(&mutx);
 			break;
+
+		/* Num 5 Key */
 		case K_NUM5:
-			//pthread_mutex_lock(&mutx);
 			if(btn_flag[3]==0){
 				flag_E=0;
 				flag_O=0;
@@ -271,10 +300,10 @@ int main(int ac, char *av[])
 					continue;
 				}
 			}
-			//pthread_mutex_unlock(&mutx);
 			break;
+
+		/* Num 6 Key */
 		case K_NUM6:
-			//pthread_mutex_lock(&mutx);
 			if(btn_flag[3]==0){
 				flag_E=0;
 				flag_O=0;
@@ -289,10 +318,10 @@ int main(int ac, char *av[])
 			else{
 				continue;
 			}
-			//pthread_mutex_unlock(&mutx);
 			break;
+
+		/* Num 7 Key */
 		case K_NUM7:
-			//pthread_mutex_lock(&mutx);
 			if(btn_flag[3]==0){
 				flag_E=0;
 				flag_O=0;
@@ -307,10 +336,10 @@ int main(int ac, char *av[])
 			else{
 				continue;
 			}
-			//pthread_mutex_unlock(&mutx);
 			break;
+
+		/* Num 8 Key */
 		case K_NUM8:
-			//pthread_mutex_lock(&mutx);
 			if(btn_flag[3]==0){
 				flag_E=0;
 				flag_O=0;
@@ -353,10 +382,10 @@ int main(int ac, char *av[])
 					continue;
 				}
 			}
-			//pthread_mutex_unlock(&mutx);
 			break;
+
+		/* Num 9 Key */
 		case K_NUM9:
-			//pthread_mutex_lock(&mutx);
 			if(btn_flag[3]==0){
 				flag_E=0;
 				flag_O=0;
@@ -371,10 +400,10 @@ int main(int ac, char *av[])
 			else{
 				continue;
 			}
-			//pthread_mutex_unlock(&mutx);
 			break;
+
+		/* Dot Key */
 		case K_DOT:
-			//pthread_mutex_lock(&mutx);
 			if(btn_flag[3]==0){
 				if(flag_E==0 && flag_O==0 && flag_D==0){
 					if(flag_HE==1)
@@ -401,10 +430,10 @@ int main(int ac, char *av[])
 					continue;
 				}
 			}
-			//pthread_mutex_unlock(&mutx);
 			break;
+
+		/* Add Key */
 		case K_ADD:
-			//pthread_mutex_lock(&mutx);
 			if(btn_flag[3]==0){
 				if(flag_E==0 && flag_O==0 && flag_D==0){
 					fnd_clear(s, fnd_buf);
@@ -451,10 +480,10 @@ int main(int ac, char *av[])
 				}
 				continue;
 			}
-			//pthread_mutex_unlock(&mutx);
 			break;
+
+		/* Subtract Key */
 		case K_SUB:
-			//pthread_mutex_lock(&mutx);
 			if(btn_flag[3]==0){
 				if(flag_E==0 && flag_O==0 && flag_D==0){
 					fnd_clear(s, fnd_buf);
@@ -493,10 +522,10 @@ int main(int ac, char *av[])
 					continue;
 				}
 			}
-			//pthread_mutex_unlock(&mutx);
 			break;
+
+		/* Multiply Key */
 		case K_MUL:
-			//pthread_mutex_lock(&mutx);
 			if(btn_flag[3]==0){
 				if(flag_E==0 && flag_O==0 && flag_D==0){
 					fnd_clear(s, fnd_buf);
@@ -531,10 +560,10 @@ int main(int ac, char *av[])
 					continue;
 				}
 			}
-			//pthread_mutex_unlock(&mutx);
 			break;
+
+		/* Divide Key */
 		case K_DIV:
-			//pthread_mutex_lock(&mutx);
 			if(btn_flag[3]==0){
 				if(flag_E==0 && flag_O==0 && flag_D==0){
 					fnd_clear(s, fnd_buf);
@@ -558,10 +587,10 @@ int main(int ac, char *av[])
 				}			
 				continue;
 			}
-			//pthread_mutex_unlock(&mutx);
 			break;
+
+		/* Equal Key */
 		case K_EQU:
-			//pthread_mutex_lock(&mutx);
 			if(btn_flag[3]==0){
 				/* Equal */
 				if(flag_E==0 && flag_O==0 && flag_D==0 && flag_HE==0){
@@ -626,13 +655,13 @@ int main(int ac, char *av[])
 				memset(res, 0, sizeof(res));
 				continue;
 			}
-			//pthread_mutex_unlock(&mutx);
 			break;
 		default: /* timeout */
 			break;
 
 		}
-
+		
+		/* FND Display */
 		for (i = 0; i < MAXFND; i++)
 		{
 			if ((s[i] < 0x30 && s[i] != '.') || (s[i] > 0x39 && s[i] != '.'))
@@ -653,6 +682,7 @@ int main(int ac, char *av[])
 		}
 		write(fndFd, fnd_buf, MAXFND);
 
+		/* FND Shift */
 		for (i = 0; i < MAXFND-1 ; i++)
 		{
 			s[i]=s[i+1];
@@ -730,21 +760,26 @@ void * handle_btn(void * arg)
 	while(1) {
 	read( bf, &buf, sizeof(buf));
 	switch(buf) {
+		/* Exit Key */
 		case 1:
 			pthread_mutex_lock(&mutx);
 			btn_flag[0]=1;
 			pthread_mutex_unlock(&mutx);
 			break;
+
 		case 2:
 			pthread_mutex_lock(&mutx);
 			btn_flag[1]=1;
 			pthread_mutex_unlock(&mutx);
 			break;
+
 		case 3:
 			pthread_mutex_lock(&mutx);
 			btn_flag[2]=1;
 			pthread_mutex_unlock(&mutx);
 			break;
+		
+		/* Function Key */ 
 		case 4:
 			pthread_mutex_lock(&mutx);
 			
