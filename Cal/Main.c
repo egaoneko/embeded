@@ -273,19 +273,21 @@ int main(int ac, char *av[])
 				if(flag_H==1){
 					/* History Up */
 					fnd_clear(s, fnd_buf);
-					spr_dis(0x55, lcdFd, dotFd, s, exp, &idx, before);
+					spr_dis(0x44, lcdFd, dotFd, s, exp, &idx, before);
 					idx=0;
 					memset(exp, 0, sizeof(exp));
 					memset(res, 0, sizeof(res));
 
-					if(HL_N < HL_C+1){
+					if(HL_N>HL_C)
+						HL_C++;
+
+					if(HL_N == HL_C){
 						memset(&b_his_1, 0, sizeof(b_his_1));
 						memset(&r_his_1, 0, sizeof(r_his_1));
 						open_history(b_his_1, r_his_1, HL_N);
 						spr_lcd(lcdFd,b_his_1,"______END______");
 					}
 					else{
-						HL_C++;
 						memset(&b_his_1, 0, sizeof(b_his_1));
 						memset(&r_his_1, 0, sizeof(r_his_1));
 						memset(&b_his_2, 0, sizeof(b_his_2));
@@ -355,19 +357,21 @@ int main(int ac, char *av[])
 				if(flag_H==1){
 					/* History Down */
 					fnd_clear(s, fnd_buf);
-					spr_dis(0x44, lcdFd, dotFd, s, exp, &idx, before);
+					spr_dis(0x55, lcdFd, dotFd, s, exp, &idx, before);
 					idx=0;
 					memset(exp, 0, sizeof(exp));
 					memset(res, 0, sizeof(res));
-
-					if(HL_C-1==1){
+					
+					if(HL_C>1)
+						HL_C--;
+					if(HL_C==1){
 						memset(&b_his_1, 0, sizeof(b_his_1));
 						memset(&r_his_1, 0, sizeof(r_his_1));
 						open_history(b_his_1, r_his_1, HL_C);
 						spr_lcd(lcdFd,"_____FIRST_____",b_his_1);
 					}
 					else{
-						HL_C--;
+						
 						memset(&b_his_1, 0, sizeof(b_his_1));
 						memset(&r_his_1, 0, sizeof(r_his_1));
 						memset(&b_his_2, 0, sizeof(b_his_2));
