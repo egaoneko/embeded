@@ -1,4 +1,4 @@
-![screenshot]({{ site.url }}/assets/media/embedded-calculator.png)
+![screenshot](http://egaoneko.github.io/assets/media/embedded-calculator.png)
 
 
 ## PXA – 270에서 구현한 사칙연산 계산기
